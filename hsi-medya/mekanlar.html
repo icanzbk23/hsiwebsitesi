@@ -228,6 +228,30 @@ nav{position:fixed;top:0;width:100%;z-index:200;background:rgba(10,10,10,.96);
 .yakinda-week{font-size:13px;color:var(--gray);margin-top:auto}
 .yakinda-lock{position:absolute;bottom:20px;right:20px;font-size:22px;opacity:.12}
 
+/* SCROLL PROGRESS */
+.scroll-progress{position:fixed;top:0;left:0;height:2px;width:0%;
+  background:linear-gradient(to right,var(--gold),var(--gold-light));z-index:999;transition:width .1s linear}
+
+/* HAMBURGER */
+.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.nav-burger span{display:block;width:22px;height:1.5px;background:var(--gold);transition:all .3s;border-radius:2px}
+.nav-burger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.nav-burger.open span:nth-child(2){opacity:0}
+.nav-burger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.mobile-menu{display:none;position:fixed;top:64px;left:0;right:0;
+  background:rgba(10,10,10,.98);backdrop-filter:blur(16px);z-index:190;
+  padding:24px 5% 32px;border-bottom:1px solid rgba(201,168,76,.15);
+  flex-direction:column;gap:4px}
+.mobile-menu.open{display:flex}
+.mobile-menu a{color:var(--gray);text-decoration:none;font-size:13px;font-weight:500;
+  letter-spacing:1.5px;text-transform:uppercase;padding:14px 0;
+  border-bottom:1px solid rgba(201,168,76,.06);transition:color .3s}
+.mobile-menu a:hover{color:var(--gold)}
+
+/* CARD APPEAR ANIMATION */
+@keyframes cardIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.mekan-card{animation:cardIn .45s ease both}
+
 /* Responsive */
 @media(max-width:640px){
   .reels-grid{gap:6px}
@@ -237,11 +261,13 @@ nav{position:fixed;top:0;width:100%;z-index:200;background:rgba(10,10,10,.96);
   .pop-meta{gap:10px}
   .pop-ig-btn{margin-left:0}
   nav .nav-links{display:none}
+  .nav-burger{display:flex}
 }
 </style>
 </head>
 <body>
 
+<div class="scroll-progress" id="scrollProgress"></div>
 <nav>
   <a class="nav-logo" href="index.html">HSİ<span> Medya</span></a>
   <div class="nav-links">
@@ -249,7 +275,15 @@ nav{position:fixed;top:0;width:100%;z-index:200;background:rgba(10,10,10,.96);
     <a href="mekanlar.html" class="active">Mekanlar</a>
     <a href="index.html#iletisim">İletişim</a>
   </div>
+  <div class="nav-burger" id="burger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
 </nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Ana Sayfa</a>
+  <a href="mekanlar.html">Mekanlar</a>
+  <a href="index.html#iletisim">İletişim</a>
+</div>
 
 <div class="tabs-wrap">
   <div class="tabs-header">
@@ -365,5 +399,30 @@ nav{position:fixed;top:0;width:100%;z-index:200;background:rgba(10,10,10,.96);
 
 <script src="js/mekanlar-data.js"></script>
 <script src="js/app.js"></script>
+<script>
+// SCROLL PROGRESS
+window.addEventListener('scroll', () => {
+  const p = document.getElementById('scrollProgress');
+  const s = document.documentElement.scrollTop;
+  const h = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  if (h > 0) p.style.width = (s / h * 100) + '%';
+});
+
+// HAMBURGER
+function toggleMenu() {
+  document.getElementById('burger').classList.toggle('open');
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+
+// CARD STAGGER
+function staggerCards() {
+  document.querySelectorAll('.mekan-card').forEach((c, i) => {
+    c.style.animationDelay = (i * 0.06) + 's';
+  });
+}
+// override renderCards to add stagger
+const _orig = window.renderCards;
+window.renderCards = function(f) { _orig(f); staggerCards(); };
+</script>
 </body>
 </html>

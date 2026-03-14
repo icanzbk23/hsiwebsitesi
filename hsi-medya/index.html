@@ -211,6 +211,64 @@ footer{background:var(--dark);border-top:1px solid rgba(201,168,76,.1);
   letter-spacing:1px;transition:color .3s}
 .footer-links a:hover{color:var(--gold)}
 
+/* SCROLL PROGRESS */
+.scroll-progress{position:fixed;top:0;left:0;height:2px;width:0%;
+  background:linear-gradient(to right,var(--gold),var(--gold-light));
+  z-index:999;transition:width .1s linear}
+
+/* MARQUEE */
+.marquee-wrap{background:rgba(201,168,76,.06);border-top:1px solid rgba(201,168,76,.1);
+  border-bottom:1px solid rgba(201,168,76,.1);overflow:hidden;padding:10px 0}
+.marquee-track{display:flex;gap:0;white-space:nowrap;animation:marquee 28s linear infinite}
+.marquee-track:hover{animation-play-state:paused}
+.marquee-item{display:inline-flex;align-items:center;gap:12px;padding:0 32px;
+  font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(201,168,76,.5)}
+.marquee-item span{color:rgba(201,168,76,.85);font-weight:600}
+.marquee-dot{width:3px;height:3px;border-radius:50%;background:rgba(201,168,76,.3)}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* HAMBURGER */
+.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.nav-burger span{display:block;width:22px;height:1.5px;background:var(--gold);
+  transition:all .3s;border-radius:2px}
+.nav-burger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.nav-burger.open span:nth-child(2){opacity:0}
+.nav-burger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.mobile-menu{display:none;position:fixed;top:64px;left:0;right:0;
+  background:rgba(10,10,10,.98);backdrop-filter:blur(16px);z-index:190;
+  padding:24px 5% 32px;border-bottom:1px solid rgba(201,168,76,.15);
+  flex-direction:column;gap:4px}
+.mobile-menu.open{display:flex}
+.mobile-menu a{color:var(--gray);text-decoration:none;font-size:13px;font-weight:500;
+  letter-spacing:1.5px;text-transform:uppercase;padding:14px 0;
+  border-bottom:1px solid rgba(201,168,76,.06);transition:color .3s}
+.mobile-menu a:hover{color:var(--gold)}
+.mobile-menu .nav-cta{border:1px solid rgba(201,168,76,.35);color:var(--gold)!important;
+  padding:14px 20px;border-radius:100px;margin-top:12px;text-align:center;
+  background:rgba(201,168,76,.06)}
+
+/* SCROLL REVEAL */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:.1s}
+.reveal-delay-2{transition-delay:.2s}
+.reveal-delay-3{transition-delay:.3s}
+.reveal-delay-4{transition-delay:.4s}
+
+/* SHIMMER TEXT */
+@keyframes shimmer{
+  0%{background-position:200% center}
+  100%{background-position:-200% center}
+}
+.hero-title em{
+  background:linear-gradient(90deg,var(--gold) 0%,var(--gold-light) 30%,#fff8e0 50%,var(--gold-light) 70%,var(--gold) 100%);
+  background-size:200% auto;
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:shimmer 4s linear infinite;
+  display:block
+}
+
 /* Responsive */
 @media(max-width:900px){
   .kanallar-grid{grid-template-columns:1fr}
@@ -219,6 +277,7 @@ footer{background:var(--dark);border-top:1px solid rgba(201,168,76,.1);
   .hero-stats{gap:24px}
   .hero-divider{display:none}
   nav .nav-links{display:none}
+  .nav-burger{display:flex}
 }
 @media(max-width:480px){
   .hero-btns{flex-direction:column;align-items:center}
@@ -254,6 +313,8 @@ footer{background:var(--dark);border-top:1px solid rgba(201,168,76,.1);
 </head>
 <body>
 
+<div class="scroll-progress" id="scrollProgress"></div>
+
 <!-- NAV -->
 <nav>
   <a class="nav-logo" href="index.html">HSİ<span> Medya</span></a>
@@ -263,7 +324,16 @@ footer{background:var(--dark);border-top:1px solid rgba(201,168,76,.1);
     <a href="#iletisim">İletişim</a>
     <a href="mekanlar.html" class="nav-cta">Mekanları Keşfet</a>
   </div>
+  <div class="nav-burger" id="burger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
 </nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Ana Sayfa</a>
+  <a href="mekanlar.html">Mekanlar</a>
+  <a href="#iletisim" onclick="toggleMenu()">İletişim</a>
+  <a href="mekanlar.html" class="nav-cta">Mekanları Keşfet</a>
+</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -288,52 +358,81 @@ footer{background:var(--dark);border-top:1px solid rgba(201,168,76,.1);
     </div>
     <div class="hero-stats">
       <div class="hero-stat">
-        <div class="hero-stat-val">80M+</div>
+        <div class="hero-stat-val" data-count="80" data-suffix="M+">0</div>
         <div class="hero-stat-label">Toplam İzlenme</div>
       </div>
       <div class="hero-divider"></div>
       <div class="hero-stat">
-        <div class="hero-stat-val">11</div>
+        <div class="hero-stat-val" data-count="11" data-suffix="">0</div>
         <div class="hero-stat-label">Partner Mekan</div>
       </div>
       <div class="hero-divider"></div>
       <div class="hero-stat">
-        <div class="hero-stat-val">18.6M</div>
+        <div class="hero-stat-val" data-count="18.6" data-suffix="M">0</div>
         <div class="hero-stat-label">En Viral Video</div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <div class="marquee-item"><span>Musta Döner</span><div class="marquee-dot"></div></div>
+    <div class="marquee-item"><span>Sütlü Kavurma</span><div class="marquee-dot"></div></div>
+    <div class="marquee-item"><span>Harvey Burger</span><div class="marquee-dot"></div></div>
+    <div class="marquee-item"><span>Ege Döner</span><div class="marquee-dot"></div></div>
+    <div class="marquee-item"><span>Sultan Sofrası</span><div class="marquee-dot"></div></div>
+    <div class="marquee-item"><span>Mikado Rest.</span><div class="marquee-dot"></div></div>
+    <div class="marquee-item"><span>Batura Coffee</span><div class="marquee-dot"></div></div>
+    <div class="marquee-item"><span>İste Çiftlik</span><div class="marquee-dot"></div></div>
+    <div class="marquee-item"><span>Kuban Kuruyemiş</span><div class="marquee-dot"></div></div>
+    <div class="marquee-item"><span>Sezai Usta</span><div class="marquee-dot"></div></div>
+    <div class="marquee-item"><span>Süleyman Usta</span><div class="marquee-dot"></div></div>
+    <!-- duplicate for seamless loop -->
+    <div class="marquee-item"><span>Musta Döner</span><div class="marquee-dot"></div></div>
+    <div class="marquee-item"><span>Sütlü Kavurma</span><div class="marquee-dot"></div></div>
+    <div class="marquee-item"><span>Harvey Burger</span><div class="marquee-dot"></div></div>
+    <div class="marquee-item"><span>Ege Döner</span><div class="marquee-dot"></div></div>
+    <div class="marquee-item"><span>Sultan Sofrası</span><div class="marquee-dot"></div></div>
+    <div class="marquee-item"><span>Mikado Rest.</span><div class="marquee-dot"></div></div>
+    <div class="marquee-item"><span>Batura Coffee</span><div class="marquee-dot"></div></div>
+    <div class="marquee-item"><span>İste Çiftlik</span><div class="marquee-dot"></div></div>
+    <div class="marquee-item"><span>Kuban Kuruyemiş</span><div class="marquee-dot"></div></div>
+    <div class="marquee-item"><span>Sezai Usta</span><div class="marquee-dot"></div></div>
+    <div class="marquee-item"><span>Süleyman Usta</span><div class="marquee-dot"></div></div>
+  </div>
+</div>
+
 <!-- HİZMETLER -->
 <section class="section hizmetler">
-  <div class="sec-label">Ne Yapıyoruz</div>
-  <h2 class="sec-title">HSİ Medya Hizmetleri</h2>
-  <div class="gold-line"></div>
+  <div class="reveal sec-label">Ne Yapıyoruz</div>
+  <h2 class="reveal reveal-delay-1 sec-title">HSİ Medya Hizmetleri</h2>
+  <div class="reveal reveal-delay-2 gold-line"></div>
   <div class="hizmetler-grid">
-    <div class="hiz-card">
+    <div class="hiz-card reveal reveal-delay-1">
       <div class="hiz-icon">🎬</div>
       <div class="hiz-title">Viral Reel Üretimi</div>
       <div class="hiz-desc">Mekanınızı Instagram'da patlatan kısa format videolar. Konseptten çekime, kurgudan yayına kadar her şey bizde.</div>
       <div class="hiz-tag">Reel / TikTok / Shorts</div>
     </div>
-    <div class="hiz-card">
+    <div class="hiz-card reveal reveal-delay-2">
       <div class="hiz-icon">📍</div>
       <div class="hiz-title">Yerel Marka İnşası</div>
       <div class="hiz-desc">Hatay'daki mekanınızı hem yerel halk hem de turistler için vazgeçilmez bir destinasyon haline getiriyoruz.</div>
       <div class="hiz-tag">Instagram · Google · Haritalar</div>
     </div>
-    <div class="hiz-card">
+    <div class="hiz-card reveal reveal-delay-3">
       <div class="hiz-icon">📊</div>
       <div class="hiz-title">İçerik Stratejisi</div>
       <div class="hiz-desc">Hedef kitlenize özel içerik takvimi, hashtag stratejisi ve büyüme planı. Rakiplerinizin önüne geçin.</div>
       <div class="hiz-tag">Analitik · Raporlama</div>
     </div>
-    <div class="hiz-card">
+    <div class="hiz-card reveal reveal-delay-4">
       <div class="hiz-icon">🤝</div>
       <div class="hiz-title">Influencer İşbirlikleri</div>
-      <div class="hiz-desc">Eser Bilan ve Hatay Mekanları gibi büyük kanallarla organik içerik ortaklıkları kuruyoruz.</div>
-      <div class="hiz-tag">Hatay Mekanları · Eser Bilan</div>
+      <div class="hiz-desc">Eser Bilen ve Hatay Mekanları gibi büyük kanallarla organik içerik ortaklıkları kuruyoruz.</div>
+      <div class="hiz-tag">Hatay Mekanları · Eser Bilen</div>
     </div>
   </div>
 </section>
@@ -651,5 +750,53 @@ footer{background:var(--dark);border-top:1px solid rgba(201,168,76,.1);
   </div>
 </footer>
 
+<script>
+// SCROLL PROGRESS
+window.addEventListener('scroll', () => {
+  const p = document.getElementById('scrollProgress');
+  const s = document.documentElement.scrollTop;
+  const h = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  p.style.width = (s / h * 100) + '%';
+});
+
+// HAMBURGER
+function toggleMenu() {
+  document.getElementById('burger').classList.toggle('open');
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+
+// SCROLL REVEAL
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// COUNTER ANIMATION
+function animateCount(el) {
+  const target = parseFloat(el.dataset.count);
+  const suffix = el.dataset.suffix || '';
+  const dec = target % 1 !== 0;
+  const duration = 1800;
+  const start = performance.now();
+  function step(now) {
+    const p = Math.min((now - start) / duration, 1);
+    const ease = 1 - Math.pow(1 - p, 3);
+    const val = ease * target;
+    el.textContent = (dec ? val.toFixed(1) : Math.floor(val)) + suffix;
+    if (p < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+const statsObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('[data-count]').forEach(animateCount);
+      statsObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.5 });
+const statsEl = document.querySelector('.hero-stats');
+if (statsEl) statsObserver.observe(statsEl);
+</script>
 </body>
 </html>
