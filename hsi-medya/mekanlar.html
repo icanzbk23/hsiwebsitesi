@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HSİ Medya — Mekanlar</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --gold:#C9A84C;--gold-light:#E8C96A;
+  --black:#0A0A0A;--dark:#111111;--dark2:#1A1A1A;--dark3:#222222;
+  --gray:#888888;--white:#FFFFFF;
+  --font-display:'Playfair Display',serif;--font-body:'Inter',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--white);font-family:var(--font-body);line-height:1.6}
+
+/* NAV */
+nav{position:fixed;top:0;width:100%;z-index:200;background:rgba(10,10,10,.96);
+  backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,168,76,.15);
+  display:flex;align-items:center;justify-content:space-between;padding:0 5%;height:64px}
+.nav-logo{font-family:var(--font-display);font-size:22px;color:var(--gold);
+  letter-spacing:2px;font-weight:700;text-decoration:none}
+.nav-logo span{color:var(--white)}
+.nav-links{display:flex;gap:28px}
+.nav-links a{color:var(--gray);text-decoration:none;font-size:12px;font-weight:500;
+  letter-spacing:1.5px;text-transform:uppercase;transition:color .3s}
+.nav-links a:hover,.nav-links a.active{color:var(--gold)}
+
+/* TABS */
+.tabs-wrap{padding-top:64px}
+.tabs-header{display:flex;border-bottom:1px solid rgba(201,168,76,.12);
+  background:var(--dark);padding:0 5%;
+  position:sticky;top:64px;z-index:100}
+.tab-btn{padding:18px 28px;font-size:12px;font-weight:500;letter-spacing:2px;
+  text-transform:uppercase;color:var(--gray);cursor:pointer;border:none;
+  background:transparent;border-bottom:2px solid transparent;margin-bottom:-1px;
+  transition:all .3s;font-family:var(--font-body)}
+.tab-btn:hover{color:var(--white)}
+.tab-btn.active{color:var(--gold);border-bottom-color:var(--gold)}
+.soon-badge{background:rgba(201,168,76,.12);color:var(--gold);font-size:9px;
+  letter-spacing:1px;padding:3px 9px;border-radius:100px;
+  border:1px solid rgba(201,168,76,.25);margin-left:8px}
+.tab-panel{display:none}
+.tab-panel.active{display:block}
+
+/* SECTION HEADER */
+.sec-head{padding:48px 5% 0}
+.sec-head small{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--gold)}
+.sec-head h2{font-family:var(--font-display);font-size:clamp(26px,4vw,40px);
+  font-weight:700;color:var(--white);margin-top:8px}
+.gold-line{width:56px;height:2px;background:linear-gradient(to right,var(--gold),transparent);
+  margin:20px 0 32px}
+
+/* FILTER */
+.filter-row{display:flex;gap:8px;flex-wrap:wrap;padding:0 5% 32px}
+.filt{padding:7px 18px;border-radius:100px;border:1px solid rgba(201,168,76,.18);
+  background:transparent;color:var(--gray);font-size:12px;cursor:pointer;
+  transition:all .3s;font-family:var(--font-body);letter-spacing:.5px}
+.filt.active,.filt:hover{border-color:var(--gold);color:var(--gold);background:rgba(201,168,76,.06)}
+
+/* MEKAN GRID */
+.mekan-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:1px;background:rgba(201,168,76,.08);margin:0 5% 60px}
+.mekan-card{background:var(--dark);cursor:pointer;overflow:hidden;
+  transition:background .25s;display:flex;flex-direction:column;position:relative}
+.mekan-card:hover{background:var(--dark2)}
+.mekan-card:hover .card-arrow{transform:translate(0,0);opacity:1}
+
+/* Cover */
+.card-cover{aspect-ratio:4/3;position:relative;overflow:hidden;background:var(--dark3)}
+.card-cover img{width:100%;height:100%;object-fit:cover;display:block;
+  transition:transform .4s;filter:brightness(.82)}
+.mekan-card:hover .card-cover img{transform:scale(1.05)}
+.card-cover-overlay{position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(0,0,0,.8) 0%,transparent 55%);opacity:.6;transition:opacity .3s}
+.card-cover-placeholder{width:100%;height:100%;display:flex;align-items:center;
+  justify-content:center;font-size:56px;background:linear-gradient(135deg,#1a1208,#0d0d0d)}
+.card-arrow{position:absolute;top:14px;right:14px;width:34px;height:34px;
+  background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;
+  transform:translate(6px,-6px);opacity:0;transition:all .3s;font-size:14px;color:var(--black);z-index:2}
+.card-viral{position:absolute;bottom:12px;left:12px;
+  background:rgba(201,168,76,.15);backdrop-filter:blur(6px);
+  border:1px solid rgba(201,168,76,.35);border-radius:100px;
+  font-size:10px;color:var(--gold);padding:4px 10px;letter-spacing:1px}
+
+/* Card body */
+.card-body{padding:20px 20px 24px}
+.card-cat{font-size:10px;letter-spacing:3px;text-transform:uppercase;
+  color:var(--gold);margin-bottom:6px;font-weight:600}
+.card-name{font-family:var(--font-display);font-size:20px;font-weight:700;
+  color:var(--white);margin-bottom:4px;line-height:1.2}
+.card-loc{font-size:12px;color:var(--gray)}
+.card-stats{display:flex;gap:16px;margin-top:12px}
+.card-stat{font-size:11px;color:rgba(201,168,76,.7);display:flex;align-items:center;gap:4px}
+.card-hsi{margin-top:12px;font-size:11px;color:rgba(201,168,76,.45);
+  display:flex;align-items:center;gap:5px;
+  border-top:1px solid rgba(201,168,76,.08);padding-top:12px}
+
+/* POPUP */
+.popup-overlay{position:fixed;inset:0;background:rgba(0,0,0,.93);z-index:1000;
+  display:none;align-items:center;justify-content:center;padding:20px}
+.popup-overlay.open{display:flex;animation:fadeOv .25s ease}
+@keyframes fadeOv{from{opacity:0}to{opacity:1}}
+.popup-box{background:var(--dark);border:1px solid rgba(201,168,76,.18);
+  width:100%;max-width:960px;max-height:92vh;overflow-y:auto;
+  animation:slideUp .38s cubic-bezier(.16,1,.3,1);border-radius:2px;position:relative}
+@keyframes slideUp{from{opacity:0;transform:translateY(36px)}to{opacity:1;transform:translateY(0)}}
+.popup-box::-webkit-scrollbar{width:3px}
+.popup-box::-webkit-scrollbar-thumb{background:rgba(201,168,76,.25);border-radius:2px}
+.pop-close{position:absolute;top:18px;right:18px;width:34px;height:34px;z-index:10;
+  background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.18);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;cursor:pointer;
+  color:var(--gold);font-size:16px;transition:all .2s}
+.pop-close:hover{background:rgba(201,168,76,.18)}
+
+/* Popup header */
+.pop-head{padding:36px 40px 0;
+  background:linear-gradient(to bottom,rgba(201,168,76,.04),transparent);
+  border-bottom:1px solid rgba(201,168,76,.1)}
+.pop-cat{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);
+  margin-bottom:10px;display:flex;align-items:center;gap:10px}
+.pop-cat::after{content:'';flex:1;height:1px;background:rgba(201,168,76,.15)}
+.pop-name{font-family:var(--font-display);font-size:clamp(24px,4vw,36px);
+  font-weight:900;color:var(--white);margin-bottom:6px}
+.pop-meta{display:flex;align-items:center;gap:16px;padding:14px 0 24px;flex-wrap:wrap}
+.pop-meta-item{font-size:13px;color:var(--gray);display:flex;align-items:center;gap:6px}
+.pop-followers{font-size:13px;color:var(--gold);font-weight:600;
+  background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.2);
+  padding:4px 14px;border-radius:100px}
+.pop-ig-btn{margin-left:auto;background:transparent;border:1px solid rgba(201,168,76,.3);
+  color:var(--gold);font-size:11px;padding:8px 18px;border-radius:100px;
+  letter-spacing:1.5px;text-transform:uppercase;transition:all .3s;font-family:var(--font-body);
+  text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.pop-ig-btn:hover{background:rgba(201,168,76,.1);border-color:var(--gold)}
+
+/* Popup body */
+.pop-body{padding:32px 40px 40px}
+.reels-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;
+  color:var(--gray);margin-bottom:18px}
+.reels-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:36px}
+
+/* Reel kart */
+.reel-card{position:relative;border-radius:3px;overflow:hidden;cursor:pointer;
+  background:var(--dark2);border:1px solid rgba(201,168,76,.08);
+  aspect-ratio:9/16;transition:border-color .2s;display:block;text-decoration:none}
+.reel-card:hover{border-color:rgba(201,168,76,.3)}
+.reel-card:hover .reel-play{transform:scale(1.12)}
+.reel-thumb{position:absolute;inset:0}
+.reel-thumb img{width:100%;height:100%;object-fit:cover;display:block;
+  filter:brightness(.78);transition:filter .3s}
+.reel-card:hover .reel-thumb img{filter:brightness(.6)}
+.reel-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;
+  font-size:44px;background:linear-gradient(160deg,#1a1208,#0d0d0d)}
+.reel-gradient{position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(0,0,0,.92) 0%,rgba(0,0,0,.08) 60%,transparent 100%)}
+.reel-play{position:absolute;top:10px;right:10px;width:30px;height:30px;
+  background:rgba(201,168,76,.9);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;color:var(--black);transition:transform .2s;z-index:2}
+.reel-stats-top{position:absolute;top:10px;left:10px;display:flex;flex-direction:column;gap:3px;z-index:2}
+.reel-pill{background:rgba(0,0,0,.65);backdrop-filter:blur(4px);
+  border-radius:100px;padding:2px 8px;font-size:10px;color:rgba(255,255,255,.85);
+  display:flex;align-items:center;gap:3px}
+.reel-bottom{position:absolute;bottom:0;left:0;right:0;padding:14px 12px;z-index:2}
+.reel-views{font-size:12px;color:var(--gold);font-weight:600;margin-bottom:3px}
+.reel-caption{font-size:11px;color:rgba(255,255,255,.8);line-height:1.4;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.reel-bar{position:absolute;bottom:0;left:0;right:0;height:2px;
+  background:linear-gradient(to right,transparent,var(--gold),transparent);
+  animation:bar 2.5s ease-in-out infinite}
+@keyframes bar{0%,100%{opacity:.15}50%{opacity:.6}}
+
+/* Loading state */
+.reel-loading{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  background:var(--dark2);font-size:11px;color:var(--gray);letter-spacing:1px}
+
+/* Kart profil logosu — sağ üst köşe */
+.card-logo-wrap{position:absolute;top:12px;right:12px;z-index:3;
+  width:52px;height:52px;border-radius:50%;
+  border:2px solid var(--gold);overflow:hidden;
+  box-shadow:0 2px 12px rgba(0,0,0,.7);background:var(--dark3)}
+.card-logo{width:100%;height:100%;object-fit:cover;display:block}
+
+/* Popup profil logosu */
+.pop-logo{width:72px;height:72px;border-radius:50%;object-fit:cover;
+  border:2px solid var(--gold);box-shadow:0 2px 12px rgba(0,0,0,.5)}
+.pop-logo-emoji{width:72px;height:72px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-size:36px;
+  border:2px solid rgba(201,168,76,.3);background:var(--dark3)}
+
+/* Info grid */
+.pop-about{font-size:15px;color:var(--gray);line-height:1.85;margin-bottom:28px}
+.pop-info-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:28px}
+.pop-info-card{background:var(--dark2);border:1px solid rgba(201,168,76,.07);padding:16px 20px}
+.pop-info-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.pop-info-val{font-size:15px;color:var(--white);font-weight:500}
+.pop-info-sub{font-size:12px;color:var(--gray);margin-top:3px}
+.pop-hsi{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;
+  background:rgba(201,168,76,.05);border:1px solid rgba(201,168,76,.18);
+  font-size:13px;color:var(--gold)}
+.pop-hsi strong{color:var(--white)}
+
+/* YAKINDA */
+.yakinda-wrap{padding:48px 5% 60px}
+.yakinda-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+  gap:1px;background:rgba(201,168,76,.07)}
+.yakinda-card{background:var(--dark);padding:32px;
+  display:flex;flex-direction:column;gap:16px;min-height:220px;position:relative}
+.soon-dot{display:inline-flex;align-items:center;gap:6px;font-size:10px;letter-spacing:2px;
+  text-transform:uppercase;color:var(--gold);background:rgba(201,168,76,.08);
+  border:1px solid rgba(201,168,76,.2);padding:5px 14px;border-radius:100px;width:fit-content}
+.soon-dot::before{content:'';width:5px;height:5px;background:var(--gold);border-radius:50%;
+  animation:blink 1.5s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.15}}
+.yakinda-logo-row{display:flex;align-items:center;gap:14px}
+.yakinda-logo{width:56px;height:56px;border-radius:50%;overflow:hidden;flex-shrink:0;
+  border:1.5px solid rgba(201,168,76,.25);filter:blur(3px);opacity:.65}
+.yakinda-logo img{width:100%;height:100%;object-fit:cover}
+.yakinda-logo-empty{width:56px;height:56px;border-radius:50%;flex-shrink:0;
+  background:rgba(201,168,76,.08);border:1.5px solid rgba(201,168,76,.25);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-display);font-size:22px;color:rgba(201,168,76,.4);
+  filter:blur(3px);opacity:.65}
+.yakinda-name{font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--white)}
+.yakinda-sub{font-size:12px;color:rgba(201,168,76,.4);letter-spacing:2px;text-transform:uppercase}
+.yakinda-week{font-size:13px;color:var(--gray);margin-top:auto}
+.yakinda-lock{position:absolute;bottom:20px;right:20px;font-size:22px;opacity:.12}
+
+/* Responsive */
+@media(max-width:640px){
+  .reels-grid{gap:6px}
+  .pop-body{padding:20px 16px 28px}
+  .pop-head{padding:24px 16px 0}
+  .pop-info-grid{grid-template-columns:1fr}
+  .pop-meta{gap:10px}
+  .pop-ig-btn{margin-left:0}
+  nav .nav-links{display:none}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">HSİ<span> Medya</span></a>
+  <div class="nav-links">
+    <a href="index.html">Ana Sayfa</a>
+    <a href="mekanlar.html" class="active">Mekanlar</a>
+    <a href="index.html#iletisim">İletişim</a>
+  </div>
+</nav>
+
+<div class="tabs-wrap">
+  <div class="tabs-header">
+    <button class="tab-btn active" onclick="switchTab('mekanlar',this)">Mekanlar</button>
+    <button class="tab-btn" onclick="switchTab('yakinda',this)">
+      Yakında<span class="soon-badge">4 YENİ</span>
+    </button>
+  </div>
+
+  <!-- MEKANLAR -->
+  <div class="tab-panel active" id="tab-mekanlar">
+    <div class="sec-head">
+      <small>HSİ Medya Partnerleri</small>
+      <h2>Tanıttığımız Mekanlar</h2>
+      <div class="gold-line"></div>
+    </div>
+    <div class="filter-row">
+      <button class="filt active" onclick="doFilter(this,'hepsi')">Tümü (11)</button>
+      <button class="filt" onclick="doFilter(this,'kebap')">Kebap & Döner</button>
+      <button class="filt" onclick="doFilter(this,'restoran')">Restoran</button>
+      <button class="filt" onclick="doFilter(this,'kafe')">Kafe & Atıştırmalık</button>
+      <button class="filt" onclick="doFilter(this,'yoresel')">Yöresel Lezzetler</button>
+    </div>
+    <div class="mekan-grid" id="mekan-grid"></div>
+  </div>
+
+  <!-- YAKINDA -->
+  <div class="tab-panel" id="tab-yakinda">
+    <div class="yakinda-wrap">
+      <div class="sec-head" style="padding:0 0 36px">
+        <small>Bu Hafta Ekleniyor</small>
+        <h2>Yakında Aramızda</h2>
+        <div class="gold-line"></div>
+      </div>
+      <div class="yakinda-grid">
+        <div class="yakinda-card">
+          <span class="soon-dot">Yakında</span>
+          <div class="yakinda-logo-row">
+            <div class="yakinda-logo"><img src="img/profiles/sinanozdemir023.jpg" alt="Sinan Özdemir"></div>
+            <div>
+              <div class="yakinda-name">Sinan Özdemir</div>
+              <div class="yakinda-sub">Doğu Unlu Mamülleri</div>
+            </div>
+          </div>
+          <div class="yakinda-week">HSİ Medya'da yakında</div>
+          <div class="yakinda-lock">🔒</div>
+        </div>
+        <div class="yakinda-card">
+          <span class="soon-dot">Yakında</span>
+          <div class="yakinda-logo-row">
+            <div class="yakinda-logo"><img src="img/profiles/egebufee.jpg" alt="Ege Büfe"></div>
+            <div>
+              <div class="yakinda-name">Ege Büfe</div>
+              <div class="yakinda-sub">Büfe & Atıştırmalık</div>
+            </div>
+          </div>
+          <div class="yakinda-week">HSİ Medya'da yakında</div>
+          <div class="yakinda-lock">🔒</div>
+        </div>
+        <div class="yakinda-card">
+          <span class="soon-dot">Yakında</span>
+          <div class="yakinda-logo-row">
+            <div class="yakinda-logo-empty">Ş</div>
+            <div>
+              <div class="yakinda-name">Şenöz</div>
+              <div class="yakinda-sub">Hatay Mutfağı</div>
+            </div>
+          </div>
+          <div class="yakinda-week">HSİ Medya'da yakında</div>
+          <div class="yakinda-lock">🔒</div>
+        </div>
+        <div class="yakinda-card">
+          <span class="soon-dot">Yakında</span>
+          <div class="yakinda-logo-row">
+            <div class="yakinda-logo-empty">A</div>
+            <div>
+              <div class="yakinda-name">Antochia</div>
+              <div class="yakinda-sub">Restoran</div>
+            </div>
+          </div>
+          <div class="yakinda-week">HSİ Medya'da yakında</div>
+          <div class="yakinda-lock">🔒</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- POPUP -->
+<div class="popup-overlay" id="popup" onclick="closeOutside(event)">
+  <div class="popup-box" id="popupBox">
+    <button class="pop-close" onclick="closePopup()">✕</button>
+    <div class="pop-head">
+      <div id="pop-logo-wrap" style="display:none;margin-bottom:16px"></div>
+      <div class="pop-cat" id="pop-cat"></div>
+      <div class="pop-name" id="pop-name"></div>
+      <div class="pop-meta">
+        <span class="pop-meta-item">📍 <span id="pop-loc"></span></span>
+        <span class="pop-meta-item">🕐 <span id="pop-hours"></span></span>
+        <span class="pop-followers" id="pop-followers"></span>
+        <a class="pop-ig-btn" id="pop-ig-link" href="#" target="_blank" rel="noopener">📸 Instagram'da Gör</a>
+      </div>
+    </div>
+    <div class="pop-body">
+      <div class="reels-label">Viral İçerikler — En Çok İzlenenler</div>
+      <div class="reels-grid" id="pop-reels"></div>
+      <p class="pop-about" id="pop-about"></p>
+      <div class="pop-info-grid" id="pop-infos"></div>
+      <div class="pop-hsi" id="pop-hsi"></div>
+    </div>
+  </div>
+</div>
+
+<script src="js/mekanlar-data.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

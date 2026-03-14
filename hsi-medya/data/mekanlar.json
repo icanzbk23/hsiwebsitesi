@@ -1,0 +1,204 @@
+{
+  "note": "Bu dosya apify_to_json.js scripti ile otomatik doldurulur. thumb alanları Apify'dan gelen displayUrl'dir.",
+  "last_updated": "2026-03-14",
+  "reels": {
+    "DT7rOvsjLNI": {
+      "mekan": "mikado",
+      "thumb": "img/reels/DT7rOvsjLNI.jpg",
+      "caption": "Tavada birleşen efsane lezzet 🔥🍳 Mikado Tava, yumuşacık et, kırmızı biber, yeşil biber, soğan ve s",
+      "likes": "85"
+    },
+    "DUK4azFCPCf": {
+      "mekan": "mikado",
+      "thumb": "img/reels/DUK4azFCPCf.jpg",
+      "caption": "Tavada ustalık, tabakta lezzet 🔥🍳 Belen tava, Yumuşacık et, sebzeler ve baharatlarla Ağır ateşte p",
+      "likes": "123"
+    },
+    "DViXH58CCOB": {
+      "mekan": "mikado",
+      "thumb": "img/reels/DViXH58CCOB.jpg",
+      "caption": "Közün kokusu, mezeye karakter katar 🔥🍆  Mütebbel, közlenmiş patlıcanın tahin, sarımsak ve özel dok",
+      "likes": "3K"
+    },
+    "DDAS396iiPu": {
+      "mekan": "suleymanusta",
+      "thumb": "img/reels/DDAS396iiPu.jpg",
+      "caption": "“6 ekmekli Dev Tavuk Döner! Bu lezzet efsanesi, Süleyman Usta’nın ellerinden geliyor! Her katında bo",
+      "likes": "65K"
+    },
+    "DTXkaPKjFI8": {
+      "mekan": "suleymanusta",
+      "thumb": "img/reels/DTXkaPKjFI8.jpg",
+      "caption": "Dönerci Süleyman Usta’nın 4 Isırık Akımı…🔥🌯 Kendine güveniyorsan sahne senin…🎥 Döneri 4 ısırıkta",
+      "likes": "18K"
+    },
+    "DQT60FdDAzR": {
+      "mekan": "suleymanusta",
+      "thumb": "img/reels/DQT60FdDAzR.jpg",
+      "caption": "Full+Full döner yedikçe daha çok istiyorsan yalnız değilsin 😋 Bu döner “bitmesin” dedirten cinsten!",
+      "likes": "23K"
+    },
+    "DU0UTRgjGRT": {
+      "mekan": "sultansofrasi",
+      "thumb": "img/reels/DU0UTRgjGRT.jpg",
+      "caption": "Taş fırından yeni çıkan sıcacık lahmacun… İncecik hamur, bol harç ve o bildiğin Hatay kokusu 🤌  Kıt",
+      "likes": "28K"
+    },
+    "DT2y4waDBx4": {
+      "mekan": "sultansofrasi",
+      "thumb": "img/reels/DT2y4waDBx4.jpg",
+      "caption": "Hatay Sultan Sofrasında Ispanaklı Gül Böreği 🌿  Taptaze ıspanak, özel iç harcı ve incecik açılan yu",
+      "likes": "11K"
+    },
+    "DTNc9CUDFBj": {
+      "mekan": "sultansofrasi",
+      "thumb": "img/reels/DTNc9CUDFBj.jpg",
+      "caption": "Hatay Sultan Sofrası’nda Tappuş Oruk 🤍  Dışı çıtır, içi tam Hatay usulü… Anne eli değmiş gibi, özle",
+      "likes": "15K"
+    },
+    "DVtIGHHiAsY": {
+      "mekan": "baturacoffee",
+      "thumb": "img/reels/DVtIGHHiAsY.jpg",
+      "caption": "Okey masalarının ‘profesörü’ benim diyenleri görelim! 😎 Siyah 9 hariç, bu el hangi tek taşla biter?",
+      "likes": "592"
+    },
+    "DU0Nr22CKrS": {
+      "mekan": "baturacoffee",
+      "thumb": "img/reels/DU0Nr22CKrS.jpg",
+      "caption": "🍔 Batura’da Mini Burger Şöleni! ✨ Bu hafta bu eşsiz lezzet yolculuğuna @hataysandikici’nden Eser Bi",
+      "likes": "125"
+    },
+    "DSVrJHxCMcQ": {
+      "mekan": "baturacoffee",
+      "thumb": "img/reels/DSVrJHxCMcQ.jpg",
+      "caption": "Limanın yanı başında ⚓ Tren Garı’nın hemen arkasında 🚆 Körfez KYK Erkek Yurdu’na komşu 📍  İskender",
+      "likes": "110"
+    },
+    "DVYfGqdDVZB": {
+      "mekan": "harveyburger",
+      "thumb": "img/reels/DVYfGqdDVZB.jpg",
+      "caption": "Sadelikte iddia 🍔🔥  Cheese Burger, dinlenmiş etin güçlü lezzeti ve eriyen double cheddar peyniriyl",
+      "likes": "209K"
+    },
+    "DVx2zyrjf1z": {
+      "mekan": "harveyburger",
+      "thumb": "img/reels/DVx2zyrjf1z.jpg",
+      "caption": "Meşe ateşinde pişen burgerlerimiz 🔥🍔 ateşin verdiği o duman aromasıyla hazırlanır…  Yanında çıtır",
+      "likes": "6K"
+    },
+    "DTr9HglDfmd": {
+      "mekan": "harveyburger",
+      "thumb": "img/reels/DTr9HglDfmd.jpg",
+      "caption": "Lezzetin lüks hali 🍔✨ Cheddar’lı, trüf soslu Trüf Burger masada! Yoğun aroma, akışkan cheddar ve tr",
+      "likes": "307"
+    },
+    "DVvca6zDKZk": {
+      "mekan": "sutlukavurma",
+      "thumb": "img/reels/DVvca6zDKZk.jpg",
+      "caption": "Sarımsaklı İlikli Kemik Sulu Kavurmalı Mercimek Çorbası…💛  #sütlükavurma #iskenderun #kavurma #hata",
+      "likes": "5K"
+    },
+    "DU5YOxCjDUb": {
+      "mekan": "sutlukavurma",
+      "thumb": "img/reels/DU5YOxCjDUb.jpg",
+      "caption": "SARIMSAKLI PİDE DÜRÜMÜMÜZ…🔥  #sütlükavurma #kavurma #yemek #iskenderun #hatay",
+      "likes": "26K"
+    },
+    "DRpMG0kDLiO": {
+      "mekan": "sutlukavurma",
+      "thumb": "https://instagram.fcps4-1.fna.fbcdn.net/v/t51.82787-15/587535666_17916750990225166_2252512354070983508_n.jpg?stp=dst-jpg_e35_p1080x1080_sh0.08_tt6&_nc_ht=instagram.fcps4-1.fna.fbcdn.net&_nc_cat=110&_nc_oc=Q6cZ2QH7OQs5JNv2tzfgtTEnNDouNfVyexi9LaBp4Pz5IrcA58hgbD-1ti8m_jpTU4bL0g6MHduNXVDgT82fofKrY7kN&_nc_ohc=trxiilITk9IQ7kNvwHWOaUA&_nc_gid=jTtiP81jPDcMbtmxMxZwvQ&edm=APs17CUBAAAA&ccb=7-5&oh=00_AfwRNsOlj4yuVTydkpEwxaYMcpNEwvpqUi49zIAJbJjpeA&oe=69BACA2D&_nc_sid=10d13b",
+      "caption": "ACILI SARIMSAKLI PİDE DÜRÜM… 🔥🔥🔥  #sütlükavurma #kavurma #iskenderun #hatay #yemek",
+      "likes": "203K"
+    },
+    "DVOEFK7DbBJ": {
+      "mekan": "egedoner",
+      "thumb": "img/reels/DVOEFK7DbBJ.jpg",
+      "caption": "Bazı lezzetler unutulmazdır... 👨‍🍳🔥  Ege Döner olarak bizim sırrımız; işimize duyduğumuz sevgi ve",
+      "likes": "197K"
+    },
+    "DUfzj5iDb9q": {
+      "mekan": "egedoner",
+      "thumb": "img/reels/DUfzj5iDb9q.jpg",
+      "caption": "Ege Döner’in el yapımı sarımsaklı mayonezi 🧄🤍 Her gün taze hazırlanan, kıvamı tam yerinde, kokusuy",
+      "likes": "66K"
+    },
+    "DQtebj7DXRP": {
+      "mekan": "egedoner",
+      "thumb": "img/reels/DQtebj7DXRP.jpg",
+      "caption": "“Ege Döner’de her an ayrı bir keyif! 😄 Eğlence bizde, lezzet bizde! 🌯🔥 Sizlerle gülüyor, sizlerle",
+      "likes": "37K"
+    },
+    "DVELpx2gotb": {
+      "mekan": "kubankuruyemis",
+      "thumb": "img/reels/DVELpx2gotb.jpg",
+      "caption": "Patron “Her şeyi kafanızı kullanarak yapın” dediğinde biz yanlış anladık sanırım... Ama sonuçlar ort",
+      "likes": "4K"
+    },
+    "DTNNfbVgmZF": {
+      "mekan": "kubankuruyemis",
+      "thumb": "img/reels/DTNNfbVgmZF.jpg",
+      "caption": "Kaliteye ulaşmak hiç bu kadar keyifli olmamıştı! ☕️✨  Kuban kalitesini bilenler bilir; o eşsiz aroma",
+      "likes": "999"
+    },
+    "DOYKtV2jTE4": {
+      "mekan": "kubankuruyemis",
+      "thumb": "img/reels/DOYKtV2jTE4.jpg",
+      "caption": "Reklam Odun ateşinde pişen ballı kajun baharatlı kajuyu @kubankuruyemis ’te denedim, tadı gerçekten",
+      "likes": "4K"
+    },
+    "DVODayZiMR1": {
+      "mekan": "isteciftlik",
+      "thumb": "img/reels/DVODayZiMR1.jpg",
+      "caption": "🍊 Sabırla Gelen Lezzet: Turunç Reçeli Günlerce suda bekleterek acısını aldığımız turunç kabuklarını",
+      "likes": "120K"
+    },
+    "DUvDpWTiLEr": {
+      "mekan": "isteciftlik",
+      "thumb": "img/reels/DUvDpWTiLEr.jpg",
+      "caption": "Bazı lezzetler vardır, sofraya geldiği an sohbeti güzelleştirir... ✨  İste Çiftlik sosunun o taptaze",
+      "likes": "50K"
+    },
+    "DTC9Z2pCPwG": {
+      "mekan": "isteciftlik",
+      "thumb": "img/reels/DTC9Z2pCPwG.jpg",
+      "caption": "İşte Çiftlik’te sabırla pişen lezzet: Hurma Reçeli! 🍯✨  Güneşin tadını taşıyan hurmalarımızı tek te",
+      "likes": "15K"
+    },
+    "DVnqE1EDWo6": {
+      "mekan": "sezaiusta",
+      "thumb": "img/reels/DVnqE1EDWo6.jpg",
+      "caption": "Dışı Susamlı, İçi Kat Kat Lezzet! ✨  Susamın o efsane kokusu, nar gibi kızarmış lavaşla birleşti. İç",
+      "likes": "22K"
+    },
+    "DVda4LrjXYD": {
+      "mekan": "sezaiusta",
+      "thumb": "img/reels/DVda4LrjXYD.jpg",
+      "caption": "Sezai Usta’da Lezzet Durakları: Çam Fıstıklı Köz Mantar! 🔥 Bazı lezzetler anlatılmaz, tadınca anlaş",
+      "likes": "27K"
+    },
+    "DVOC8GrjZBK": {
+      "mekan": "sezaiusta",
+      "thumb": "img/reels/DVOC8GrjZBK.jpg",
+      "caption": "✨ Sırrı Közünde, Lezzeti Elinde! Bir mezeden fazlası; sabırla harlanan ateşin, isli patlıcanın ve ta",
+      "likes": "3K"
+    },
+    "DTcneytjb_j": {
+      "mekan": "mustadoner",
+      "thumb": "img/reels/DTcneytjb_j.jpg",
+      "caption": "Lezzet emekle başlar 🔥 Tavuğun seçilmesinden marinasyonuna, şişe dizimden ağır ateşte pişmesine kad",
+      "likes": "445K"
+    },
+    "DTr-MYvjLSh": {
+      "mekan": "mustadoner",
+      "thumb": "img/reels/DTr-MYvjLSh.jpg",
+      "caption": "Lezzetin temeli doğru marinasyonda başlar 🔥 MUSTA Döner’de tavuklar özenle seçilir, özel baharatlar",
+      "likes": "23K"
+    },
+    "DTzmvK5jOsz": {
+      "mekan": "mustadoner",
+      "thumb": "img/reels/DTzmvK5jOsz.jpg",
+      "caption": "Hazır değil, ev yapımı lezzet 🔥🍟 MUSTA Döner’de patatesler soyulur, doğranır, başından sonuna mutf",
+      "likes": "12K"
+    }
+  }
+}
