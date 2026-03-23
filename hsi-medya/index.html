@@ -104,7 +104,7 @@ nav{position:fixed;top:0;width:100%;z-index:200;background:rgba(10,10,10,.96);
   text-transform:uppercase;color:var(--gold);
   border-top:1px solid rgba(201,168,76,.2);padding-top:12px;width:100%}
 
-/* MEKANLAR ÖNİZLEME */
+/* MEKANLAR MASONRY */
 .preview-section{background:var(--black)}
 .preview-head{display:flex;align-items:flex-end;justify-content:space-between;
   margin-bottom:40px;flex-wrap:wrap;gap:20px}
@@ -112,30 +112,80 @@ nav{position:fixed;top:0;width:100%;z-index:200;background:rgba(10,10,10,.96);
   color:var(--gold);text-decoration:none;display:flex;align-items:center;gap:8px;
   transition:gap .3s}
 .preview-link:hover{gap:14px}
-.preview-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
-  gap:1px;background:rgba(201,168,76,.08)}
-.prev-card{background:var(--dark);overflow:hidden;position:relative;cursor:pointer;
-  transition:background .25s;text-decoration:none;display:block}
-.prev-card:hover{background:var(--dark2)}
-.prev-cover{aspect-ratio:4/3;overflow:hidden;position:relative;background:var(--dark3)}
-.prev-cover img{width:100%;height:100%;object-fit:cover;display:block;
-  filter:brightness(.8);transition:transform .5s,filter .3s}
-.prev-card:hover .prev-cover img{transform:scale(1.06);filter:brightness(.6)}
-.prev-overlay{position:absolute;inset:0;
-  background:linear-gradient(to top,rgba(0,0,0,.85) 0%,transparent 50%)}
-.prev-views{position:absolute;bottom:12px;left:12px;
+
+/* Masonry grid */
+.masonry-grid{column-count:4;column-gap:10px}
+.masonry-item{
+  break-inside:avoid;margin-bottom:10px;
+  opacity:0;transform:translateY(28px);
+  transition:opacity .6s ease, transform .6s ease;
+}
+.masonry-item.in-view{opacity:1;transform:translateY(0)}
+.masonry-item:nth-child(1){transition-delay:.04s}
+.masonry-item:nth-child(2){transition-delay:.1s}
+.masonry-item:nth-child(3){transition-delay:.16s}
+.masonry-item:nth-child(4){transition-delay:.22s}
+.masonry-item:nth-child(5){transition-delay:.08s}
+.masonry-item:nth-child(6){transition-delay:.14s}
+.masonry-item:nth-child(7){transition-delay:.2s}
+.masonry-item:nth-child(8){transition-delay:.26s}
+
+.masonry-card{
+  display:block;position:relative;border-radius:14px;
+  overflow:hidden;text-decoration:none;cursor:pointer;background:var(--dark2);
+  transition:transform .35s cubic-bezier(.16,1,.3,1), box-shadow .35s ease;
+}
+.masonry-card:hover{
+  transform:scale(1.03);
+  box-shadow:0 18px 50px -10px rgba(0,0,0,.75), 0 0 0 1px rgba(201,168,76,.2);
+}
+.masonry-card:active{transform:scale(.98)}
+
+/* shine sweep */
+.masonry-card::before{
+  content:'';position:absolute;inset:0;z-index:3;pointer-events:none;
+  background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,.06) 50%,transparent 100%);
+  transform:translateX(-100%);transition:transform .65s ease;
+}
+.masonry-card:hover::before{transform:translateX(100%)}
+
+.masonry-img{width:100%;height:100%;object-fit:cover;display:block;transition:filter .35s ease}
+.masonry-card:hover .masonry-img{filter:brightness(.7)}
+
+.masonry-top-grad{
+  position:absolute;inset:0;pointer-events:none;z-index:1;
+  background:linear-gradient(to bottom,rgba(0,0,0,.7) 0%,rgba(0,0,0,.05) 45%,transparent 65%);
+}
+.masonry-bot-grad{
+  position:absolute;bottom:0;left:0;right:0;height:52%;pointer-events:none;z-index:1;
+  background:linear-gradient(to top,rgba(0,0,0,.88) 0%,transparent 100%);
+}
+.masonry-top{position:absolute;top:0;left:0;right:0;padding:12px 12px 0;z-index:2}
+.masonry-profile{display:flex;align-items:center;gap:8px;margin-bottom:5px}
+.masonry-avatar{
+  width:28px;height:28px;border-radius:50%;object-fit:cover;flex-shrink:0;
+  border:1.5px solid rgba(201,168,76,.55);box-shadow:0 2px 8px rgba(0,0,0,.6);
+}
+.masonry-name{
+  font-family:var(--font-body);font-size:11.5px;font-weight:600;
+  color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.9);letter-spacing:.2px;
+}
+.masonry-caption{
+  font-size:10.5px;color:rgba(255,255,255,.78);line-height:1.35;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+  text-shadow:0 1px 3px rgba(0,0,0,.8);
+}
+.masonry-views{
+  position:absolute;bottom:11px;left:11px;z-index:2;
   background:rgba(201,168,76,.15);backdrop-filter:blur(6px);
-  border:1px solid rgba(201,168,76,.3);border-radius:100px;
-  font-size:10px;color:var(--gold);padding:4px 10px;letter-spacing:1px}
-.prev-logo{position:absolute;top:10px;right:10px;width:40px;height:40px;
-  border-radius:50%;border:2px solid var(--gold);overflow:hidden;
-  background:var(--dark3);box-shadow:0 2px 10px rgba(0,0,0,.7)}
-.prev-logo img{width:100%;height:100%;object-fit:cover}
-.prev-body{padding:18px 20px}
-.prev-cat{font-size:10px;letter-spacing:3px;text-transform:uppercase;
-  color:var(--gold);margin-bottom:4px;font-weight:600}
-.prev-name{font-family:var(--font-display);font-size:18px;font-weight:700;color:var(--white)}
-.prev-loc{font-size:12px;color:var(--gray);margin-top:2px}
+  border:1px solid rgba(201,168,76,.35);border-radius:100px;
+  font-size:10px;color:var(--gold);padding:3px 10px;letter-spacing:1px;
+  font-family:var(--font-body);font-weight:500;
+}
+
+@media(max-width:1024px){.masonry-grid{column-count:3}}
+@media(max-width:640px){.masonry-grid{column-count:2;column-gap:8px}.masonry-item{margin-bottom:8px}}
+@media(max-width:380px){.masonry-grid{column-count:1}}
 
 /* YAYIN KANALLARI */
 .kanallar{background:var(--dark);position:relative;overflow:hidden}
@@ -444,7 +494,7 @@ footer{background:var(--dark);border-top:1px solid rgba(201,168,76,.1);
     <div class="marquee-item"><span>Ege Döner</span><div class="marquee-dot"></div></div>
     <div class="marquee-item"><span>Sultan Sofrası</span><div class="marquee-dot"></div></div>
     <div class="marquee-item"><span>Mikado Rest.</span><div class="marquee-dot"></div></div>
-    <div class="marquee-item"><span>Batura Coffee</span><div class="marquee-dot"></div></div>
+    <div class="marquee-item"><span>Sinan Özdemir</span><div class="marquee-dot"></div></div>
     <div class="marquee-item"><span>İste Çiftlik</span><div class="marquee-dot"></div></div>
     <div class="marquee-item"><span>Kuban Kuruyemiş</span><div class="marquee-dot"></div></div>
     <div class="marquee-item"><span>Sezai Usta</span><div class="marquee-dot"></div></div>
@@ -456,7 +506,7 @@ footer{background:var(--dark);border-top:1px solid rgba(201,168,76,.1);
     <div class="marquee-item"><span>Ege Döner</span><div class="marquee-dot"></div></div>
     <div class="marquee-item"><span>Sultan Sofrası</span><div class="marquee-dot"></div></div>
     <div class="marquee-item"><span>Mikado Rest.</span><div class="marquee-dot"></div></div>
-    <div class="marquee-item"><span>Batura Coffee</span><div class="marquee-dot"></div></div>
+    <div class="marquee-item"><span>Sinan Özdemir</span><div class="marquee-dot"></div></div>
     <div class="marquee-item"><span>İste Çiftlik</span><div class="marquee-dot"></div></div>
     <div class="marquee-item"><span>Kuban Kuruyemiş</span><div class="marquee-dot"></div></div>
     <div class="marquee-item"><span>Sezai Usta</span><div class="marquee-dot"></div></div>
@@ -497,7 +547,7 @@ footer{background:var(--dark);border-top:1px solid rgba(201,168,76,.1);
   </div>
 </section>
 
-<!-- MEKANLAR ÖNİZLEME -->
+<!-- MEKANLAR ÖNİZLEME (MASONRY) -->
 <section class="section preview-section">
   <div class="preview-head">
     <div>
@@ -507,59 +557,128 @@ footer{background:var(--dark);border-top:1px solid rgba(201,168,76,.1);
     </div>
     <a href="mekanlar.html" class="preview-link">Tümünü Gör →</a>
   </div>
-  <div class="preview-grid">
-    <a class="prev-card" href="mekanlar.html">
-      <div class="prev-cover">
-        <img src="img/reels/DTcneytjb_j.jpg" alt="Musta Döner" loading="lazy">
-        <div class="prev-overlay"></div>
-        <div class="prev-views">▶ 18.6M izlenme</div>
-        <div class="prev-logo"><img src="img/profiles/mustadoner.jpg" alt="Musta Döner"></div>
-      </div>
-      <div class="prev-body">
-        <div class="prev-cat">Dönerci</div>
-        <div class="prev-name">Musta Döner</div>
-        <div class="prev-loc">📍 Hatay</div>
-      </div>
-    </a>
-    <a class="prev-card" href="mekanlar.html">
-      <div class="prev-cover">
-        <img src="img/reels/DRpMG0kDLiO.jpg" alt="Sütlü Kavurma" loading="lazy">
-        <div class="prev-overlay"></div>
-        <div class="prev-views">▶ 21.9M izlenme</div>
-        <div class="prev-logo"><img src="img/profiles/sutlukavurma.jpg" alt="Sütlü Kavurma"></div>
-      </div>
-      <div class="prev-body">
-        <div class="prev-cat">Yöresel Lezzetler</div>
-        <div class="prev-name">Sütlü Kavurma</div>
-        <div class="prev-loc">📍 Hatay</div>
-      </div>
-    </a>
-    <a class="prev-card" href="mekanlar.html">
-      <div class="prev-cover">
-        <img src="img/reels/DVODayZiMR1.jpg" alt="İste Çiftlik" loading="lazy">
-        <div class="prev-overlay"></div>
-        <div class="prev-views">▶ 7.5M izlenme</div>
-        <div class="prev-logo"><img src="img/profiles/isteciftlik.jpg" alt="İste Çiftlik"></div>
-      </div>
-      <div class="prev-body">
-        <div class="prev-cat">Yöresel Lezzetler</div>
-        <div class="prev-name">İste Çiftlik</div>
-        <div class="prev-loc">📍 Hatay</div>
-      </div>
-    </a>
-    <a class="prev-card" href="mekanlar.html">
-      <div class="prev-cover">
-        <img src="img/reels/DVYfGqdDVZB.jpg" alt="Harvey Burger" loading="lazy">
-        <div class="prev-overlay"></div>
-        <div class="prev-views">▶ 6M izlenme</div>
-        <div class="prev-logo"><img src="img/profiles/steakharveybrg.iskenderun.jpg" alt="Harvey Burger"></div>
-      </div>
-      <div class="prev-body">
-        <div class="prev-cat">Burger</div>
-        <div class="prev-name">Harvey Burger</div>
-        <div class="prev-loc">📍 Hatay</div>
-      </div>
-    </a>
+  <div class="masonry-grid" id="masonryGrid">
+
+    <div class="masonry-item">
+      <a class="masonry-card" href="mekanlar.html" style="aspect-ratio:3/4">
+        <img class="masonry-img" src="img/reels/DTcneytjb_j.jpg" alt="Musta Döner" loading="lazy">
+        <div class="masonry-top-grad"></div><div class="masonry-bot-grad"></div>
+        <div class="masonry-top">
+          <div class="masonry-profile">
+            <img class="masonry-avatar" src="img/profiles/mustadoner.jpg" alt="">
+            <span class="masonry-name">Musta Döner</span>
+          </div>
+          <div class="masonry-caption">Lezzet emekle başlar 🔥 Tavuğun seçilmesinden marinasyonuna kadar…</div>
+        </div>
+        <div class="masonry-views">▶ 18.6M izlenme</div>
+      </a>
+    </div>
+
+    <div class="masonry-item">
+      <a class="masonry-card" href="mekanlar.html" style="aspect-ratio:1/1">
+        <img class="masonry-img" src="img/reels/DRpMG0kDLiO.jpg" alt="Sütlü Kavurma" loading="lazy">
+        <div class="masonry-top-grad"></div><div class="masonry-bot-grad"></div>
+        <div class="masonry-top">
+          <div class="masonry-profile">
+            <img class="masonry-avatar" src="img/profiles/sutlukavurma.jpg" alt="">
+            <span class="masonry-name">Sütlü Kavurma</span>
+          </div>
+          <div class="masonry-caption">ACILI SARIMSAKLI PİDE DÜRÜM… 🔥🔥🔥</div>
+        </div>
+        <div class="masonry-views">▶ 21.9M izlenme</div>
+      </a>
+    </div>
+
+    <div class="masonry-item">
+      <a class="masonry-card" href="mekanlar.html" style="aspect-ratio:4/5">
+        <img class="masonry-img" src="img/reels/DVODayZiMR1.jpg" alt="İste Çiftlik" loading="lazy">
+        <div class="masonry-top-grad"></div><div class="masonry-bot-grad"></div>
+        <div class="masonry-top">
+          <div class="masonry-profile">
+            <img class="masonry-avatar" src="img/profiles/isteciftlik.jpg" alt="">
+            <span class="masonry-name">İste Çiftlik</span>
+          </div>
+          <div class="masonry-caption">🍊 Sabırla Gelen Lezzet: Turunç Reçeli</div>
+        </div>
+        <div class="masonry-views">▶ 7.5M izlenme</div>
+      </a>
+    </div>
+
+    <div class="masonry-item">
+      <a class="masonry-card" href="mekanlar.html" style="aspect-ratio:3/4">
+        <img class="masonry-img" src="img/reels/DVYfGqdDVZB.jpg" alt="Harvey Burger" loading="lazy">
+        <div class="masonry-top-grad"></div><div class="masonry-bot-grad"></div>
+        <div class="masonry-top">
+          <div class="masonry-profile">
+            <img class="masonry-avatar" src="img/profiles/steakharveybrg.iskenderun.jpg" alt="">
+            <span class="masonry-name">Harvey Burger</span>
+          </div>
+          <div class="masonry-caption">Sadelikte iddia 🍔🔥 Meşe ateşinde pişen burgerlerin efsanesi</div>
+        </div>
+        <div class="masonry-views">▶ 6M izlenme</div>
+      </a>
+    </div>
+
+    <div class="masonry-item">
+      <a class="masonry-card" href="mekanlar.html" style="aspect-ratio:1/1">
+        <img class="masonry-img" src="img/reels/DVOEFK7DbBJ.jpg" alt="Ege Döner" loading="lazy">
+        <div class="masonry-top-grad"></div><div class="masonry-bot-grad"></div>
+        <div class="masonry-top">
+          <div class="masonry-profile">
+            <img class="masonry-avatar" src="img/profiles/egedonerrr.jpg" alt="">
+            <span class="masonry-name">Ege Döner</span>
+          </div>
+          <div class="masonry-caption">Bazı lezzetler unutulmazdır... 👨‍🍳🔥</div>
+        </div>
+        <div class="masonry-views">▶ 6.3M izlenme</div>
+      </a>
+    </div>
+
+    <div class="masonry-item">
+      <a class="masonry-card" href="mekanlar.html" style="aspect-ratio:4/3">
+        <img class="masonry-img" src="img/reels/DVnqE1EDWo6.jpg" alt="Sezai Usta" loading="lazy">
+        <div class="masonry-top-grad"></div><div class="masonry-bot-grad"></div>
+        <div class="masonry-top">
+          <div class="masonry-profile">
+            <img class="masonry-avatar" src="img/profiles/kebapci.sezaiusta.jpg" alt="">
+            <span class="masonry-name">Sezai Usta</span>
+          </div>
+          <div class="masonry-caption">Dışı Susamlı, İçi Kat Kat Lezzet! ✨</div>
+        </div>
+        <div class="masonry-views">▶ 2.2M izlenme</div>
+      </a>
+    </div>
+
+    <div class="masonry-item">
+      <a class="masonry-card" href="mekanlar.html" style="aspect-ratio:4/5">
+        <img class="masonry-img" src="img/reels/DDAS396iiPu.jpg" alt="Süleyman Usta" loading="lazy">
+        <div class="masonry-top-grad"></div><div class="masonry-bot-grad"></div>
+        <div class="masonry-top">
+          <div class="masonry-profile">
+            <img class="masonry-avatar" src="img/profiles/donerci.suleymanusta.jpg" alt="">
+            <span class="masonry-name">Süleyman Usta</span>
+          </div>
+          <div class="masonry-caption">6 ekmekli Dev Tavuk Döner! 🔥🌯</div>
+        </div>
+        <div class="masonry-views">▶ 3.8M izlenme</div>
+      </a>
+    </div>
+
+    <div class="masonry-item">
+      <a class="masonry-card" href="mekanlar.html" style="aspect-ratio:3/4">
+        <img class="masonry-img" src="img/reels/DT2y4waDBx4.jpg" alt="Sultan Sofrası" loading="lazy">
+        <div class="masonry-top-grad"></div><div class="masonry-bot-grad"></div>
+        <div class="masonry-top">
+          <div class="masonry-profile">
+            <img class="masonry-avatar" src="img/profiles/hatay_sultan_sofrasi.jpg" alt="">
+            <span class="masonry-name">Sultan Sofrası</span>
+          </div>
+          <div class="masonry-caption">Hatay Sultan Sofrasında Ispanaklı Gül Böreği 🌿</div>
+        </div>
+        <div class="masonry-views">▶ 2.8M izlenme</div>
+      </a>
+    </div>
+
   </div>
 </section>
 
@@ -840,6 +959,17 @@ const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); } });
 }, { threshold: 0.12 });
 document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// MASONRY SCROLL ANIMATIONS
+const masonryObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('in-view');
+      masonryObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.15 });
+document.querySelectorAll('.masonry-item').forEach(el => masonryObserver.observe(el));
 
 // COUNTER ANIMATION
 function animateCount(el) {
