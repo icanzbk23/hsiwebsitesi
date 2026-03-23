@@ -30,33 +30,56 @@ async function loadThumbnails() {
 
 // ── CARD RENDER ───────────────────────────────────────────────────
 let currentFilter = 'hepsi';
+let currentSearch = '';
+
+const SVG_PIN  = `<svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>`;
+const SVG_USER = `<svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`;
+const SVG_PLAY = `<svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>`;
+
+function getFilteredList() {
+  let list = currentFilter === 'hepsi' ? MEKANLAR : MEKANLAR.filter(m => m.cat === currentFilter);
+  if (currentSearch) {
+    const q = currentSearch.toLowerCase();
+    list = list.filter(m => m.name.toLowerCase().includes(q) || (m.loc||'').toLowerCase().includes(q));
+  }
+  return list;
+}
 
 function renderCards(filter) {
   currentFilter = filter;
-  const list = filter === 'hepsi' ? MEKANLAR : MEKANLAR.filter(m => m.cat === filter);
-  document.getElementById('mekan-grid').innerHTML = list.map(m => {
+  const list = getFilteredList();
+  document.getElementById('mekan-grid').innerHTML = list.length === 0
+    ? `<div style="grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--gray);font-size:14px;letter-spacing:1px">Sonuç bulunamadı</div>`
+    : list.map((m, i) => {
     const topViews = m.reels[0].views;
     const thumb    = m.reels[0].thumb;
+    const profileEl = m.logo
+      ? `<img class="card-profile-img" src="${m.logo}" alt="${m.name}">`
+      : `<div class="card-profile-img-empty">${(m.name||'?')[0]}</div>`;
     return `
-    <div class="mekan-card" onclick="openPopup('${m.id}')">
+    <div class="mekan-card" onclick="openPopup('${m.id}')" style="animation-delay:${i * 0.05}s">
       <div class="card-cover">
         ${thumb
           ? `<img src="${thumb}" alt="${m.name}" loading="lazy">`
           : `<div class="card-cover-placeholder">${m.emoji}</div>`}
         <div class="card-cover-overlay"></div>
-        <div class="card-viral">▶ ${topViews} izlenme</div>
+        <div class="card-viral">▶ ${topViews}</div>
         <div class="card-arrow">→</div>
-        ${m.logo ? `<div class="card-logo-wrap"><img class="card-logo" src="${m.logo}" alt="${m.name} logo"></div>` : ''}
+        <div class="card-profile-row">${profileEl}</div>
       </div>
       <div class="card-body">
-        <div class="card-cat">${m.catLabel}</div>
-        <div class="card-name">${m.name}</div>
-        <div class="card-loc">📍 ${m.loc}</div>
-        <div class="card-stats">
-          <span class="card-stat">👥 ${m.followers}</span>
-          <span class="card-stat">📹 3 Viral Video</span>
+        <div class="card-top-row">
+          <span class="card-cat">${m.catLabel}</span>
+          <span class="card-handle">${m.igHandle||''}</span>
         </div>
-        <div class="card-hsi">✦ HSİ Medya Partneri</div>
+        <div class="card-name">${m.name}</div>
+        <div class="card-loc">${SVG_PIN} ${m.loc}</div>
+        <div class="card-divider"></div>
+        <div class="card-stats">
+          <span class="card-stat">${SVG_USER} ${m.followers||'—'}</span>
+          <span class="card-stat">${SVG_PLAY} ${m.reels.length} video</span>
+        </div>
+        <div class="card-hsi">HSİ Medya Partneri</div>
       </div>
     </div>`;
   }).join('');
@@ -66,7 +89,14 @@ function renderCards(filter) {
 function doFilter(btn, cat) {
   document.querySelectorAll('.filt').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
+  currentFilter = cat;
   renderCards(cat);
+}
+
+// ── ARAMA ─────────────────────────────────────────────────────────
+function doSearch(val) {
+  currentSearch = val.trim();
+  renderCards(currentFilter);
 }
 
 // ── POPUP ─────────────────────────────────────────────────────────
