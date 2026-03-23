@@ -114,27 +114,23 @@ nav{position:fixed;top:0;width:100%;z-index:200;background:rgba(10,10,10,.96);
   font-size:10px;color:var(--gold);padding:4px 11px;letter-spacing:1px;font-weight:600;
 }
 
-/* Profile badge overlapping image bottom */
-.card-profile-row{
-  position:absolute;bottom:-20px;left:18px;z-index:4;
-  display:flex;align-items:center;gap:10px;
-}
+/* Card body */
+.card-body{padding:18px 20px 22px}
+.card-top-row{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:10px}
+
+/* Name row: small logo + name inline */
+.card-name-row{display:flex;align-items:center;gap:9px;margin-bottom:6px}
 .card-profile-img{
-  width:44px;height:44px;border-radius:50%;object-fit:cover;
-  border:2.5px solid var(--gold);box-shadow:0 2px 12px rgba(0,0,0,.7);
-  background:var(--dark3);flex-shrink:0;
+  width:28px;height:28px;border-radius:50%;object-fit:cover;
+  border:1.5px solid rgba(201,168,76,.45);flex-shrink:0;
+  box-shadow:0 1px 6px rgba(0,0,0,.5);background:var(--dark3);
 }
 .card-profile-img-empty{
-  width:44px;height:44px;border-radius:50%;
-  background:rgba(201,168,76,.1);border:2.5px solid rgba(201,168,76,.4);
+  width:28px;height:28px;border-radius:50%;flex-shrink:0;
+  background:rgba(201,168,76,.1);border:1.5px solid rgba(201,168,76,.3);
   display:flex;align-items:center;justify-content:center;
-  font-family:var(--font-display);font-size:18px;color:var(--gold);font-weight:700;
-  box-shadow:0 2px 12px rgba(0,0,0,.7);
+  font-family:var(--font-display);font-size:12px;color:var(--gold);font-weight:700;
 }
-
-/* Card body */
-.card-body{padding:28px 20px 22px}
-.card-top-row{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:10px}
 .card-cat{
   display:inline-block;font-size:9px;letter-spacing:2.5px;text-transform:uppercase;
   color:var(--gold);font-weight:600;
@@ -143,7 +139,7 @@ nav{position:fixed;top:0;width:100%;z-index:200;background:rgba(10,10,10,.96);
 }
 .card-handle{font-size:11px;color:var(--gray);opacity:.7}
 .card-name{font-family:var(--font-display);font-size:21px;font-weight:700;
-  color:var(--white);margin-bottom:6px;line-height:1.15}
+  color:var(--white);line-height:1.15}
 .card-loc{font-size:12px;color:var(--gray);display:flex;align-items:center;gap:5px}
 .card-loc svg{width:12px;height:12px;stroke:var(--gold);fill:none;stroke-width:2;
   stroke-linecap:round;stroke-linejoin:round;opacity:.7;flex-shrink:0}

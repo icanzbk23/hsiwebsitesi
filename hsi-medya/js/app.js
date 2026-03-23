@@ -65,14 +65,16 @@ function renderCards(filter) {
         <div class="card-cover-overlay"></div>
         <div class="card-viral">▶ ${topViews}</div>
         <div class="card-arrow">→</div>
-        <div class="card-profile-row">${profileEl}</div>
       </div>
       <div class="card-body">
         <div class="card-top-row">
           <span class="card-cat">${m.catLabel}</span>
           <span class="card-handle">${m.igHandle||''}</span>
         </div>
-        <div class="card-name">${m.name}</div>
+        <div class="card-name-row">
+          ${profileEl}
+          <div class="card-name">${m.name}</div>
+        </div>
         <div class="card-loc">${SVG_PIN} ${m.loc}</div>
         <div class="card-divider"></div>
         <div class="card-stats">
