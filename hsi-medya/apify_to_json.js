@@ -40,7 +40,7 @@ const SC_MAP = {
   'DT7rOvsjLNI':'mikado',        'DUK4azFCPCf':'mikado',        'DViXH58CCOB':'mikado',
   'DDAS396iiPu':'suleymanusta',  'DTXkaPKjFI8':'suleymanusta',  'DQT60FdDAzR':'suleymanusta',
   'DU0UTRgjGRT':'sultansofrasi', 'DT2y4waDBx4':'sultansofrasi', 'DTNc9CUDFBj':'sultansofrasi',
-  'DVtIGHHiAsY':'baturacoffee',  'DU0Nr22CKrS':'baturacoffee',  'DSVrJHxCMcQ':'baturacoffee',
+  'DV817k8jA0t':'sinanozdemir', 'DWB993zjM7X':'sinanozdemir', 'DWBVE_WjISj':'sinanozdemir',
   'DVYfGqdDVZB':'harveyburger',  'DVx2zyrjf1z':'harveyburger',  'DTr9HglDfmd':'harveyburger',
   'DVvca6zDKZk':'sutlukavurma',  'DU5YOxCjDUb':'sutlukavurma',  'DRpMG0kDLiO':'sutlukavurma',
   'DVOEFK7DbBJ':'egedoner',      'DUfzj5iDb9q':'egedoner',      'DQtebj7DXRP':'egedoner',

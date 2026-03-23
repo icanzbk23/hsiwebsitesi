@@ -63,26 +63,6 @@ const MEKANLAR = [
     hsi:'HSİ Medya partneri — <strong>Hatay Mekanları</strong>'
   },
   {
-    id:'baturacoffee', cat:'kafe', catLabel:'Kafe',
-    name:'Batura Coffee', loc:'Hatay', hours:'08:00 – 23:00',
-    ig:'https://www.instagram.com/baturacoffeee/', igHandle:'@baturacoffeee',
-    logo:'img/profiles/baturacoffeee.jpg',
-    followers:'1.561 takipçi', emoji:'☕',
-    about:'Hatay\'ın yükselen kafe kültürünün temsilcisi Batura Coffee, özenle hazırlanan kahveleri ve sıcak atmosferiyle şehrin vazgeçilmez durağına dönüşüyor.',
-    reels:[
-      {sc:'DVtIGHHiAsY', url:'https://www.instagram.com/reel/DVtIGHHiAsY/', views:'323K', likes:'592', caption:'Okey masalarının "profesörü" benim diyenleri görelim! 😎 Siyah 9 hariç, bu el hangi tek taşla biter?', thumb:'img/reels/DVtIGHHiAsY.jpg'},
-      {sc:'DU0Nr22CKrS', url:'https://www.instagram.com/reel/DU0Nr22CKrS/', views:'23K',  likes:'125', caption:'🍔 Batura\'da Mini Burger Şöleni! ✨ Bu hafta bu eşsiz lezzet yolculuğuna @hataysandikici\'nden Eser Bi', thumb:'img/reels/DU0Nr22CKrS.jpg'},
-      {sc:'DSVrJHxCMcQ', url:'https://www.instagram.com/reel/DSVrJHxCMcQ/', views:'133K', likes:'110', caption:'Limanın yanı başında ⚓ Tren Garı\'nın hemen arkasında 🚆 Körfez KYK Erkek Yurdu\'na komşu 📍', thumb:'img/reels/DSVrJHxCMcQ.jpg'},
-    ],
-    infos:[
-      {label:'Kategori',  val:'Kafe',          sub:'Specialty Coffee'},
-      {label:'Instagram', val:'@baturacoffee', sub:'1.561 takipçi'},
-      {label:'En Viral',  val:'323K',          sub:'Görüntüleme'},
-      {label:'Konum',     val:'Hatay',         sub:'Türkiye'},
-    ],
-    hsi:'HSİ Medya partneri — <strong>Hatay Mekanları</strong>'
-  },
-  {
     id:'harveyburger', cat:'kafe', catLabel:'Burger',
     name:'Harvey Burger', loc:'Hatay', hours:'11:00 – 24:00',
     ig:'https://www.instagram.com/steakharveybrg.iskenderun/', igHandle:'@steakharveybrg.iskenderun',
@@ -199,6 +179,26 @@ const MEKANLAR = [
       {label:'Instagram', val:'@sezaiustakebap',  sub:'18.700 takipçi'},
       {label:'En Viral',  val:'2.2M',             sub:'Görüntüleme'},
       {label:'Konum',     val:'Hatay',            sub:'Türkiye'},
+    ],
+    hsi:'HSİ Medya partneri — <strong>Hatay Mekanları</strong>'
+  },
+  {
+    id:'sinanozdemir', cat:'yoresel', catLabel:'Unlu Mamüller',
+    name:'Sinan Özdemir', loc:'Hatay', hours:'07:00 – 21:00',
+    ig:'https://www.instagram.com/sinanozdemir023/', igHandle:'@sinanozdemir023',
+    logo:'img/profiles/sinanozdemir023.jpg',
+    followers:'', emoji:'🥐',
+    about:'Doğu Unlu Mamülleri\'nin ustası Sinan Özdemir, geleneksel Hatay fırıncılık kültürünü yaşatıyor. Taze unlu mamülleri ve özgün içerikleriyle viral oldu.',
+    reels:[
+      {sc:'DV817k8jA0t', url:'https://www.instagram.com/reel/DV817k8jA0t/', views:'378K', likes:'', caption:'TÜM HATAY DUYSUN! DOĞU FIRINI BAYRAM BOYUNCA HİZMETİNİZDE.', thumb:'img/reels/DV817k8jA0t.jpg'},
+      {sc:'DWB993zjM7X', url:'https://www.instagram.com/reel/DWB993zjM7X/', views:'191K', likes:'', caption:'İyi ki varsınız', thumb:'img/reels/DWB993zjM7X.jpg'},
+      {sc:'DWBVE_WjISj', url:'https://www.instagram.com/reel/DWBVE_WjISj/', views:'112K', likes:'', caption:'Bayrama özel kahvede kampanya', thumb:'img/reels/DWBVE_WjISj.jpg'},
+    ],
+    infos:[
+      {label:'Kategori',  val:'Unlu Mamüller',      sub:'Doğu Fırını'},
+      {label:'Instagram', val:'@sinanozdemir023',   sub:''},
+      {label:'En Viral',  val:'378K',               sub:'Görüntüleme'},
+      {label:'Konum',     val:'Hatay',              sub:'Türkiye'},
     ],
     hsi:'HSİ Medya partneri — <strong>Hatay Mekanları</strong>'
   },
