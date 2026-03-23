@@ -18,7 +18,9 @@ body{background:var(--black);color:var(--white);font-family:var(--font-body);lin
 
 /* NAV */
 nav{position:fixed;top:0;width:100%;z-index:200;background:rgba(10,10,10,.96);
-  backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,168,76,.15);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(201,168,76,.15);
+  box-shadow:0 1px 24px -8px rgba(201,168,76,.12);
   display:flex;align-items:center;justify-content:space-between;padding:0 5%;height:64px}
 .nav-logo{font-family:var(--font-display);font-size:22px;color:var(--gold);
   letter-spacing:2px;font-weight:700;text-decoration:none}
@@ -35,15 +37,28 @@ nav{position:fixed;top:0;width:100%;z-index:200;background:rgba(10,10,10,.96);
 /* HERO */
 .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;
   text-align:center;position:relative;overflow:hidden;
-  background:radial-gradient(ellipse at 50% 60%,rgba(201,168,76,.06) 0%,transparent 70%)}
+  background:radial-gradient(ellipse at 50% 60%,rgba(201,168,76,.07) 0%,transparent 70%)}
 .hero-bg{position:absolute;inset:0;z-index:0}
 .hero-grid{position:absolute;inset:0;
   background-image:linear-gradient(rgba(201,168,76,.04) 1px,transparent 1px),
                    linear-gradient(90deg,rgba(201,168,76,.04) 1px,transparent 1px);
   background-size:60px 60px}
 .hero-glow{position:absolute;top:40%;left:50%;transform:translate(-50%,-50%);
-  width:600px;height:600px;border-radius:50%;
-  background:radial-gradient(circle,rgba(201,168,76,.07) 0%,transparent 70%);
+  width:800px;height:800px;border-radius:50%;
+  background:radial-gradient(circle,rgba(201,168,76,.1) 0%,rgba(201,168,76,.03) 40%,transparent 70%);
+  pointer-events:none;animation:heroGlowPulse 6s ease-in-out infinite}
+@keyframes heroGlowPulse{
+  0%,100%{opacity:.8;transform:translate(-50%,-50%) scale(1)}
+  50%{opacity:1;transform:translate(-50%,-50%) scale(1.05)}
+}
+/* Side accent glows */
+.hero-bg::before{content:'';position:absolute;top:20%;left:-5%;
+  width:350px;height:350px;border-radius:50%;
+  background:radial-gradient(circle,rgba(201,168,76,.05) 0%,transparent 70%);
+  pointer-events:none}
+.hero-bg::after{content:'';position:absolute;bottom:15%;right:-5%;
+  width:300px;height:300px;border-radius:50%;
+  background:radial-gradient(circle,rgba(201,168,76,.04) 0%,transparent 70%);
   pointer-events:none}
 .hero-content{position:relative;z-index:1;max-width:800px;padding:0 20px}
 .hero-badge{display:inline-flex;align-items:center;gap:8px;
@@ -72,7 +87,8 @@ nav{position:fixed;top:0;width:100%;z-index:200;background:rgba(10,10,10,.96);
 .hero-stats{display:flex;gap:48px;justify-content:center;margin-top:72px;flex-wrap:wrap}
 .hero-stat{text-align:center}
 .hero-stat-val{font-family:var(--font-display);font-size:clamp(28px,4vw,42px);
-  font-weight:900;color:var(--gold)}
+  font-weight:900;color:var(--gold);
+  text-shadow:0 0 30px rgba(201,168,76,.5), 0 0 60px rgba(201,168,76,.2)}
 .hero-stat-label{font-size:11px;color:var(--gray);letter-spacing:2px;
   text-transform:uppercase;margin-top:4px}
 .hero-divider{width:1px;height:48px;background:rgba(201,168,76,.2);align-self:center}
@@ -83,20 +99,50 @@ nav{position:fixed;top:0;width:100%;z-index:200;background:rgba(10,10,10,.96);
   margin-bottom:12px}
 .sec-title{font-family:var(--font-display);font-size:clamp(28px,4vw,44px);
   font-weight:700;color:var(--white)}
-.gold-line{width:56px;height:2px;background:linear-gradient(to right,var(--gold),transparent);
-  margin:20px 0 40px}
+.gold-line{width:56px;height:2px;
+  background:linear-gradient(to right,var(--gold),transparent);
+  margin:20px 0 40px;
+  box-shadow:0 0 12px 0 rgba(201,168,76,.4)}
 
 /* HİZMETLER */
-.hizmetler{background:var(--dark)}
+.hizmetler{background:var(--dark);position:relative;overflow:hidden}
+.hizmetler::before{content:'';position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse at 70% 40%,rgba(201,168,76,.05) 0%,transparent 55%),
+             radial-gradient(ellipse at 20% 70%,rgba(201,168,76,.04) 0%,transparent 50%)}
 .hizmetler-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
-  gap:1px;background:rgba(201,168,76,.08);margin-top:0}
-.hiz-card{background:var(--dark);padding:40px 36px;position:relative;overflow:hidden;
-  transition:background .25s}
-.hiz-card:hover{background:var(--dark2)}
+  gap:1px;background:rgba(201,168,76,.08);margin-top:0;position:relative;z-index:1}
+.hiz-card{background:var(--dark);padding:44px 36px;position:relative;overflow:hidden;
+  transition:background .3s, box-shadow .3s}
+.hiz-card:hover{background:var(--dark2);
+  box-shadow:inset 0 0 60px -20px rgba(201,168,76,.06)}
 .hiz-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;
-  background:linear-gradient(to right,var(--gold),transparent);opacity:0;transition:opacity .3s}
+  background:linear-gradient(to right,var(--gold),transparent);opacity:0;transition:opacity .35s}
 .hiz-card:hover::before{opacity:1}
-.hiz-icon{font-size:36px;margin-bottom:20px}
+.hiz-card::after{content:'';position:absolute;bottom:-80px;right:-80px;
+  width:180px;height:180px;border-radius:50%;
+  background:radial-gradient(circle,rgba(201,168,76,.04) 0%,transparent 70%);
+  opacity:0;transition:opacity .4s;pointer-events:none}
+.hiz-card:hover::after{opacity:1}
+
+/* SVG Icon wrapper */
+.hiz-icon{
+  width:56px;height:56px;border-radius:16px;margin-bottom:24px;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(201,168,76,.08);
+  border:1px solid rgba(201,168,76,.18);
+  transition:all .35s;position:relative;
+  box-shadow:0 0 0 0 rgba(201,168,76,0);
+}
+.hiz-card:hover .hiz-icon{
+  background:rgba(201,168,76,.14);
+  border-color:rgba(201,168,76,.4);
+  box-shadow:0 0 24px -4px rgba(201,168,76,.3);
+  transform:scale(1.08) rotate(-2deg);
+}
+.hiz-icon svg{width:26px;height:26px;fill:none;stroke:var(--gold);
+  stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;
+  transition:stroke .3s}
+
 .hiz-title{font-family:var(--font-display);font-size:20px;font-weight:700;
   color:var(--white);margin-bottom:10px}
 .hiz-desc{font-size:14px;color:var(--gray);line-height:1.75}
@@ -394,13 +440,16 @@ footer{background:var(--dark);border-top:1px solid rgba(201,168,76,.1);
 }
 
 /* YAKINDA */
-.yakinda-section{text-align:center}
+.yakinda-section{text-align:center;position:relative;overflow:hidden}
+.yakinda-section::before{content:'';position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse at 50% 50%,rgba(201,168,76,.04) 0%,transparent 60%)}
 .yakinda-desc{color:var(--gray);max-width:520px;margin:0 auto 48px;font-size:15px}
 .yakinda-grid{display:flex;flex-wrap:wrap;gap:24px;justify-content:center;max-width:900px;margin:0 auto}
 .yakinda-card{position:relative;width:190px;background:var(--dark2);border:1px solid rgba(201,168,76,.18);
   border-radius:16px;padding:28px 20px 24px;display:flex;flex-direction:column;align-items:center;
-  overflow:hidden;transition:transform .3s}
-.yakinda-card:hover{transform:translateY(-4px)}
+  overflow:hidden;transition:transform .3s, box-shadow .3s}
+.yakinda-card:hover{transform:translateY(-4px);
+  box-shadow:0 16px 40px -8px rgba(0,0,0,.6), 0 0 0 1px rgba(201,168,76,.2)}
 .yakinda-blur-wrap{display:flex;flex-direction:column;align-items:center;gap:14px;
   filter:blur(5px);user-select:none;pointer-events:none}
 .yakinda-avatar{width:72px;height:72px;border-radius:50%;overflow:hidden;
@@ -521,25 +570,37 @@ footer{background:var(--dark);border-top:1px solid rgba(201,168,76,.1);
   <div class="reveal reveal-delay-2 gold-line"></div>
   <div class="hizmetler-grid">
     <div class="hiz-card reveal reveal-delay-1">
-      <div class="hiz-icon">🎬</div>
+      <div class="hiz-icon">
+        <!-- Video/Reel icon -->
+        <svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+      </div>
       <div class="hiz-title">Viral Reel Üretimi</div>
       <div class="hiz-desc">Mekanınızı Instagram'da patlatan kısa format videolar. Konseptten çekime, kurgudan yayına kadar her şey bizde.</div>
       <div class="hiz-tag">Reel / TikTok / Shorts</div>
     </div>
     <div class="hiz-card reveal reveal-delay-2">
-      <div class="hiz-icon">📍</div>
+      <div class="hiz-icon">
+        <!-- Map pin icon -->
+        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      </div>
       <div class="hiz-title">Yerel Marka İnşası</div>
       <div class="hiz-desc">Hatay'daki mekanınızı hem yerel halk hem de turistler için vazgeçilmez bir destinasyon haline getiriyoruz.</div>
       <div class="hiz-tag">Instagram · Google · Haritalar</div>
     </div>
     <div class="hiz-card reveal reveal-delay-3">
-      <div class="hiz-icon">📊</div>
+      <div class="hiz-icon">
+        <!-- Bar chart / trending icon -->
+        <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      </div>
       <div class="hiz-title">İçerik Stratejisi</div>
       <div class="hiz-desc">Hedef kitlenize özel içerik takvimi, hashtag stratejisi ve büyüme planı. Rakiplerinizin önüne geçin.</div>
       <div class="hiz-tag">Analitik · Raporlama</div>
     </div>
     <div class="hiz-card reveal reveal-delay-4">
-      <div class="hiz-icon">🤝</div>
+      <div class="hiz-icon">
+        <!-- Users/collaboration icon -->
+        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
       <div class="hiz-title">Influencer İşbirlikleri</div>
       <div class="hiz-desc">Eser Bilen ve Hatay Mekanları gibi büyük kanallarla organik içerik ortaklıkları kuruyoruz.</div>
       <div class="hiz-tag">Hatay Mekanları · Eser Bilen</div>
@@ -836,20 +897,6 @@ footer{background:var(--dark);border-top:1px solid rgba(201,168,76,.1);
     <div class="yakinda-card">
       <div class="yakinda-blur-wrap">
         <div class="yakinda-avatar">
-          <img src="img/profiles/sinanozdemir023.jpg" alt="Sinan Özdemir">
-        </div>
-        <div class="yakinda-info">
-          <div class="yakinda-name">Sinan Özdemir</div>
-          <div class="yakinda-sub">Doğu Unlu Mamülleri</div>
-          <div class="yakinda-ig">@sinanozdemir023</div>
-        </div>
-      </div>
-      <div class="yakinda-badge">Yakında</div>
-    </div>
-
-    <div class="yakinda-card">
-      <div class="yakinda-blur-wrap">
-        <div class="yakinda-avatar">
           <img src="img/profiles/egebufee.jpg" alt="Ege Büfe">
         </div>
         <div class="yakinda-info">
@@ -878,7 +925,7 @@ footer{background:var(--dark);border-top:1px solid rgba(201,168,76,.1);
         <div class="yakinda-avatar yakinda-avatar-empty">A</div>
         <div class="yakinda-info">
           <div class="yakinda-name">Antochia</div>
-          <div class="yakinda-sub">Restoran</div>
+          <div class="yakinda-sub">Döner</div>
           <div class="yakinda-ig">—</div>
         </div>
       </div>
