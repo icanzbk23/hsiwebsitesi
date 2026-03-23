@@ -83,7 +83,7 @@ const MEKANLAR = [
     hsi:'HSİ Medya partneri — <strong>Hatay Mekanları</strong>'
   },
   {
-    id:'sutlukavurma', cat:'yoresel', catLabel:'Yöresel Lezzetler',
+    id:'sutlukavurma', cat:'yoresel', catLabel:'Kavurmacı',
     name:'Sütlü Kavurma', loc:'Hatay', hours:'09:00 – 22:00',
     ig:'https://www.instagram.com/sutlukavurma/', igHandle:'@sutlukavurma',
     logo:'img/profiles/sutlukavurma.jpg',
@@ -95,7 +95,7 @@ const MEKANLAR = [
       {sc:'DVvca6zDKZk', url:'https://www.instagram.com/reel/DVvca6zDKZk/', views:'1M',    likes:'5K',   caption:'Sarımsaklı İlikli Kemik Sulu Kavurmalı Mercimek Çorbası…💛 #sütlükavurma #iskenderun #kavurma #hata', thumb:'img/reels/DVvca6zDKZk.jpg'},
     ],
     infos:[
-      {label:'Kategori',  val:'Yöresel Lezzetler', sub:'Hatay Mutfağı'},
+      {label:'Kategori',  val:'Kavurmacı', sub:'Hatay Mutfağı'},
       {label:'Instagram', val:'@sutlukavurma',      sub:'138.000 takipçi'},
       {label:'En Viral',  val:'21.9M',              sub:'Görüntüleme'},
       {label:'Konum',     val:'Hatay',              sub:'Türkiye'},
