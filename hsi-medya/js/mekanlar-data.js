@@ -187,7 +187,7 @@ const MEKANLAR = [
     name:'Sinan Özdemir', loc:'Hatay', hours:'07:00 – 21:00',
     ig:'https://www.instagram.com/sinanozdemir023/', igHandle:'@sinanozdemir023',
     logo:'img/profiles/sinanozdemir023.jpg',
-    followers:'', emoji:'🥐',
+    followers:'22.700 takipçi', emoji:'🥐',
     about:'Doğu Unlu Mamülleri\'nin ustası Sinan Özdemir, geleneksel Hatay fırıncılık kültürünü yaşatıyor. Taze unlu mamülleri ve özgün içerikleriyle viral oldu.',
     reels:[
       {sc:'DV817k8jA0t', url:'https://www.instagram.com/reel/DV817k8jA0t/', views:'378K', likes:'', caption:'TÜM HATAY DUYSUN! DOĞU FIRINI BAYRAM BOYUNCA HİZMETİNİZDE.', thumb:'img/reels/DV817k8jA0t.jpg'},
