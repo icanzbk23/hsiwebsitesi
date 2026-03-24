@@ -57,7 +57,7 @@ function renderCards(filter) {
       ? `<img class="card-profile-img" src="${m.logo}" alt="${m.name}">`
       : `<div class="card-profile-img-empty">${(m.name||'?')[0]}</div>`;
     return `
-    <div class="mekan-card" onclick="openPopup('${m.id}')" style="animation-delay:${i * 0.05}s">
+    <div class="mekan-card" data-id="${m.id}" onclick="openPopup('${m.id}')" style="animation-delay:${i * 0.05}s">
       <div class="card-cover">
         ${thumb
           ? `<img src="${thumb}" alt="${m.name}" loading="lazy" style="${m.coverPos ? 'object-position:'+m.coverPos : ''}">`
