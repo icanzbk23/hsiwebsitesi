@@ -184,10 +184,11 @@ const MEKANLAR = [
   },
   {
     id:'sinanozdemir', cat:'yoresel', catLabel:'Unlu Mamüller',
+    coverPos:'center 70%',
     name:'Sinan Özdemir', loc:'Hatay', hours:'07:00 – 21:00',
     ig:'https://www.instagram.com/sinanozdemir023/', igHandle:'@sinanozdemir023',
     logo:'img/profiles/sinanozdemir023.jpg',
-    followers:'22.700 takipçi', emoji:'🥐',
+    followers:'22.7K takipçi', emoji:'🥐',
     about:'Doğu Unlu Mamülleri\'nin ustası Sinan Özdemir, geleneksel Hatay fırıncılık kültürünü yaşatıyor. Taze unlu mamülleri ve özgün içerikleriyle viral oldu.',
     reels:[
       {sc:'DV817k8jA0t', url:'https://www.instagram.com/reel/DV817k8jA0t/', views:'378K', likes:'', caption:'TÜM HATAY DUYSUN! DOĞU FIRINI BAYRAM BOYUNCA HİZMETİNİZDE.', thumb:'img/reels/DV817k8jA0t.jpg'},
@@ -196,7 +197,7 @@ const MEKANLAR = [
     ],
     infos:[
       {label:'Kategori',  val:'Unlu Mamüller',      sub:'Doğu Fırını'},
-      {label:'Instagram', val:'@sinanozdemir023',   sub:''},
+      {label:'Instagram', val:'@sinanozdemir023',   sub:'22.700 takipçi'},
       {label:'En Viral',  val:'378K',               sub:'Görüntüleme'},
       {label:'Konum',     val:'Hatay',              sub:'Türkiye'},
     ],

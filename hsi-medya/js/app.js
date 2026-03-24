@@ -60,7 +60,7 @@ function renderCards(filter) {
     <div class="mekan-card" onclick="openPopup('${m.id}')" style="animation-delay:${i * 0.05}s">
       <div class="card-cover">
         ${thumb
-          ? `<img src="${thumb}" alt="${m.name}" loading="lazy">`
+          ? `<img src="${thumb}" alt="${m.name}" loading="lazy" style="${m.coverPos ? 'object-position:'+m.coverPos : ''}">`
           : `<div class="card-cover-placeholder">${m.emoji}</div>`}
         <div class="card-cover-overlay"></div>
         <div class="card-viral">▶ ${topViews}</div>
