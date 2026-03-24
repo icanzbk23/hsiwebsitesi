@@ -24,7 +24,7 @@ const MEKANLAR = [
       {label:'En Viral',    val:'2.3M',             sub:'Görüntüleme'},
       {label:'Konum',       val:'Antakya',          sub:'Hatay, Türkiye'},
     ],
-    hsi:'HSİ Medya partneri — <strong>Hatay Mekanları</strong> & <strong>Eser Bilan</strong>'
+    hsi:'HSİ Medya partneri — <strong>Hatay Mekanları</strong> & <strong>Eser Bilen</strong>'
   },
   {
     id:'suleymanusta', cat:'kebap', catLabel:'Dönerci',
@@ -108,7 +108,7 @@ const MEKANLAR = [
       {label:'En Viral',  val:'21.9M',          sub:'Görüntüleme'},
       {label:'Konum',     val:'Hatay',          sub:'Türkiye'},
     ],
-    hsi:'HSİ Medya partneri — <strong>Hatay Mekanları</strong> & <strong>Hataş Sandık İçi</strong>'
+    hsi:'HSİ Medya partneri — <strong>Hatay Mekanları</strong> & <strong>Hatay Sandık İçi</strong>'
   },
   {
     id:'egedoner', cat:'kebap', catLabel:'Dönerci',
@@ -171,7 +171,7 @@ const MEKANLAR = [
       {label:'En Viral',  val:'7.5M',              sub:'Görüntüleme'},
       {label:'Konum',     val:'Hatay',             sub:'Türkiye'},
     ],
-    hsi:'HSİ Medya partneri — <strong>Hatay Mekanları</strong> & <strong>Eser Bilan</strong>'
+    hsi:'HSİ Medya partneri — <strong>Hatay Mekanları</strong> & <strong>Eser Bilen</strong>'
   },
   {
     id:'sezaiusta', cat:'kebap', catLabel:'Kebapçı',
@@ -235,7 +235,7 @@ const MEKANLAR = [
       {label:'En Viral',  val:'18.6M',      sub:'Görüntüleme'},
       {label:'Konum',     val:'Hatay',      sub:'Türkiye'},
     ],
-    hsi:'HSİ Medya\'nın en viral içeriği — <strong>Hatay Mekanları</strong> & <strong>Hataş Sandık İçi</strong>'
+    hsi:'HSİ Medya\'nın en viral içeriği — <strong>Hatay Mekanları</strong> & <strong>Hatay Sandık İçi</strong>'
   },
 
   // ── YAKINDA ── status:'yakinda' → aktif yapmak için sadece bu satırı değiştir
