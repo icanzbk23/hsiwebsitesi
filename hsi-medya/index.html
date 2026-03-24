@@ -60,123 +60,11 @@ nav{position:fixed;top:0;width:100%;z-index:200;background:rgba(10,10,10,.96);
   width:300px;height:300px;border-radius:50%;
   background:radial-gradient(circle,rgba(201,168,76,.04) 0%,transparent 70%);
   pointer-events:none}
-.hero-content{position:relative;z-index:1;max-width:800px;padding:0 20px;
-  display:flex;flex-direction:column;align-items:center}
+.hero-content{position:relative;z-index:1;max-width:800px;padding:0 20px}
 .hero-badge{display:inline-flex;align-items:center;gap:8px;
   background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.25);
   color:var(--gold);font-size:11px;letter-spacing:3px;text-transform:uppercase;
-  padding:8px 20px;border-radius:100px;margin-bottom:0}
-
-/* ── LAMP ── */
-.hero-lamp{
-  width:100%;height:220px;position:relative;overflow:hidden;
-  flex-shrink:0;margin:0 0 -24px;
-}
-.lamp-scene{
-  position:absolute;inset:0;
-  display:flex;align-items:flex-start;justify-content:center;
-  transform:scaleY(1.25);transform-origin:top center;
-}
-/* Right conic beam — right edge at 50%, extends left */
-.lamp-beam-r{
-  position:absolute;top:0;right:50%;
-  width:clamp(240px,38vw,520px);height:100%;
-  background:conic-gradient(from 70deg at right top,
-    var(--gold) 0%,
-    rgba(201,168,76,.35) 18%,
-    transparent 38%);
-  animation:lampBeamR .9s .3s ease-out both;
-}
-.lamp-beam-r::before{
-  content:'';position:absolute;left:0;bottom:0;width:100%;height:45%;
-  background:linear-gradient(to top,var(--black),transparent);
-}
-.lamp-beam-r::after{
-  content:'';position:absolute;left:0;bottom:0;width:30%;height:100%;
-  background:linear-gradient(to right,var(--black),transparent);
-}
-/* Left conic beam — left edge at 50%, extends right */
-.lamp-beam-l{
-  position:absolute;top:0;left:50%;
-  width:clamp(240px,38vw,520px);height:100%;
-  background:conic-gradient(from 290deg at left top,
-    transparent 62%,
-    rgba(201,168,76,.35) 82%,
-    var(--gold) 100%);
-  animation:lampBeamL .9s .3s ease-out both;
-}
-.lamp-beam-l::before{
-  content:'';position:absolute;right:0;bottom:0;width:100%;height:45%;
-  background:linear-gradient(to top,var(--black),transparent);
-}
-.lamp-beam-l::after{
-  content:'';position:absolute;right:0;bottom:0;width:30%;height:100%;
-  background:linear-gradient(to left,var(--black),transparent);
-}
-@keyframes lampBeamR{
-  from{opacity:.2;clip-path:polygon(100% 0,100% 0,100% 100%,100% 100%)}
-  to{opacity:1;clip-path:polygon(0 0,100% 0,100% 100%,0 100%)}
-}
-@keyframes lampBeamL{
-  from{opacity:.2;clip-path:polygon(0 0,0 0,0 100%,0 100%)}
-  to{opacity:1;clip-path:polygon(0 0,100% 0,100% 100%,0 100%)}
-}
-/* Wide ambient glow */
-.lamp-glow-wide{
-  position:absolute;top:0;left:50%;
-  transform:translate(-50%,-55%);
-  width:clamp(280px,50vw,560px);height:140px;
-  border-radius:50%;
-  background:rgba(201,168,76,.45);
-  filter:blur(52px);
-  pointer-events:none;z-index:2;
-}
-/* Tight inner glow */
-.lamp-glow-inner{
-  position:absolute;top:0;left:50%;
-  transform:translate(-50%,-30%);
-  height:80px;border-radius:50%;
-  background:rgba(232,201,106,.85);
-  filter:blur(20px);
-  pointer-events:none;z-index:3;
-  animation:lampInner .9s .3s ease-out both;
-}
-@keyframes lampInner{
-  from{width:60px;opacity:.2}
-  to{width:clamp(120px,18vw,220px);opacity:1}
-}
-/* The golden lamp line */
-.lamp-line{
-  position:absolute;top:0;left:50%;
-  transform:translateX(-50%);
-  height:2px;
-  background:linear-gradient(to right,
-    transparent,
-    rgba(201,168,76,.6) 15%,
-    var(--gold-light) 40%,
-    #fff8d6 50%,
-    var(--gold-light) 60%,
-    rgba(201,168,76,.6) 85%,
-    transparent);
-  box-shadow:0 0 14px rgba(201,168,76,1), 0 0 40px rgba(201,168,76,.5);
-  pointer-events:none;z-index:4;
-  animation:lampLine .9s .25s ease-out both;
-}
-@keyframes lampLine{
-  from{width:80px;opacity:.1}
-  to{width:clamp(320px,55vw,680px);opacity:1}
-}
-/* Bottom fade */
-.lamp-fade-bot{
-  position:absolute;bottom:0;left:0;right:0;height:55%;
-  background:linear-gradient(to top,var(--black) 5%,transparent);
-  pointer-events:none;z-index:5;
-}
-/* Top solid cover (hides anything above the line source) */
-.lamp-top-cover{
-  position:absolute;top:0;left:0;right:0;height:6px;
-  background:var(--black);z-index:6;
-}
+  padding:8px 20px;border-radius:100px;margin-bottom:32px}
 .hero-badge::before{content:'';width:6px;height:6px;border-radius:50%;
   background:var(--gold);animation:blink 1.5s ease-in-out infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
@@ -691,20 +579,6 @@ footer{background:var(--dark);border-top:1px solid rgba(201,168,76,.1);
   </div>
   <div class="hero-content">
     <div class="hero-badge">Hatay'ın Dijital Sesi</div>
-
-    <!-- LAMP -->
-    <div class="hero-lamp" aria-hidden="true">
-      <div class="lamp-scene">
-        <div class="lamp-beam-r"></div>
-        <div class="lamp-beam-l"></div>
-        <div class="lamp-glow-wide"></div>
-        <div class="lamp-glow-inner"></div>
-        <div class="lamp-line"></div>
-        <div class="lamp-fade-bot"></div>
-        <div class="lamp-top-cover"></div>
-      </div>
-    </div>
-
     <h1 class="hero-title">
       Lezzetleri<br>
       <em>Milyonlara</em>
