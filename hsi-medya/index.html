@@ -4,14 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>HSİ Medya — Hatay'ın Dijital Sesi</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --gold:#C9A84C;--gold-light:#E8C96A;
   --black:#0A0A0A;--dark:#111111;--dark2:#1A1A1A;--dark3:#222222;
   --gray:#888888;--white:#FFFFFF;
-  --font-display:'Playfair Display',serif;--font-body:'Inter',sans-serif;
+  --font-display:'Cormorant Garamond',serif;--font-body:'DM Sans',sans-serif;
 }
 html{scroll-behavior:smooth}
 body{background:var(--black);color:var(--white);font-family:var(--font-body);line-height:1.6;overflow-x:hidden}
@@ -22,8 +22,8 @@ nav{position:fixed;top:0;width:100%;z-index:200;background:rgba(10,10,10,.96);
   border-bottom:1px solid rgba(201,168,76,.15);
   box-shadow:0 1px 24px -8px rgba(201,168,76,.12);
   display:flex;align-items:center;justify-content:space-between;padding:0 5%;height:64px}
-.nav-logo{font-family:var(--font-display);font-size:22px;color:var(--gold);
-  letter-spacing:2px;font-weight:700;text-decoration:none}
+.nav-logo{font-family:var(--font-display);font-size:26px;color:var(--gold);
+  letter-spacing:3px;font-weight:600;text-decoration:none}
 .nav-logo span{color:var(--white)}
 .nav-links{display:flex;gap:28px;align-items:center}
 .nav-links a{color:var(--gray);text-decoration:none;font-size:12px;font-weight:500;
@@ -68,8 +68,8 @@ nav{position:fixed;top:0;width:100%;z-index:200;background:rgba(10,10,10,.96);
 .hero-badge::before{content:'';width:6px;height:6px;border-radius:50%;
   background:var(--gold);animation:blink 1.5s ease-in-out infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
-.hero-title{font-family:var(--font-display);font-size:clamp(40px,8vw,88px);
-  font-weight:900;line-height:1.05;margin-bottom:24px}
+.hero-title{font-family:var(--font-display);font-size:clamp(46px,9vw,100px);
+  font-weight:700;line-height:1.0;margin-bottom:24px;letter-spacing:-.5px}
 .hero-title em{color:var(--gold);font-style:normal;display:block}
 .hero-sub{font-size:clamp(15px,2vw,18px);color:var(--gray);
   max-width:540px;margin:0 auto 48px;line-height:1.8;font-weight:300}
@@ -86,8 +86,8 @@ nav{position:fixed;top:0;width:100%;z-index:200;background:rgba(10,10,10,.96);
 .btn-secondary:hover{border-color:rgba(201,168,76,.5);color:var(--gold)}
 .hero-stats{display:flex;gap:48px;justify-content:center;margin-top:72px;flex-wrap:wrap}
 .hero-stat{text-align:center}
-.hero-stat-val{font-family:var(--font-display);font-size:clamp(28px,4vw,42px);
-  font-weight:900;color:var(--gold);
+.hero-stat-val{font-family:var(--font-display);font-size:clamp(32px,4.5vw,48px);
+  font-weight:700;color:var(--gold);
   text-shadow:0 0 30px rgba(201,168,76,.5), 0 0 60px rgba(201,168,76,.2)}
 .hero-stat-label{font-size:11px;color:var(--gray);letter-spacing:2px;
   text-transform:uppercase;margin-top:4px}
@@ -97,8 +97,8 @@ nav{position:fixed;top:0;width:100%;z-index:200;background:rgba(10,10,10,.96);
 .section{padding:100px 5%}
 .sec-label{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);
   margin-bottom:12px}
-.sec-title{font-family:var(--font-display);font-size:clamp(28px,4vw,44px);
-  font-weight:700;color:var(--white)}
+.sec-title{font-family:var(--font-display);font-size:clamp(32px,4.5vw,50px);
+  font-weight:600;color:var(--white);letter-spacing:.3px}
 .gold-line{width:56px;height:2px;
   background:linear-gradient(to right,var(--gold),transparent);
   margin:20px 0 40px;
@@ -501,6 +501,15 @@ footer{background:var(--dark);border-top:1px solid rgba(201,168,76,.1);
   animation:shimmer 4s linear infinite;
   display:block
 }
+#tw-word::after{
+  content:'';display:inline-block;
+  width:3px;height:.75em;
+  background:var(--gold);
+  vertical-align:middle;margin-left:6px;border-radius:2px;
+  animation:twBlink .75s step-end infinite;
+  box-shadow:0 0 8px rgba(201,168,76,.6);
+}
+@keyframes twBlink{0%,100%{opacity:1}50%{opacity:0}}
 
 /* Responsive */
 @media(max-width:900px){
@@ -581,7 +590,7 @@ footer{background:var(--dark);border-top:1px solid rgba(201,168,76,.1);
     <div class="hero-badge">Hatay'ın Dijital Sesi</div>
     <h1 class="hero-title">
       Lezzetleri<br>
-      <em>Milyonlara</em>
+      <em id="tw-word">Milyonlara</em>
       Taşıyoruz
     </h1>
     <p class="hero-sub">
@@ -1119,6 +1128,31 @@ const statsObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.5 });
 const statsEl = document.querySelector('.hero-stats');
 if (statsEl) statsObserver.observe(statsEl);
+
+// TYPEWRITER
+(function(){
+  const el = document.getElementById('tw-word');
+  if (!el) return;
+  const words = ['Milyonlara', "Türkiye'ye", 'Dünyaya', 'Herkese'];
+  let wi = 0, ci = words[0].length, deleting = false;
+  function tick() {
+    const word = words[wi];
+    if (!deleting) {
+      el.textContent = word.slice(0, ++ci);
+      if (ci === word.length) { setTimeout(() => { deleting = true; tick(); }, 2200); return; }
+    } else {
+      el.textContent = word.slice(0, --ci);
+      if (ci === 0) {
+        deleting = false;
+        wi = (wi + 1) % words.length;
+        setTimeout(tick, 350);
+        return;
+      }
+    }
+    setTimeout(tick, deleting ? 38 : 82);
+  }
+  setTimeout(() => { deleting = true; tick(); }, 2500);
+})();
 </script>
 </body>
 </html>

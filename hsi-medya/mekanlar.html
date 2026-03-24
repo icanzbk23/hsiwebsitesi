@@ -20,14 +20,14 @@
 <!-- GA4 — GA_MEASUREMENT_ID kısmını kendi ID'nle değiştir -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','GA_MEASUREMENT_ID');</script>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --gold:#C9A84C;--gold-light:#E8C96A;
   --black:#0A0A0A;--dark:#111111;--dark2:#1A1A1A;--dark3:#222222;
   --gray:#888888;--white:#FFFFFF;
-  --font-display:'Playfair Display',serif;--font-body:'Inter',sans-serif;
+  --font-display:'Cormorant Garamond',serif;--font-body:'DM Sans',sans-serif;
 }
 html{scroll-behavior:smooth}
 body{background:var(--black);color:var(--white);font-family:var(--font-body);line-height:1.6}
@@ -36,8 +36,8 @@ body{background:var(--black);color:var(--white);font-family:var(--font-body);lin
 nav{position:fixed;top:0;width:100%;z-index:200;background:rgba(10,10,10,.96);
   backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,168,76,.15);
   display:flex;align-items:center;justify-content:space-between;padding:0 5%;height:64px}
-.nav-logo{font-family:var(--font-display);font-size:22px;color:var(--gold);
-  letter-spacing:2px;font-weight:700;text-decoration:none}
+.nav-logo{font-family:var(--font-display);font-size:26px;color:var(--gold);
+  letter-spacing:3px;font-weight:600;text-decoration:none}
 .nav-logo span{color:var(--white)}
 .nav-links{display:flex;gap:28px}
 .nav-links a{color:var(--gray);text-decoration:none;font-size:12px;font-weight:500;
@@ -64,8 +64,8 @@ nav{position:fixed;top:0;width:100%;z-index:200;background:rgba(10,10,10,.96);
 /* SECTION HEADER */
 .sec-head{padding:48px 5% 0}
 .sec-head small{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--gold)}
-.sec-head h2{font-family:var(--font-display);font-size:clamp(26px,4vw,40px);
-  font-weight:700;color:var(--white);margin-top:8px}
+.sec-head h2{font-family:var(--font-display);font-size:clamp(30px,4vw,46px);
+  font-weight:600;color:var(--white);margin-top:8px;letter-spacing:.5px}
 .gold-line{width:56px;height:2px;background:linear-gradient(to right,var(--gold),transparent);
   margin:20px 0 32px}
 
@@ -167,8 +167,8 @@ nav{position:fixed;top:0;width:100%;z-index:200;background:rgba(10,10,10,.96);
   padding:3px 10px;border-radius:100px;
 }
 .card-handle{font-size:11px;color:var(--gray);opacity:.7}
-.card-name{font-family:var(--font-display);font-size:21px;font-weight:700;
-  color:var(--white);line-height:1.15}
+.card-name{font-family:var(--font-display);font-size:23px;font-weight:600;
+  color:var(--white);line-height:1.15;letter-spacing:.3px}
 .card-loc{font-size:12px;color:var(--gray);display:flex;align-items:center;gap:5px}
 .card-loc svg{width:12px;height:12px;stroke:var(--gold);fill:none;stroke-width:2;
   stroke-linecap:round;stroke-linejoin:round;opacity:.7;flex-shrink:0}
@@ -215,8 +215,8 @@ nav{position:fixed;top:0;width:100%;z-index:200;background:rgba(10,10,10,.96);
 .pop-cat{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);
   margin-bottom:10px;display:flex;align-items:center;gap:10px}
 .pop-cat::after{content:'';flex:1;height:1px;background:rgba(201,168,76,.15)}
-.pop-name{font-family:var(--font-display);font-size:clamp(24px,4vw,36px);
-  font-weight:900;color:var(--white);margin-bottom:6px}
+.pop-name{font-family:var(--font-display);font-size:clamp(28px,4vw,42px);
+  font-weight:700;color:var(--white);margin-bottom:6px;letter-spacing:.4px}
 .pop-meta{display:flex;align-items:center;gap:16px;padding:14px 0 24px;flex-wrap:wrap}
 .pop-meta-item{font-size:13px;color:var(--gray);display:flex;align-items:center;gap:6px}
 .pop-followers{font-size:13px;color:var(--gold);font-weight:600;
@@ -330,8 +330,8 @@ nav{position:fixed;top:0;width:100%;z-index:200;background:rgba(10,10,10,.96);
   display:flex;align-items:center;justify-content:center;
   font-family:var(--font-display);font-size:24px;color:rgba(201,168,76,.4);
   filter:blur(4px);opacity:.6}
-.yakinda-name{font-family:var(--font-display);font-size:20px;font-weight:700;
-  color:var(--white);margin-bottom:3px}
+.yakinda-name{font-family:var(--font-display);font-size:22px;font-weight:600;
+  color:var(--white);margin-bottom:3px;letter-spacing:.3px}
 .yakinda-sub{font-size:10px;color:rgba(201,168,76,.5);letter-spacing:2px;text-transform:uppercase}
 .yakinda-week{font-size:12px;color:var(--gray);margin-top:auto;letter-spacing:.5px}
 .yakinda-lock{position:absolute;bottom:18px;right:18px;
