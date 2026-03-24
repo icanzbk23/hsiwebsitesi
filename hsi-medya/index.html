@@ -346,48 +346,125 @@ nav{position:fixed;top:0;width:100%;z-index:200;background:rgba(10,10,10,.96);
 @media(max-width:380px){.masonry-grid{column-count:1}}
 
 /* YAYIN KANALLARI */
-.kanallar{background:var(--dark);position:relative;overflow:hidden}
-.kanallar::before{content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse at 30% 50%,rgba(201,168,76,.04) 0%,transparent 60%);
-  pointer-events:none}
-.kanallar-intro{max-width:640px;margin-bottom:60px}
-.kanallar-intro p{font-size:17px;color:var(--gray);line-height:1.85;margin-top:0}
-.kanallar-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
-  background:rgba(201,168,76,.08)}
-.kanal-card{background:var(--dark2);display:flex;flex-direction:column;
-  overflow:hidden;position:relative;transition:background .3s}
-.kanal-card:hover{background:#1e1e1e}
-.kanal-top{padding:36px 32px 28px;position:relative}
-.kanal-platform{display:flex;align-items:center;gap:10px;margin-bottom:24px}
-.kanal-platform-badge{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;
-  font-weight:600;padding:5px 12px;border-radius:100px}
+.kanallar{background:var(--black);position:relative;overflow:hidden}
+.kanallar::before{content:'';position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse at 85% 15%,rgba(225,48,108,.06) 0%,transparent 40%),
+    radial-gradient(ellipse at 12% 85%,rgba(24,119,242,.05) 0%,transparent 40%)}
+.kanallar-header{display:flex;align-items:flex-end;justify-content:space-between;
+  flex-wrap:wrap;gap:20px;margin-bottom:56px}
+.kanallar-intro{max-width:500px}
+.kanallar-intro p{font-size:15px;color:var(--gray);line-height:1.85;margin-top:0}
+.kanallar-big-stat{text-align:right;flex-shrink:0}
+.kanallar-big-val{font-family:var(--font-display);font-size:clamp(36px,5vw,52px);
+  font-weight:900;color:var(--gold);line-height:1;
+  text-shadow:0 0 32px rgba(201,168,76,.45)}
+.kanallar-big-label{font-size:10px;color:var(--gray);letter-spacing:2.5px;
+  text-transform:uppercase;margin-top:6px}
+
+/* Grid */
+.kanallar-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+
+/* Card */
+.kanal-card{
+  background:rgba(20,20,20,.8);
+  border:1px solid rgba(255,255,255,.06);
+  border-radius:20px;overflow:hidden;
+  position:relative;display:flex;flex-direction:column;
+  transition:transform .38s cubic-bezier(.16,1,.3,1),
+             box-shadow .38s ease, border-color .3s;
+  backdrop-filter:blur(8px);
+}
+.kanal-card:hover{transform:translateY(-8px)}
+.c-ig:hover{box-shadow:0 28px 64px -20px rgba(225,48,108,.3),0 0 0 1px rgba(225,48,108,.22);
+  border-color:rgba(225,48,108,.22)}
+.c-yt:hover{box-shadow:0 28px 64px -20px rgba(255,68,68,.25),0 0 0 1px rgba(255,68,68,.2);
+  border-color:rgba(255,68,68,.2)}
+.c-fb:hover{box-shadow:0 28px 64px -20px rgba(24,119,242,.25),0 0 0 1px rgba(24,119,242,.2);
+  border-color:rgba(24,119,242,.2)}
+
+/* Corner ambient glow */
+.kanal-corner-glow{
+  position:absolute;top:-50px;right:-50px;
+  width:200px;height:200px;border-radius:50%;
+  opacity:.1;filter:blur(48px);transition:opacity .4s;pointer-events:none;
+}
+.kanal-card:hover .kanal-corner-glow{opacity:.2}
+.c-ig .kanal-corner-glow{background:#e1306c}
+.c-yt .kanal-corner-glow{background:#ff0000}
+.c-fb .kanal-corner-glow{background:#1877f2}
+
+/* Top accent */
+.kanal-accent{height:3px;flex-shrink:0}
+.accent-ig{background:linear-gradient(to right,#833ab4,#fd1d1d,#fcb045)}
+.accent-yt{background:linear-gradient(to right,#ff0000,#ff6b6b,#ffaa00)}
+.accent-fb{background:linear-gradient(to right,#1877f2,#0099ff)}
+
+/* Platform row */
+.kanal-platform-row{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:24px 24px 0;
+}
+.kanal-icon-wrap{
+  width:50px;height:50px;border-radius:14px;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  transition:transform .3s ease;
+}
+.kanal-card:hover .kanal-icon-wrap{transform:scale(1.08) rotate(-3deg)}
+.c-ig .kanal-icon-wrap{background:linear-gradient(135deg,#833ab4 0%,#fd1d1d 50%,#fcb045 100%)}
+.c-yt .kanal-icon-wrap{background:linear-gradient(135deg,#ff0000,#cc0000)}
+.c-fb .kanal-icon-wrap{background:linear-gradient(135deg,#1877f2,#0866ff)}
+.kanal-icon-wrap svg{width:24px;height:24px;fill:white}
+
+.kanal-platform-badge{font-size:9px;letter-spacing:2px;text-transform:uppercase;
+  font-weight:700;padding:5px 11px;border-radius:100px}
 .badge-ig{background:rgba(225,48,108,.12);color:#e1306c;border:1px solid rgba(225,48,108,.25)}
 .badge-yt{background:rgba(255,0,0,.1);color:#ff4444;border:1px solid rgba(255,0,0,.2)}
 .badge-fb{background:rgba(24,119,242,.1);color:#4a90d9;border:1px solid rgba(24,119,242,.2)}
-.kanal-profile{display:flex;align-items:center;gap:16px;margin-bottom:20px}
-.kanal-avatar{width:64px;height:64px;border-radius:50%;overflow:hidden;flex-shrink:0;
-  border:2px solid rgba(201,168,76,.3);background:var(--dark3)}
+
+/* Profile */
+.kanal-profile{display:flex;align-items:center;gap:13px;padding:18px 24px 0}
+.kanal-avatar{width:48px;height:48px;border-radius:50%;overflow:hidden;flex-shrink:0;
+  border:2px solid rgba(255,255,255,.1);background:var(--dark3)}
 .kanal-avatar img{width:100%;height:100%;object-fit:cover;display:block}
-.kanal-avatar-icon{width:100%;height:100%;display:flex;align-items:center;
-  justify-content:center;font-size:28px;background:var(--dark3)}
-.kanal-handle{font-size:15px;font-weight:600;color:var(--white)}
-.kanal-platform-name{font-size:12px;color:var(--gray);margin-top:2px}
-.kanal-reach{display:flex;gap:20px;margin-bottom:24px;flex-wrap:wrap}
-.kanal-reach-item{}
-.kanal-reach-val{font-family:var(--font-display);font-size:26px;font-weight:900;color:var(--gold)}
-.kanal-reach-label{font-size:10px;color:var(--gray);letter-spacing:1.5px;
-  text-transform:uppercase;margin-top:2px}
-.kanal-desc{font-size:13px;color:var(--gray);line-height:1.75;margin-bottom:28px}
-.kanal-bar{height:1px;background:rgba(201,168,76,.1);margin:0 32px}
-.kanal-bottom{padding:20px 32px 28px}
-.kanal-link{display:inline-flex;align-items:center;gap:8px;
-  font-size:12px;letter-spacing:1.5px;text-transform:uppercase;
-  color:var(--gold);text-decoration:none;font-weight:500;transition:gap .25s}
-.kanal-link:hover{gap:14px}
-.kanal-accent{position:absolute;top:0;left:0;right:0;height:2px}
-.accent-ig{background:linear-gradient(to right,#833ab4,#fd1d1d,#fcb045)}
-.accent-yt{background:linear-gradient(to right,#ff0000,#cc0000)}
-.accent-fb{background:linear-gradient(to right,#1877f2,#4267b2)}
+.kanal-handle{font-size:15px;font-weight:700;color:var(--white);
+  font-family:var(--font-display);letter-spacing:.2px}
+.kanal-platform-name{font-size:11px;color:var(--gray);margin-top:2px}
+
+/* Stats strip */
+.kanal-stats{
+  display:flex;margin:20px 24px;
+  border:1px solid rgba(201,168,76,.1);border-radius:12px;
+  overflow:hidden;background:rgba(0,0,0,.25);
+}
+.kanal-stat-item{flex:1;padding:13px 12px;text-align:center;
+  border-right:1px solid rgba(201,168,76,.08)}
+.kanal-stat-item:last-child{border-right:none}
+.kanal-stat-val{font-family:var(--font-display);font-size:20px;font-weight:900;
+  color:var(--gold);text-shadow:0 0 18px rgba(201,168,76,.3);line-height:1}
+.kanal-stat-label{font-size:9px;color:var(--gray);letter-spacing:1.5px;
+  text-transform:uppercase;margin-top:4px}
+
+/* Description */
+.kanal-desc{font-size:13px;color:var(--gray);line-height:1.78;
+  padding:0 24px 20px;flex:1}
+
+/* CTA button */
+.kanal-cta{
+  margin:0 24px 24px;
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);
+  text-decoration:none;font-weight:700;
+  padding:11px 20px;border-radius:100px;
+  border:1px solid rgba(201,168,76,.2);background:rgba(201,168,76,.06);
+  transition:all .3s;width:fit-content;
+}
+.kanal-cta:hover{background:rgba(201,168,76,.14);border-color:rgba(201,168,76,.45);gap:13px}
+.kanal-cta-arrow{transition:transform .3s}
+.kanal-cta:hover .kanal-cta-arrow{transform:translateX(4px)}
+
+@media(max-width:960px){.kanallar-grid{grid-template-columns:1fr}}
+@media(max-width:600px){.kanallar-header{flex-direction:column}.kanallar-big-stat{text-align:left}}
 
 /* İLETİŞİM */
 .iletisim{background:var(--black)}
@@ -871,142 +948,126 @@ footer{background:var(--dark);border-top:1px solid rgba(201,168,76,.1);
 
 <!-- YAYIN KANALLARI -->
 <section class="section kanallar">
-  <div class="kanallar-intro">
-    <div class="sec-label">Yayın Ağımız</div>
-    <h2 class="sec-title">Üç Kanal,<br>Milyonlarca İzleyici</h2>
-    <div class="gold-line"></div>
-    <p>
-      HSİ Medya olarak ürettiğimiz içerikleri tek bir platformda bırakmıyoruz.
-      Instagram, YouTube ve Facebook'taki güçlü yayın kanallarımız aracılığıyla
-      partner mekanlarımızı eş zamanlı olarak milyonlarca takipçiye ulaştırıyoruz.
-      Organik büyüme, çoklu platform dağıtımı ve nişan almış yerel kitle —
-      işte viral etkimizin gerçek kaynağı bu üç kanal.
-    </p>
+  <div class="kanallar-header">
+    <div class="kanallar-intro">
+      <div class="sec-label">Yayın Ağımız</div>
+      <h2 class="sec-title">Üç Kanal,<br>Milyonlarca İzleyici</h2>
+      <div class="gold-line"></div>
+      <p>HSİ Medya olarak ürettiğimiz içerikleri tek bir platformda bırakmıyoruz.
+        Instagram, YouTube ve Facebook'taki güçlü yayın kanallarımız aracılığıyla
+        partner mekanlarımızı eş zamanlı milyonlarca kişiye ulaştırıyoruz.</p>
+    </div>
+    <div class="kanallar-big-stat">
+      <div class="kanallar-big-val">80M+</div>
+      <div class="kanallar-big-label">Toplam İzlenme</div>
+    </div>
   </div>
 
   <div class="kanallar-grid">
 
     <!-- Instagram: Hatay Mekanları -->
-    <div class="kanal-card">
+    <div class="kanal-card c-ig reveal">
       <div class="kanal-accent accent-ig"></div>
-      <div class="kanal-top">
-        <div class="kanal-platform">
-          <span class="kanal-platform-badge badge-ig">Instagram</span>
+      <div class="kanal-corner-glow"></div>
+      <div class="kanal-platform-row">
+        <div class="kanal-icon-wrap">
+          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
         </div>
-        <div class="kanal-profile">
-          <div class="kanal-avatar">
-            <img src="img/profiles/hataymekanlari_official.jpg" alt="Hatay Mekanları">
-          </div>
-          <div>
-            <div class="kanal-handle">Hatay Mekanları</div>
-            <div class="kanal-platform-name">@hataymekanlari</div>
-          </div>
+        <span class="kanal-platform-badge badge-ig">Instagram</span>
+      </div>
+      <div class="kanal-profile">
+        <div class="kanal-avatar">
+          <img src="img/profiles/hataymekanlari_official.jpg" alt="Hatay Mekanları">
         </div>
-        <div class="kanal-reach">
-          <div class="kanal-reach-item">
-            <div class="kanal-reach-val">143K</div>
-            <div class="kanal-reach-label">Takipçi</div>
-          </div>
-          <div class="kanal-reach-item">
-            <div class="kanal-reach-val">1.186</div>
-            <div class="kanal-reach-label">Paylaşım</div>
-          </div>
-        </div>
-        <div class="kanal-desc">
-          Hatay'ın en büyük gastronomi Instagram hesabı. Partner mekanlarımıza ait
-          Reels içerikler burada yayınlanarak organik keşif kanalıyla
-          milyonlarca lezzet tutkununa ulaşıyor. Her viral videonun ilk
-          ivmesi bu platformdan geliyor.
+        <div>
+          <div class="kanal-handle">Hatay Mekanları</div>
+          <div class="kanal-platform-name">@hataymekanlari_official</div>
         </div>
       </div>
-      <div class="kanal-bar"></div>
-      <div class="kanal-bottom">
-        <a class="kanal-link" href="https://www.instagram.com/hataymekanlari/" target="_blank" rel="noopener">
-          Profile Git →
-        </a>
+      <div class="kanal-stats">
+        <div class="kanal-stat-item">
+          <div class="kanal-stat-val">143K</div>
+          <div class="kanal-stat-label">Takipçi</div>
+        </div>
+        <div class="kanal-stat-item">
+          <div class="kanal-stat-val">1.186</div>
+          <div class="kanal-stat-label">Paylaşım</div>
+        </div>
       </div>
+      <div class="kanal-desc">Hatay'ın en büyük gastronomi Instagram hesabı. Partner mekanlarımıza ait Reels içerikler organik keşif kanalıyla milyonlarca lezzet tutkununa ulaşıyor.</div>
+      <a class="kanal-cta" href="https://www.instagram.com/hataymekanlari/" target="_blank" rel="noopener">
+        Profile Git <span class="kanal-cta-arrow">→</span>
+      </a>
     </div>
 
     <!-- YouTube Shorts: Eser Bilen -->
-    <div class="kanal-card">
+    <div class="kanal-card c-yt reveal reveal-delay-1">
       <div class="kanal-accent accent-yt"></div>
-      <div class="kanal-top">
-        <div class="kanal-platform">
-          <span class="kanal-platform-badge badge-yt">YouTube Shorts</span>
+      <div class="kanal-corner-glow"></div>
+      <div class="kanal-platform-row">
+        <div class="kanal-icon-wrap">
+          <svg viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
         </div>
-        <div class="kanal-profile">
-          <div class="kanal-avatar">
-            <img src="img/profiles/eserbilenyt.jpg" alt="Eser Bilen">
-          </div>
-          <div>
-            <div class="kanal-handle">Eser Bilen</div>
-            <div class="kanal-platform-name">YouTube Shorts</div>
-          </div>
+        <span class="kanal-platform-badge badge-yt">YouTube Shorts</span>
+      </div>
+      <div class="kanal-profile">
+        <div class="kanal-avatar">
+          <img src="img/profiles/eserbilenyt.jpg" alt="Eser Bilen">
         </div>
-        <div class="kanal-reach">
-          <div class="kanal-reach-item">
-            <div class="kanal-reach-val">Shorts</div>
-            <div class="kanal-reach-label">Format</div>
-          </div>
-          <div class="kanal-reach-item">
-            <div class="kanal-reach-val">80M+</div>
-            <div class="kanal-reach-label">Toplam İzlenme</div>
-          </div>
-        </div>
-        <div class="kanal-desc">
-          Eser Bilen'in YouTube Shorts kanalı, HSİ Medya içeriklerinin
-          Instagram ötesine taşındığı ikinci büyük dağıtım hattımız.
-          Kısa format videolar burada farklı bir demografiyle buluşuyor;
-          tek bir içerik, iki platformda eş zamanlı patlıyor.
+        <div>
+          <div class="kanal-handle">Eser Bilen</div>
+          <div class="kanal-platform-name">YouTube Shorts</div>
         </div>
       </div>
-      <div class="kanal-bar"></div>
-      <div class="kanal-bottom">
-        <a class="kanal-link" href="https://www.youtube.com/@eserbilen6250/shorts" target="_blank" rel="noopener">
-          Kanala Git →
-        </a>
+      <div class="kanal-stats">
+        <div class="kanal-stat-item">
+          <div class="kanal-stat-val">80M+</div>
+          <div class="kanal-stat-label">İzlenme</div>
+        </div>
+        <div class="kanal-stat-item">
+          <div class="kanal-stat-val">Shorts</div>
+          <div class="kanal-stat-label">Format</div>
+        </div>
       </div>
+      <div class="kanal-desc">HSİ Medya içeriklerinin Instagram ötesine taşındığı ikinci büyük dağıtım hattımız. Tek içerik, iki platformda eş zamanlı patlıyor.</div>
+      <a class="kanal-cta" href="https://www.youtube.com/@eserbilen6250/shorts" target="_blank" rel="noopener">
+        Kanala Git <span class="kanal-cta-arrow">→</span>
+      </a>
     </div>
 
     <!-- Facebook: Hatay Sandık İçi -->
-    <div class="kanal-card">
+    <div class="kanal-card c-fb reveal reveal-delay-2">
       <div class="kanal-accent accent-fb"></div>
-      <div class="kanal-top">
-        <div class="kanal-platform">
-          <span class="kanal-platform-badge badge-fb">Facebook</span>
+      <div class="kanal-corner-glow"></div>
+      <div class="kanal-platform-row">
+        <div class="kanal-icon-wrap">
+          <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
         </div>
-        <div class="kanal-profile">
-          <div class="kanal-avatar">
-            <img src="img/profiles/hataysandikici_facebook.png" alt="Hatay Sandık İçi">
-          </div>
-          <div>
-            <div class="kanal-handle">Hatay Sandık İçi</div>
-            <div class="kanal-platform-name">Facebook Sayfası</div>
-          </div>
+        <span class="kanal-platform-badge badge-fb">Facebook</span>
+      </div>
+      <div class="kanal-profile">
+        <div class="kanal-avatar">
+          <img src="img/profiles/hataysandikici_facebook.png" alt="Hatay Sandık İçi">
         </div>
-        <div class="kanal-reach">
-          <div class="kanal-reach-item">
-            <div class="kanal-reach-val">Facebook</div>
-            <div class="kanal-reach-label">Platform</div>
-          </div>
-          <div class="kanal-reach-item">
-            <div class="kanal-reach-val">Yerel</div>
-            <div class="kanal-reach-label">Hedef Kitle</div>
-          </div>
-        </div>
-        <div class="kanal-desc">
-          Hatay'ın köklü Facebook topluluğu Sandık İçi Lezzetler,
-          HSİ Medya içeriklerinin yerel ve yaşlı demografiye
-          nüfuz ettiği üçüncü dağıtım kanalımız. Instagram'ı
-          kullanmayan ama lezzete meraklı kitlelere doğrudan ulaşıyoruz.
+        <div>
+          <div class="kanal-handle">Hatay Sandık İçi</div>
+          <div class="kanal-platform-name">Facebook Sayfası</div>
         </div>
       </div>
-      <div class="kanal-bar"></div>
-      <div class="kanal-bottom">
-        <a class="kanal-link" href="https://www.facebook.com/sandikicilezzetler/" target="_blank" rel="noopener">
-          Sayfaya Git →
-        </a>
+      <div class="kanal-stats">
+        <div class="kanal-stat-item">
+          <div class="kanal-stat-val">Yerel</div>
+          <div class="kanal-stat-label">Hedef Kitle</div>
+        </div>
+        <div class="kanal-stat-item">
+          <div class="kanal-stat-val">3.</div>
+          <div class="kanal-stat-label">Kanal</div>
+        </div>
       </div>
+      <div class="kanal-desc">Sandık İçi Lezzetler, HSİ Medya içeriklerinin yerel demografiye nüfuz ettiği üçüncü kanalımız. Instagram'ı kullanmayan kitlelere doğrudan ulaşıyoruz.</div>
+      <a class="kanal-cta" href="https://www.facebook.com/sandikicilezzetler/" target="_blank" rel="noopener">
+        Sayfaya Git <span class="kanal-cta-arrow">→</span>
+      </a>
     </div>
 
   </div>
