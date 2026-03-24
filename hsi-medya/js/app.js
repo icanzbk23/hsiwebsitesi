@@ -1,9 +1,7 @@
 // js/app.js
-// Thumbnail yükleme, render, filtre, popup
+// Thumbnail yükleme, render, filtre, popup, hash routing
 
 // ── THUMBNAIL YÜKLE ──────────────────────────────────────────────
-// data/mekanlar.json'dan Apify ile doldurulan thumbnail'ları çek,
-// MEKANLAR dizisine patch'le, sonra grid'i yeniden çiz.
 async function loadThumbnails() {
   try {
     const res = await fetch('data/mekanlar.json');
@@ -21,7 +19,7 @@ async function loadThumbnails() {
       });
     });
 
-    renderCards(currentFilter); // thumbnail gelince yenile
+    renderCards(currentFilter);
     console.log('✅ Thumbnails yüklendi');
   } catch {
     console.log('ℹ️  data/mekanlar.json bulunamadı — placeholder kullanılıyor');
@@ -37,7 +35,9 @@ const SVG_USER = `<svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 
 const SVG_PLAY = `<svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>`;
 
 function getFilteredList() {
-  let list = currentFilter === 'hepsi' ? MEKANLAR : MEKANLAR.filter(m => m.cat === currentFilter);
+  let list = currentFilter === 'hepsi'
+    ? AKTIF_MEKANLAR
+    : AKTIF_MEKANLAR.filter(m => m.cat === currentFilter);
   if (currentSearch) {
     const q = currentSearch.toLowerCase();
     list = list.filter(m => m.name.toLowerCase().includes(q) || (m.loc||'').toLowerCase().includes(q));
@@ -51,8 +51,8 @@ function renderCards(filter) {
   document.getElementById('mekan-grid').innerHTML = list.length === 0
     ? `<div style="grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--gray);font-size:14px;letter-spacing:1px">Sonuç bulunamadı</div>`
     : list.map((m, i) => {
-    const topViews = m.reels[0].views;
-    const thumb    = m.reels[0].thumb;
+    const topViews  = m.reels[0].views;
+    const thumb     = m.reels[0].thumb;
     const profileEl = m.logo
       ? `<img class="card-profile-img" src="${m.logo}" alt="${m.name}">`
       : `<div class="card-profile-img-empty">${(m.name||'?')[0]}</div>`;
@@ -87,6 +87,55 @@ function renderCards(filter) {
   }).join('');
 }
 
+// ── FİLTRE SAYILARI ───────────────────────────────────────────────
+function updateFilterCounts() {
+  const counts = {
+    hepsi:    AKTIF_MEKANLAR.length,
+    kebap:    AKTIF_MEKANLAR.filter(m => m.cat === 'kebap').length,
+    restoran: AKTIF_MEKANLAR.filter(m => m.cat === 'restoran').length,
+    kafe:     AKTIF_MEKANLAR.filter(m => m.cat === 'kafe').length,
+    yoresel:  AKTIF_MEKANLAR.filter(m => m.cat === 'yoresel').length,
+  };
+  document.querySelectorAll('.filt[data-cat]').forEach(btn => {
+    const cat   = btn.dataset.cat;
+    const label = btn.dataset.label || btn.textContent.replace(/\s*\(\d+\)/, '').trim();
+    btn.dataset.label = label;
+    const n = counts[cat];
+    btn.textContent = (n !== undefined && n > 0) ? `${label} (${n})` : label;
+  });
+}
+
+// ── YAKINDA RENDER ────────────────────────────────────────────────
+function renderYakinda() {
+  const grid = document.getElementById('yakinda-grid');
+  if (!grid) return;
+
+  const lockSvg = `<svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>`;
+
+  grid.innerHTML = YAKINDA_MEKANLAR.map(m => {
+    const logoEl = m.logo
+      ? `<div class="yakinda-logo"><img src="${m.logo}" alt="${m.name}"></div>`
+      : `<div class="yakinda-logo-empty">${(m.name||'?')[0]}</div>`;
+    return `
+      <div class="yakinda-card">
+        <span class="soon-dot">Yakında</span>
+        <div class="yakinda-logo-row">
+          ${logoEl}
+          <div>
+            <div class="yakinda-name">${m.name}</div>
+            <div class="yakinda-sub">${m.catLabel}</div>
+          </div>
+        </div>
+        <div class="yakinda-week">HSİ Medya'da yakında</div>
+        <div class="yakinda-lock">${lockSvg}</div>
+      </div>`;
+  }).join('');
+
+  // Yakında tab badge sayısını otomatik güncelle
+  const badge = document.querySelector('.soon-badge');
+  if (badge) badge.textContent = YAKINDA_MEKANLAR.length + ' YENİ';
+}
+
 // ── FİLTRE ────────────────────────────────────────────────────────
 function doFilter(btn, cat) {
   document.querySelectorAll('.filt').forEach(b => b.classList.remove('active'));
@@ -103,7 +152,7 @@ function doSearch(val) {
 
 // ── POPUP ─────────────────────────────────────────────────────────
 function openPopup(id) {
-  const m = MEKANLAR.find(x => x.id === id);
+  const m = AKTIF_MEKANLAR.find(x => x.id === id);
   if (!m) return;
 
   document.getElementById('pop-cat').textContent       = m.catLabel;
@@ -114,21 +163,19 @@ function openPopup(id) {
   document.getElementById('pop-about').textContent     = m.about;
   document.getElementById('pop-hsi').innerHTML         = '✦ ' + m.hsi;
 
-  // Profil fotoğrafı popup başlığında
   const popLogoWrap = document.getElementById('pop-logo-wrap');
   if (m.logo) {
-    popLogoWrap.innerHTML = `<img class="pop-logo" src="${m.logo}" alt="${m.name}">`;
+    popLogoWrap.innerHTML    = `<img class="pop-logo" src="${m.logo}" alt="${m.name}">`;
     popLogoWrap.style.display = 'block';
   } else {
-    popLogoWrap.innerHTML = `<div class="pop-logo-emoji">${m.emoji}</div>`;
+    popLogoWrap.innerHTML    = `<div class="pop-logo-emoji">${m.emoji}</div>`;
     popLogoWrap.style.display = 'block';
   }
 
-  const igLink = document.getElementById('pop-ig-link');
+  const igLink     = document.getElementById('pop-ig-link');
   igLink.href      = m.ig;
   igLink.innerHTML = '📸 ' + m.igHandle;
 
-  // Reels
   document.getElementById('pop-reels').innerHTML = m.reels.map(r => `
     <a class="reel-card" href="${r.url}" target="_blank" rel="noopener">
       <div class="reel-thumb">
@@ -150,7 +197,6 @@ function openPopup(id) {
     </a>
   `).join('');
 
-  // Info kartları
   document.getElementById('pop-infos').innerHTML = m.infos.map(i => `
     <div class="pop-info-card">
       <div class="pop-info-label">${i.label}</div>
@@ -162,16 +208,30 @@ function openPopup(id) {
   document.getElementById('popup').classList.add('open');
   document.getElementById('popupBox').scrollTop = 0;
   document.body.style.overflow = 'hidden';
+
+  // Hash routing: URL güncelle
+  history.pushState({ popup: id }, '', '#' + id);
 }
 
 function closePopup() {
   document.getElementById('popup').classList.remove('open');
   document.body.style.overflow = '';
+  // Hash'i temizle (geri tuşuyla da çalışır)
+  if (location.hash) history.pushState(null, '', location.pathname + location.search);
 }
 
 function closeOutside(e) {
   if (e.target.id === 'popup') closePopup();
 }
+
+// Tarayıcı geri tuşu popup'ı kapat
+window.addEventListener('popstate', () => {
+  const popup = document.getElementById('popup');
+  if (popup && popup.classList.contains('open')) {
+    document.getElementById('popup').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+});
 
 // ── TAB ───────────────────────────────────────────────────────────
 function switchTab(tab, btn) {
@@ -183,5 +243,14 @@ function switchTab(tab, btn) {
 
 // ── BAŞLAT ────────────────────────────────────────────────────────
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closePopup(); });
-renderCards('hepsi');   // önce emoji ile hızlı render
+
+renderCards('hepsi');   // önce hızlı render
 loadThumbnails();       // sonra JSON'dan thumbnail patch
+updateFilterCounts();   // filtre buton sayılarını güncelle
+renderYakinda();        // yakında tabını JS ile doldur
+
+// Sayfa yüklenince hash varsa popup aç
+const _initHash = location.hash.slice(1);
+if (_initHash && AKTIF_MEKANLAR.find(m => m.id === _initHash)) {
+  openPopup(_initHash);
+}

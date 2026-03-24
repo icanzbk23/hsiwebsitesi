@@ -1,9 +1,13 @@
 // js/mekanlar-data.js
-// Tüm mekan verisi burada. Thumbnail'lar doğrudan burada tanımlı.
+// Tüm mekan verisi burada.
+// status:'aktif'   → mekanlar gridinde görünür
+// status:'yakinda' → yakında tabında görünür
+// Aktif yapmak için sadece status:'yakinda' → status:'aktif' yap, başka dokunma.
 
 const MEKANLAR = [
   {
     id:'mikado', cat:'restoran', catLabel:'Restoran',
+    status:'aktif',
     name:'Mikado Restaurant', loc:'Antakya, Hatay', hours:'11:00 – 23:00',
     ig:'https://www.instagram.com/restaurantmikado/', igHandle:'@restaurantmikado',
     logo:'img/profiles/restaurantmikado.jpg',
@@ -24,6 +28,7 @@ const MEKANLAR = [
   },
   {
     id:'suleymanusta', cat:'kebap', catLabel:'Dönerci',
+    status:'aktif',
     name:'Süleyman Usta', loc:'Hatay', hours:'10:00 – 22:00',
     ig:'https://www.instagram.com/donerci.suleymanusta/', igHandle:'@donerci.suleymanusta',
     logo:'img/profiles/donerci.suleymanusta.jpg',
@@ -44,6 +49,7 @@ const MEKANLAR = [
   },
   {
     id:'sultansofrasi', cat:'restoran', catLabel:'Restoran',
+    status:'aktif',
     name:'Sultan Sofrası', loc:'Hatay', hours:'11:00 – 23:00',
     ig:'https://www.instagram.com/hatay_sultan_sofrasi/', igHandle:'@hatay_sultan_sofrasi',
     logo:'img/profiles/hatay_sultan_sofrasi.jpg',
@@ -64,6 +70,7 @@ const MEKANLAR = [
   },
   {
     id:'harveyburger', cat:'kafe', catLabel:'Burger',
+    status:'aktif',
     name:'Harvey Burger', loc:'Hatay', hours:'11:00 – 24:00',
     ig:'https://www.instagram.com/steakharveybrg.iskenderun/', igHandle:'@steakharveybrg.iskenderun',
     logo:'img/profiles/steakharveybrg.iskenderun.jpg',
@@ -84,6 +91,7 @@ const MEKANLAR = [
   },
   {
     id:'sutlukavurma', cat:'yoresel', catLabel:'Kavurmacı',
+    status:'aktif',
     name:'Sütlü Kavurma', loc:'Hatay', hours:'09:00 – 22:00',
     ig:'https://www.instagram.com/sutlukavurma/', igHandle:'@sutlukavurma',
     logo:'img/profiles/sutlukavurma.jpg',
@@ -95,15 +103,16 @@ const MEKANLAR = [
       {sc:'DVvca6zDKZk', url:'https://www.instagram.com/reel/DVvca6zDKZk/', views:'1M',    likes:'5K',   caption:'Sarımsaklı İlikli Kemik Sulu Kavurmalı Mercimek Çorbası…💛 #sütlükavurma #iskenderun #kavurma #hata', thumb:'img/reels/DVvca6zDKZk.jpg'},
     ],
     infos:[
-      {label:'Kategori',  val:'Kavurmacı', sub:'Hatay Mutfağı'},
-      {label:'Instagram', val:'@sutlukavurma',      sub:'138.000 takipçi'},
-      {label:'En Viral',  val:'21.9M',              sub:'Görüntüleme'},
-      {label:'Konum',     val:'Hatay',              sub:'Türkiye'},
+      {label:'Kategori',  val:'Kavurmacı',      sub:'Hatay Mutfağı'},
+      {label:'Instagram', val:'@sutlukavurma',  sub:'138.000 takipçi'},
+      {label:'En Viral',  val:'21.9M',          sub:'Görüntüleme'},
+      {label:'Konum',     val:'Hatay',          sub:'Türkiye'},
     ],
     hsi:'HSİ Medya partneri — <strong>Hatay Mekanları</strong> & <strong>Hataş Sandık İçi</strong>'
   },
   {
     id:'egedoner', cat:'kebap', catLabel:'Dönerci',
+    status:'aktif',
     name:'Ege Döner', loc:'Hatay', hours:'10:00 – 23:00',
     ig:'https://www.instagram.com/egedonerrr/', igHandle:'@egedonerrr',
     logo:'img/profiles/egedonerrr.jpg',
@@ -124,6 +133,7 @@ const MEKANLAR = [
   },
   {
     id:'kubankuruyemis', cat:'kafe', catLabel:'Kuruyemiş',
+    status:'aktif',
     name:'Kuban Kuruyemiş', loc:'Hatay', hours:'09:00 – 22:00',
     ig:'https://www.instagram.com/kubankuruyemis/', igHandle:'@kubankuruyemis',
     logo:'img/profiles/kubankuruyemis.jpg',
@@ -144,6 +154,7 @@ const MEKANLAR = [
   },
   {
     id:'isteciftlik', cat:'yoresel', catLabel:'Yöresel Lezzetler',
+    status:'aktif',
     name:'İste Çiftlik', loc:'Hatay', hours:'10:00 – 22:00',
     ig:'https://www.instagram.com/isteciftlik/', igHandle:'@isteciftlik',
     logo:'img/profiles/isteciftlik.jpg',
@@ -164,6 +175,7 @@ const MEKANLAR = [
   },
   {
     id:'sezaiusta', cat:'kebap', catLabel:'Kebapçı',
+    status:'aktif',
     name:'Sezai Usta', loc:'Hatay', hours:'11:00 – 23:00',
     ig:'https://www.instagram.com/kebapci.sezaiusta/', igHandle:'@kebapci.sezaiusta',
     logo:'img/profiles/kebapci.sezaiusta.jpg',
@@ -184,6 +196,7 @@ const MEKANLAR = [
   },
   {
     id:'sinanozdemir', cat:'yoresel', catLabel:'Unlu Mamüller',
+    status:'aktif',
     coverPos:'center 70%',
     name:'Sinan Özdemir', loc:'Hatay', hours:'07:00 – 21:00',
     ig:'https://www.instagram.com/sinanozdemir023/', igHandle:'@sinanozdemir023',
@@ -196,15 +209,16 @@ const MEKANLAR = [
       {sc:'DWBVE_WjISj', url:'https://www.instagram.com/reel/DWBVE_WjISj/', views:'112K', likes:'', caption:'Bayrama özel kahvede kampanya', thumb:'img/reels/DWBVE_WjISj.jpg'},
     ],
     infos:[
-      {label:'Kategori',  val:'Unlu Mamüller',      sub:'Doğu Fırını'},
-      {label:'Instagram', val:'@sinanozdemir023',   sub:'22.700 takipçi'},
-      {label:'En Viral',  val:'378K',               sub:'Görüntüleme'},
-      {label:'Konum',     val:'Hatay',              sub:'Türkiye'},
+      {label:'Kategori',  val:'Unlu Mamüller',    sub:'Doğu Fırını'},
+      {label:'Instagram', val:'@sinanozdemir023', sub:'22.700 takipçi'},
+      {label:'En Viral',  val:'378K',             sub:'Görüntüleme'},
+      {label:'Konum',     val:'Hatay',            sub:'Türkiye'},
     ],
     hsi:'HSİ Medya partneri — <strong>Hatay Mekanları</strong>'
   },
   {
     id:'mustadoner', cat:'kebap', catLabel:'Dönerci',
+    status:'aktif',
     name:'Musta Döner', loc:'Hatay', hours:'10:00 – 22:00',
     ig:'https://www.instagram.com/mustadoner/', igHandle:'@mustadoner',
     logo:'img/profiles/mustadoner.jpg',
@@ -223,4 +237,46 @@ const MEKANLAR = [
     ],
     hsi:'HSİ Medya\'nın en viral içeriği — <strong>Hatay Mekanları</strong> & <strong>Hataş Sandık İçi</strong>'
   },
+
+  // ── YAKINDA ── status:'yakinda' → aktif yapmak için sadece bu satırı değiştir
+  {
+    id:'egebufe', cat:'kafe', catLabel:'Büfe & Atıştırmalık',
+    status:'yakinda',
+    name:'Ege Büfe', loc:'Hatay',
+    ig:'https://www.instagram.com/egebufee/', igHandle:'@egebufee',
+    logo:'img/profiles/egebufee.jpg', emoji:'🥪',
+    reels:[], infos:[],
+    about:'', hsi:'', hours:'', followers:''
+  },
+  {
+    id:'senoz', cat:'yoresel', catLabel:'Hatay Mutfağı',
+    status:'yakinda',
+    name:'Şenöz', loc:'Hatay',
+    ig:'#', igHandle:'—',
+    logo:null, emoji:'🫕',
+    reels:[], infos:[],
+    about:'', hsi:'', hours:'', followers:''
+  },
+  {
+    id:'antochia', cat:'kebap', catLabel:'Döner',
+    status:'yakinda',
+    name:'Antochia', loc:'Hatay',
+    ig:'#', igHandle:'—',
+    logo:null, emoji:'🥙',
+    reels:[], infos:[],
+    about:'', hsi:'', hours:'', followers:''
+  },
+  {
+    id:'saudadearsuz', cat:'kafe', catLabel:'Kafe & Brunch',
+    status:'yakinda',
+    name:'Saudade Arsuz', loc:'Arsuz, Hatay',
+    ig:'https://www.instagram.com/saudadearsuz/', igHandle:'@saudadearsuz',
+    logo:'img/profiles/saudadearsuz.jpg', emoji:'☕',
+    reels:[], infos:[],
+    about:'', hsi:'', hours:'', followers:''
+  },
 ];
+
+// ── SABİT FİLTRELER ───────────────────────────────────────────────
+const AKTIF_MEKANLAR  = MEKANLAR.filter(m => m.status === 'aktif');
+const YAKINDA_MEKANLAR = MEKANLAR.filter(m => m.status === 'yakinda');

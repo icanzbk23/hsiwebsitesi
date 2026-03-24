@@ -3,7 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HSİ Medya — Mekanlar</title>
+<title>Mekanlar — HSİ Medya | Hatay'ın Viral Lezzet Mekanları</title>
+<meta name="description" content="HSİ Medya partneri Hatay mekanlarını keşfedin. Musta Döner, Sütlü Kavurma, Sultan Sofrası ve daha fazlası — toplam 80M+ izlenme.">
+<link rel="canonical" href="https://hsiwebsitesi-fgpt.vercel.app/mekanlar.html">
+<!-- Open Graph -->
+<meta property="og:type"        content="website">
+<meta property="og:url"         content="https://hsiwebsitesi-fgpt.vercel.app/mekanlar.html">
+<meta property="og:title"       content="Mekanlar — HSİ Medya | Hatay'ın Viral Lezzet Mekanları">
+<meta property="og:description" content="Hatay'ın en viral lezzet mekanları. 80M+ izlenme, 11 partner mekan.">
+<meta property="og:image"       content="https://hsiwebsitesi-fgpt.vercel.app/img/reels/DTcneytjb_j.jpg">
+<!-- Twitter Card -->
+<meta name="twitter:card"        content="summary_large_image">
+<meta name="twitter:title"       content="Mekanlar — HSİ Medya">
+<meta name="twitter:description" content="Hatay'ın en viral lezzet mekanları — HSİ Medya ile 80M+ izlenme.">
+<meta name="twitter:image"       content="https://hsiwebsitesi-fgpt.vercel.app/img/reels/DTcneytjb_j.jpg">
+<!-- GA4 — GA_MEASUREMENT_ID kısmını kendi ID'nle değiştir -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','GA_MEASUREMENT_ID');</script>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -392,11 +408,11 @@ nav{position:fixed;top:0;width:100%;z-index:200;background:rgba(10,10,10,.96);
         <input class="search-bar" id="searchBar" type="text" placeholder="Mekan ara…" oninput="doSearch(this.value)">
       </div>
       <div class="filter-row">
-        <button class="filt active" onclick="doFilter(this,'hepsi')">Tümü</button>
-        <button class="filt" onclick="doFilter(this,'kebap')">Kebap & Döner</button>
-        <button class="filt" onclick="doFilter(this,'restoran')">Restoran</button>
-        <button class="filt" onclick="doFilter(this,'kafe')">Kafe & Atıştırmalık</button>
-        <button class="filt" onclick="doFilter(this,'yoresel')">Yöresel Lezzetler</button>
+        <button class="filt active" data-cat="hepsi"    onclick="doFilter(this,'hepsi')">Tümü</button>
+        <button class="filt"        data-cat="kebap"    onclick="doFilter(this,'kebap')">Kebap & Döner</button>
+        <button class="filt"        data-cat="restoran" onclick="doFilter(this,'restoran')">Restoran</button>
+        <button class="filt"        data-cat="kafe"     onclick="doFilter(this,'kafe')">Kafe & Atıştırmalık</button>
+        <button class="filt"        data-cat="yoresel"  onclick="doFilter(this,'yoresel')">Yöresel Lezzetler</button>
       </div>
     </div>
     <div class="mekan-grid" id="mekan-grid"></div>
@@ -410,56 +426,8 @@ nav{position:fixed;top:0;width:100%;z-index:200;background:rgba(10,10,10,.96);
         <h2>Yakında Aramızda</h2>
         <div class="gold-line"></div>
       </div>
-      <div class="yakinda-grid">
-        <div class="yakinda-card">
-          <span class="soon-dot">Yakında</span>
-          <div class="yakinda-logo-row">
-            <div class="yakinda-logo"><img src="img/profiles/egebufee.jpg" alt="Ege Büfe"></div>
-            <div>
-              <div class="yakinda-name">Ege Büfe</div>
-              <div class="yakinda-sub">Büfe & Atıştırmalık</div>
-            </div>
-          </div>
-          <div class="yakinda-week">HSİ Medya'da yakında</div>
-          <div class="yakinda-lock"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
-        </div>
-        <div class="yakinda-card">
-          <span class="soon-dot">Yakında</span>
-          <div class="yakinda-logo-row">
-            <div class="yakinda-logo-empty">Ş</div>
-            <div>
-              <div class="yakinda-name">Şenöz</div>
-              <div class="yakinda-sub">Hatay Mutfağı</div>
-            </div>
-          </div>
-          <div class="yakinda-week">HSİ Medya'da yakında</div>
-          <div class="yakinda-lock"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
-        </div>
-        <div class="yakinda-card">
-          <span class="soon-dot">Yakında</span>
-          <div class="yakinda-logo-row">
-            <div class="yakinda-logo-empty">A</div>
-            <div>
-              <div class="yakinda-name">Antochia</div>
-              <div class="yakinda-sub">Döner</div>
-            </div>
-          </div>
-          <div class="yakinda-week">HSİ Medya'da yakında</div>
-          <div class="yakinda-lock"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
-        </div>
-        <div class="yakinda-card">
-          <span class="soon-dot">Yakında</span>
-          <div class="yakinda-logo-row">
-            <div class="yakinda-logo"><img src="img/profiles/saudadearsuz.jpg" alt="Saudade Arsuz"></div>
-            <div>
-              <div class="yakinda-name">Saudade Arsuz</div>
-              <div class="yakinda-sub">Kafe & Brunch</div>
-            </div>
-          </div>
-          <div class="yakinda-week">HSİ Medya'da yakında</div>
-          <div class="yakinda-lock"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
-        </div>
-      </div>
+      <!-- renderYakinda() tarafından doldurulur — buraya elle kart ekleme -->
+      <div class="yakinda-grid" id="yakinda-grid"></div>
     </div>
   </div>
 </div>
