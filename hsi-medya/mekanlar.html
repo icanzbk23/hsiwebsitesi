@@ -391,6 +391,29 @@ nav{position:fixed;top:0;width:100%;z-index:200;background:rgba(10,10,10,.96);
   nav .nav-links{display:none}
   .nav-burger{display:flex}
 }
+
+/* GRAIN OVERLAY */
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:99999;opacity:.03;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:200px 200px}
+
+/* KLAVYE NAVİGASYONU */
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px}
+a:focus-visible,button:focus-visible{border-radius:6px}
+
+/* BOŞ DURUM */
+.empty-state{grid-column:1/-1;text-align:center;padding:72px 20px}
+.empty-icon{font-size:36px;opacity:.25;margin-bottom:16px}
+.empty-title{font-family:var(--font-display);font-size:22px;color:var(--white);opacity:.4;margin-bottom:8px}
+.empty-sub{font-size:13px;color:var(--gray);letter-spacing:.5px}
+
+/* HAREKET HASSASIYETI */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .mekan-card{animation:none!important}
+  .reel-bar{animation:none}
+  .soon-dot::before{animation:none}
+}
 </style>
 </head>
 <body>
@@ -436,11 +459,11 @@ nav{position:fixed;top:0;width:100%;z-index:200;background:rgba(10,10,10,.96);
         <input class="search-bar" id="searchBar" type="text" placeholder="Mekan ara…" oninput="doSearch(this.value)">
       </div>
       <div class="filter-row">
-        <button class="filt active" data-cat="hepsi"    onclick="doFilter(this,'hepsi')">Tümü</button>
-        <button class="filt"        data-cat="kebap"    onclick="doFilter(this,'kebap')">Kebap & Döner</button>
-        <button class="filt"        data-cat="restoran" onclick="doFilter(this,'restoran')">Restoran</button>
-        <button class="filt"        data-cat="kafe"     onclick="doFilter(this,'kafe')">Kafe & Atıştırmalık</button>
-        <button class="filt"        data-cat="yoresel"  onclick="doFilter(this,'yoresel')">Yöresel Lezzetler</button>
+        <button type="button" class="filt active" data-cat="hepsi"    onclick="doFilter(this,'hepsi')">Tümü</button>
+        <button type="button" class="filt"        data-cat="kebap"    onclick="doFilter(this,'kebap')">Kebap & Döner</button>
+        <button type="button" class="filt"        data-cat="restoran" onclick="doFilter(this,'restoran')">Restoran</button>
+        <button type="button" class="filt"        data-cat="kafe"     onclick="doFilter(this,'kafe')">Kafe & Atıştırmalık</button>
+        <button type="button" class="filt"        data-cat="yoresel"  onclick="doFilter(this,'yoresel')">Yöresel Lezzetler</button>
       </div>
     </div>
     <div class="mekan-grid" id="mekan-grid"></div>
@@ -461,9 +484,9 @@ nav{position:fixed;top:0;width:100%;z-index:200;background:rgba(10,10,10,.96);
 </div>
 
 <!-- POPUP -->
-<div class="popup-overlay" id="popup" onclick="closeOutside(event)">
+<div class="popup-overlay" id="popup" role="dialog" aria-modal="true" aria-labelledby="pop-name" onclick="closeOutside(event)">
   <div class="popup-box" id="popupBox">
-    <button class="pop-close" onclick="closePopup()">✕</button>
+    <button class="pop-close" onclick="closePopup()" aria-label="Kapat">✕</button>
     <div class="pop-head">
       <div id="pop-logo-wrap" style="display:none;margin-bottom:16px"></div>
       <div class="pop-cat" id="pop-cat"></div>

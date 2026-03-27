@@ -49,7 +49,7 @@ function renderCards(filter) {
   currentFilter = filter;
   const list = getFilteredList();
   document.getElementById('mekan-grid').innerHTML = list.length === 0
-    ? `<div style="grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--gray);font-size:14px;letter-spacing:1px">Sonuç bulunamadı</div>`
+    ? `<div class="empty-state"><div class="empty-icon">◎</div><div class="empty-title">Sonuç bulunamadı</div><div class="empty-sub">Farklı bir arama terimi veya filtre deneyin</div></div>`
     : list.map((m, i) => {
     const topViews  = m.reels[0].views;
     const thumb     = m.reels[0].thumb;
@@ -57,7 +57,7 @@ function renderCards(filter) {
       ? `<img class="card-profile-img" src="${m.logo}" alt="${m.name}">`
       : `<div class="card-profile-img-empty">${(m.name||'?')[0]}</div>`;
     return `
-    <div class="mekan-card" data-id="${m.id}" onclick="openPopup('${m.id}')" style="animation-delay:${i * 0.05}s">
+    <div class="mekan-card" data-id="${m.id}" role="button" tabindex="0" onclick="openPopup('${m.id}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openPopup('${m.id}')}" style="animation-delay:${i * 0.05}s">
       <div class="card-cover">
         ${thumb
           ? `<img src="${thumb}" alt="${m.name}" loading="lazy" style="${m.coverPos ? 'object-position:'+m.coverPos : ''}">`
