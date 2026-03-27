@@ -7,22 +7,28 @@ async function loadThumbnails() {
     const res = await fetch('data/mekanlar.json');
     if (!res.ok) throw new Error('JSON yok');
     const json = await res.json();
-    const map = json.reels || {};
+    const reelMap    = json.reels    || {};
+    const profileMap = json.profiles || {};
 
     MEKANLAR.forEach(m => {
+      // Takipçi sayısını güncelle (günlük refresh tarafından yazılır)
+      if (profileMap[m.id]?.followers) m.followers = profileMap[m.id].followers;
+
+      // Reel verilerini güncelle
       m.reels.forEach(r => {
-        const entry = map[r.sc];
+        const entry = reelMap[r.sc];
         if (!entry) return;
         if (entry.thumb)   r.thumb   = entry.thumb;
         if (entry.caption) r.caption = entry.caption;
         if (entry.likes)   r.likes   = entry.likes;
+        if (entry.views)   r.views   = entry.views;   // izlenme güncellemesi
       });
     });
 
     renderCards(currentFilter);
-    console.log('✅ Thumbnails yüklendi');
+    console.log('✅ Veriler güncellendi —', json.last_updated || '');
   } catch {
-    console.log('ℹ️  data/mekanlar.json bulunamadı — placeholder kullanılıyor');
+    console.log('ℹ️  data/mekanlar.json bulunamadı — varsayılan değerler kullanılıyor');
   }
 }
 
