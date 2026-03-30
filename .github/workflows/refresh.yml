@@ -1,0 +1,41 @@
+name: Daily Instagram Data Refresh
+
+on:
+  schedule:
+    - cron: '0 6 * * *'   # Her gün 06:00 UTC = 09:00 Türkiye saati
+  workflow_dispatch:       # Actions sekmesinden manuel de tetiklenebilir
+
+permissions:
+  contents: write          # git push yapabilmek için gerekli
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20    # Actor + polling için yeterli
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run refresh script
+        env:
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+        run: node hsi-medya/scripts/refresh.js
+
+      - name: Commit & push if changed
+        run: |
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.name "HSI Data Bot"
+          git add hsi-medya/data/mekanlar.json hsi-medya/img/reels/
+          if git diff --staged --quiet; then
+            echo "⏭  Değişiklik yok, commit atlanıyor."
+          else
+            git commit -m "chore: günlük veri tazelemesi $(date -u +'%Y-%m-%d')"
+            git push
+            echo "✅ Push tamamlandı — Vercel deploy başlayacak."
+          fi
