@@ -241,6 +241,7 @@ const MEKANLAR = [
   {
     id:'egebufe', cat:'kafe', catLabel:'Büfe & Atıştırmalık',
     status:'aktif',
+    coverPos:'center 85%',
     name:'Ege Büfe', loc:'Hatay', hours:'09:00 – 24:00',
     ig:'https://www.instagram.com/egebufee/', igHandle:'@egebufee',
     logo:'img/profiles/egebufee.jpg', emoji:'🥤',
