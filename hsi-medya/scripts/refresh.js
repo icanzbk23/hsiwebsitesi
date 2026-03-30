@@ -145,9 +145,9 @@ function apifyReq(method, urlPath, body) {
   });
 }
 
-async function runActor(input, label) {
+async function runActor(input, label, actorId = 'apify~instagram-api-scraper') {
   console.log(`\n▶  ${label} başlatılıyor...`);
-  const res = await apifyReq('POST', '/acts/apify~instagram-api-scraper/runs', input);
+  const res = await apifyReq('POST', `/acts/${actorId}/runs`, input);
   if (!res.data?.id) {
     throw new Error(`Actor başlatılamadı: ${JSON.stringify(res).slice(0, 300)}`);
   }
@@ -282,8 +282,9 @@ async function main() {
 
   // ── 2. Profil verisi ──────────────────────────────────────────────
   const profDatasetId = await runActor(
-    { directUrls: PROFILE_URLS, resultsType: 'profiles' },
-    'Profil Scraper (11 hesap)'
+    { usernames: Object.keys(PROFILE_MAP) },
+    'Profil Scraper (12 hesap)',
+    'apify~instagram-profile-scraper'
   );
   const profItems = await getItems(profDatasetId);
   console.log(`   ${profItems.length} profil verisi alındı`);
