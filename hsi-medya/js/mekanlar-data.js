@@ -197,7 +197,7 @@ const MEKANLAR = [
   {
     id:'sinanozdemir', cat:'yoresel', catLabel:'Unlu Mamüller',
     status:'aktif',
-    coverPos:'center 70%',
+    coverPos:'center 20%',
     name:'Sinan Özdemir', loc:'Hatay', hours:'07:00 – 21:00',
     ig:'https://www.instagram.com/sinanozdemir023/', igHandle:'@sinanozdemir023',
     logo:'img/profiles/sinanozdemir023.jpg',
