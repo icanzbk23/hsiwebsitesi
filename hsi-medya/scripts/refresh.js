@@ -64,6 +64,9 @@ const REEL_URLS = [
   'https://www.instagram.com/reel/DTcneytjb_j/',
   'https://www.instagram.com/reel/DTr-MYvjLSh/',
   'https://www.instagram.com/reel/DTzmvK5jOsz/',
+  'https://www.instagram.com/reel/DWbEbIKDG1J/',
+  'https://www.instagram.com/reel/DWRMIALDHCa/',
+  'https://www.instagram.com/reel/DWOmkshjMPY/',
 ];
 
 // ── 11 Profil URL ─────────────────────────────────────────────────────
@@ -79,6 +82,7 @@ const PROFILE_URLS = [
   'https://www.instagram.com/kebapci.sezaiusta/',
   'https://www.instagram.com/sinanozdemir023/',
   'https://www.instagram.com/mustadoner/',
+  'https://www.instagram.com/egebufee/',
 ];
 
 // ── Shortcode → Mekan ID ──────────────────────────────────────────────
@@ -94,6 +98,7 @@ const SC_MAP = {
   'DVnqE1EDWo6':'sezaiusta',     'DVda4LrjXYD':'sezaiusta',     'DVOC8GrjZBK':'sezaiusta',
   'DV817k8jA0t':'sinanozdemir',  'DWB993zjM7X':'sinanozdemir',  'DWBVE_WjISj':'sinanozdemir',
   'DTcneytjb_j':'mustadoner',    'DTr-MYvjLSh':'mustadoner',    'DTzmvK5jOsz':'mustadoner',
+  'DWbEbIKDG1J':'egebufe',       'DWRMIALDHCa':'egebufe',       'DWOmkshjMPY':'egebufe',
 };
 
 // ── Instagram kullanıcı adı → Mekan ID ───────────────────────────────
@@ -109,6 +114,7 @@ const PROFILE_MAP = {
   'kebapci.sezaiusta':         'sezaiusta',
   'sinanozdemir023':           'sinanozdemir',
   'mustadoner':                'mustadoner',
+  'egebufee':                  'egebufe',
 };
 
 // ── Apify API yardımcıları ────────────────────────────────────────────

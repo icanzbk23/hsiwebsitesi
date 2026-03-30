@@ -238,16 +238,29 @@ const MEKANLAR = [
     hsi:'HSİ Medya\'nın en viral içeriği — <strong>Hatay Mekanları</strong> & <strong>Hatay Sandık İçi</strong>'
   },
 
-  // ── YAKINDA ── status:'yakinda' → aktif yapmak için sadece bu satırı değiştir
   {
     id:'egebufe', cat:'kafe', catLabel:'Büfe & Atıştırmalık',
-    status:'yakinda',
-    name:'Ege Büfe', loc:'Hatay',
+    status:'aktif',
+    name:'Ege Büfe', loc:'Hatay', hours:'09:00 – 24:00',
     ig:'https://www.instagram.com/egebufee/', igHandle:'@egebufee',
-    logo:'img/profiles/egebufee.jpg', emoji:'🥪',
-    reels:[], infos:[],
-    about:'', hsi:'', hours:'', followers:''
+    logo:'img/profiles/egebufee.jpg', emoji:'🥤',
+    followers:'1.418 takipçi',
+    about:'Hatay\'ın taze meyve suları ve el yapımı büfe lezzetleriyle öne çıkan Ege Büfe, kısa sürede viral içerikleriyle dikkat çekti. Renkli sunumları ve özgün tarifleriyle şehrin yeni gözdesi.',
+    reels:[
+      {sc:'DWbEbIKDG1J', url:'https://www.instagram.com/reel/DWbEbIKDG1J/', views:'342K', likes:'', caption:'', thumb:''},
+      {sc:'DWRMIALDHCa', url:'https://www.instagram.com/reel/DWRMIALDHCa/', views:'100K', likes:'', caption:'', thumb:''},
+      {sc:'DWOmkshjMPY', url:'https://www.instagram.com/reel/DWOmkshjMPY/', views:'81K',  likes:'', caption:'', thumb:''},
+    ],
+    infos:[
+      {label:'Kategori',  val:'Büfe & Atıştırmalık', sub:'Taze & El Yapımı'},
+      {label:'Instagram', val:'@egebufee',            sub:'1.418 takipçi'},
+      {label:'En Viral',  val:'342K',                 sub:'Görüntüleme'},
+      {label:'Konum',     val:'Hatay',                sub:'Türkiye'},
+    ],
+    hsi:'HSİ Medya partneri — <strong>Hatay Mekanları</strong>'
   },
+
+  // ── YAKINDA ── status:'yakinda' → aktif yapmak için sadece bu satırı değiştir
   {
     id:'senoz', cat:'yoresel', catLabel:'Hatay Mutfağı',
     status:'yakinda',
