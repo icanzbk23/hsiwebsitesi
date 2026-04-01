@@ -59,7 +59,7 @@ git push origin main
    - `profiles[mekanId]` → `{ followers, followersRaw }`
    - `last_updated` — ISO date string of last refresh
 
-4. **`scripts/refresh.js`** — Automated refresh. Calls Apify API for 33 reel URLs (`resultsType:"posts"`) and 11 profile URLs (`resultsType:"profiles"`), updates `data/mekanlar.json`, downloads new thumbnails. Pure Node.js — no npm dependencies.
+4. **`scripts/refresh.js`** — Automated refresh. Calls Apify API via two actor runs: `apify~instagram-api-scraper` for 36 reel URLs (`resultsType:"posts"`) and `apify~instagram-profile-scraper` for 12 profile usernames. Updates `data/mekanlar.json`, downloads new thumbnails. Pure Node.js — no npm dependencies.
 
 ### CSS Architecture
 
@@ -79,7 +79,9 @@ Brand-specific card glows in `mekanlar.html` use `[data-id="mekan-id"]` attribut
 
 ## Key Conventions
 
-- **Adding a new mekan**: Add entry to `MEKANLAR` array in `mekanlar-data.js`, add logo to `img/profiles/`, add brand glow CSS for its `data-id` in `mekanlar.html` (both `:hover` and `@media (hover:none)` blocks).
-- **Updating reel data**: For manual one-off updates run `apify_to_json.js` with a downloaded dataset. For automated daily updates the `scripts/refresh.js` workflow handles everything. Both use a `SC_MAP` (shortcode → mekan ID) — update it in both files when adding new reels. New profile URLs go in the `PROFILE_URLS` array and `PROFILE_MAP` object in `scripts/refresh.js`.
+- **Adding a new mekan**: Add entry to `MEKANLAR` array in `mekanlar-data.js`, add logo to `img/profiles/`, add brand glow CSS for its `data-id` in `mekanlar.html` (both `:hover` and `@media (hover:none)` blocks). Update `SC_MAP`, `PROFILE_URLS`, and `PROFILE_MAP` in `scripts/refresh.js`.
+- **`coverPos`** — optional field on a mekan object (e.g. `coverPos:'center 20%'`). Sets `object-position` on the card cover image. Use to keep a person's face visible when the thumbnail crops.
+- **Activating a yakında mekan**: Change `status:'yakinda'` → `status:'aktif'` in `mekanlar-data.js`. Fill in `reels[]`, `infos[]`, `about`, `hours`, `followers`. Remove its card from the Yakında grid in `index.html` if hardcoded there.
+- **Updating reel data**: For manual one-off updates run `apify_to_json.js` with a downloaded dataset. For automated daily updates the `scripts/refresh.js` workflow handles everything.
 - **GA4**: Both HTML files contain a `GA_MEASUREMENT_ID` placeholder. Replace with actual ID when ready to activate analytics.
 - **Fonts**: Loaded from Google Fonts in `<head>`. Max weight for Cormorant Garamond is 700 (900 is not available).
