@@ -67,6 +67,9 @@ const REEL_URLS = [
   'https://www.instagram.com/reel/DWbEbIKDG1J/',
   'https://www.instagram.com/reel/DWRMIALDHCa/',
   'https://www.instagram.com/reel/DWOmkshjMPY/',
+  'https://www.instagram.com/p/DWbW18hDBk1/',
+  'https://www.instagram.com/reel/DWgVyZAjHA7/',
+  'https://www.instagram.com/reel/DWlYEmTjFHG/',
 ];
 
 // ── 11 Profil URL ─────────────────────────────────────────────────────
@@ -83,6 +86,7 @@ const PROFILE_URLS = [
   'https://www.instagram.com/sinanozdemir023/',
   'https://www.instagram.com/mustadoner/',
   'https://www.instagram.com/egebufee/',
+  'https://www.instagram.com/ysantiochia/',
 ];
 
 // ── Shortcode → Mekan ID ──────────────────────────────────────────────
@@ -99,6 +103,7 @@ const SC_MAP = {
   'DV817k8jA0t':'sinanozdemir',  'DWB993zjM7X':'sinanozdemir',  'DWBVE_WjISj':'sinanozdemir',
   'DTcneytjb_j':'mustadoner',    'DTr-MYvjLSh':'mustadoner',    'DTzmvK5jOsz':'mustadoner',
   'DWbEbIKDG1J':'egebufe',       'DWRMIALDHCa':'egebufe',       'DWOmkshjMPY':'egebufe',
+  'DWbW18hDBk1':'ysantiochia',   'DWgVyZAjHA7':'ysantiochia',   'DWlYEmTjFHG':'ysantiochia',
 };
 
 // ── Instagram kullanıcı adı → Mekan ID ───────────────────────────────
@@ -115,6 +120,7 @@ const PROFILE_MAP = {
   'sinanozdemir023':           'sinanozdemir',
   'mustadoner':                'mustadoner',
   'egebufee':                  'egebufe',
+  'ysantiochia':               'ysantiochia',
 };
 
 // ── Apify API yardımcıları ────────────────────────────────────────────

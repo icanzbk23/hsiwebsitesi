@@ -272,13 +272,25 @@ const MEKANLAR = [
     about:'', hsi:'', hours:'', followers:''
   },
   {
-    id:'antochia', cat:'kebap', catLabel:'Döner',
-    status:'yakinda',
-    name:'Antochia', loc:'Hatay',
-    ig:'#', igHandle:'—',
-    logo:null, emoji:'🥙',
-    reels:[], infos:[],
-    about:'', hsi:'', hours:'', followers:''
+    id:'ysantiochia', cat:'kebap', catLabel:'Döner',
+    status:'aktif',
+    name:'Ysantiochia', loc:'Antakya, Hatay', hours:'11:00 – 23:00',
+    ig:'https://www.instagram.com/ysantiochia/', igHandle:'@ysantiochia',
+    logo:'img/profiles/ysantiochia.jpg', emoji:'🥙',
+    followers:'',
+    about:'Antakya\'nın kadim adını taşıyan Ysantiochia, tarihi şehrin ruhunu modern bir döner deneyimiyle buluşturuyor. Özgün tarifleri ve samimi atmosferiyle Hatay mutfak sahnesinin yeni ismi.',
+    reels:[
+      {sc:'DWbW18hDBk1', url:'https://www.instagram.com/p/DWbW18hDBk1/',    views:'37.7K', likes:'', caption:'', thumb:''},
+      {sc:'DWgVyZAjHA7', url:'https://www.instagram.com/reel/DWgVyZAjHA7/', views:'16K',   likes:'', caption:'', thumb:''},
+      {sc:'DWlYEmTjFHG', url:'https://www.instagram.com/reel/DWlYEmTjFHG/', views:'',      likes:'', caption:'', thumb:''},
+    ],
+    infos:[
+      {label:'Kategori',  val:'Döner',         sub:'Hatay Usulü'},
+      {label:'Instagram', val:'@ysantiochia',  sub:'takipçi'},
+      {label:'En Viral',  val:'37.7K',         sub:'Görüntüleme'},
+      {label:'Konum',     val:'Antakya',        sub:'Hatay, Türkiye'},
+    ],
+    hsi:'HSİ Medya partneri — <strong>Hatay Mekanları</strong>'
   },
   {
     id:'saudadearsuz', cat:'kafe', catLabel:'Kafe & Brunch',
