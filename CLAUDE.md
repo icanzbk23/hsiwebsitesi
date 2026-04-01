@@ -8,25 +8,19 @@ HSİ Medya — a static two-page website for a Turkish food media company based 
 
 ## Development Workflow
 
-There is no build or lint step. To preview locally, open the HTML files directly in a browser or use any static server:
+No build or lint step. To preview locally:
 
 ```bash
-# Quick local server (from hsi-medya/)
 cd hsi-medya && python3 -m http.server 8080
 ```
 
-To update Instagram data manually (requires a downloaded Apify dataset file):
+Automated daily refresh runs via GitHub Actions (`.github/workflows/refresh.yml`) every day at 06:00 UTC (09:00 TR). To trigger manually:
 
 ```bash
-# Place apify_dataset.json in hsi-medya/, then:
-node hsi-medya/apify_to_json.js
-# Outputs: data/mekanlar.json, downloads thumbnails to img/reels/
-```
-
-Automated daily refresh runs via GitHub Actions (`.github/workflows/refresh.yml`) every day at 06:00 UTC. It calls Apify API directly — no local file needed. To trigger manually from the CLI:
-
-```bash
-gh workflow run refresh.yml
+# Via GitHub API (token in git remote URL)
+curl -s -X POST -H "Authorization: token TOKEN" \
+  https://api.github.com/repos/icanzbk23/hsiwebsitesi/actions/workflows/refresh.yml/dispatches \
+  -d '{"ref":"main"}'
 ```
 
 To run the refresh script locally (requires `APIFY_TOKEN` env var):
@@ -35,26 +29,28 @@ To run the refresh script locally (requires `APIFY_TOKEN` env var):
 APIFY_TOKEN=apify_api_... node hsi-medya/scripts/refresh.js
 ```
 
-Deploy by pushing to main:
+Deploy by pushing to main (Vercel auto-deploys):
 
 ```bash
 git push origin main
 ```
 
+> **Note**: Pushing `.github/workflows/` requires the GitHub token to have `workflow` scope. The token is embedded in the git remote URL.
+
 ## Architecture
 
 ### Pages
 
-- **`hsi-medya/index.html`** — Home page. Hero, services (Hizmetler), mekan preview grid, broadcast channels. All CSS is inline. No external JS.
+- **`hsi-medya/index.html`** — Home page. Hero, services (Hizmetler), mekan preview grid, broadcast channels, Yakında section (hardcoded cards). All CSS is inline. No external JS.
 - **`hsi-medya/mekanlar.html`** — Venues explorer. Loads `js/mekanlar-data.js` and `js/app.js`. Tab UI (Mekanlar / Yakında), search, category filters, card grid, popup modal.
 
 ### Data Flow
 
-1. **`js/mekanlar-data.js`** — Single source of truth for venue data. Exports `MEKANLAR`, `AKTIF_MEKANLAR`, `YAKINDA_MEKANLAR` arrays. Each venue has: `id`, `cat`, `name`, `reels[]`, `infos[]`, `hsi` (partnership text). Edited manually when adding/updating venues.
+1. **`js/mekanlar-data.js`** — Single source of truth for venue data. Contains `MEKANLAR` array (12 aktif + 3 yakında), exported as `AKTIF_MEKANLAR` and `YAKINDA_MEKANLAR`. Each aktif mekan has: `id`, `cat`, `name`, `reels[]` (3 reels each), `infos[]`, `followers`, `about`, `hsi`. Edited manually when adding/updating venues.
 
 2. **`js/app.js`** — Renders mekanlar.html UI. On load, calls `loadThumbnails()` which fetches `data/mekanlar.json` and patches **thumbnail, caption, likes, views** (per reel) and **followers** (per mekan) into the in-memory data. Then re-renders cards. Hash routing (`#mekan-id`) opens/closes popup via `history.pushState`.
 
-3. **`data/mekanlar.json`** — Written by `apify_to_json.js` (manual) or `scripts/refresh.js` (automated). Structure:
+3. **`data/mekanlar.json`** — Written by `scripts/refresh.js` (automated) or `apify_to_json.js` (manual). Structure:
    - `reels[shortcode]` → `{ thumb, views, likes, caption, mekan }`
    - `profiles[mekanId]` → `{ followers, followersRaw }`
    - `last_updated` — ISO date string of last refresh
@@ -74,14 +70,21 @@ Brand-specific card glows in `mekanlar.html` use `[data-id="mekan-id"]` attribut
 ### Images
 
 - `img/profiles/` — Venue logos (referenced in mekanlar-data.js as `logo` field)
-- `img/reels/` — Instagram reel thumbnails (downloaded by apify_to_json.js, gitignored until committed)
-- Root-level images (`eserbilenyt.jpg`, `hataymekanları.jpg`, etc.) — untracked, used for social/content purposes
+- `img/reels/` — Instagram reel thumbnails (downloaded by refresh.js / apify_to_json.js)
 
 ## Key Conventions
 
-- **Adding a new mekan**: Add entry to `MEKANLAR` array in `mekanlar-data.js`, add logo to `img/profiles/`, add brand glow CSS for its `data-id` in `mekanlar.html` (both `:hover` and `@media (hover:none)` blocks). Update `SC_MAP`, `PROFILE_URLS`, and `PROFILE_MAP` in `scripts/refresh.js`.
+- **Adding a new mekan**: Add entry to `MEKANLAR` in `mekanlar-data.js`, add logo to `img/profiles/`, add brand glow CSS for its `data-id` in `mekanlar.html` (both `:hover` and `@media (hover:none)` blocks). Add shortcodes to `SC_MAP`, add username to `PROFILE_MAP` and `usernames` array in `scripts/refresh.js`.
 - **`coverPos`** — optional field on a mekan object (e.g. `coverPos:'center 20%'`). Sets `object-position` on the card cover image. Use to keep a person's face visible when the thumbnail crops.
-- **Activating a yakında mekan**: Change `status:'yakinda'` → `status:'aktif'` in `mekanlar-data.js`. Fill in `reels[]`, `infos[]`, `about`, `hours`, `followers`. Remove its card from the Yakında grid in `index.html` if hardcoded there.
-- **Updating reel data**: For manual one-off updates run `apify_to_json.js` with a downloaded dataset. For automated daily updates the `scripts/refresh.js` workflow handles everything.
+- **Card cover image** — always `reels[0].thumb`. To change which reel appears as the card cover, move it to index 0 in the `reels[]` array.
+- **Activating a yakında mekan**: Change `status:'yakinda'` → `status:'aktif'` in `mekanlar-data.js`. Fill in `reels[]`, `infos[]`, `about`, `hours`, `followers`. Remove its hardcoded card from the Yakında grid in `index.html`.
 - **GA4**: Both HTML files contain a `GA_MEASUREMENT_ID` placeholder. Replace with actual ID when ready to activate analytics.
 - **Fonts**: Loaded from Google Fonts in `<head>`. Max weight for Cormorant Garamond is 700 (900 is not available).
+
+## Active Mekanlar (12)
+
+`mikado`, `suleymanusta`, `sultansofrasi`, `harveyburger`, `sutlukavurma`, `egedoner`, `kubankuruyemis`, `isteciftlik`, `sezaiusta`, `sinanozdemir`, `mustadoner`, `egebufe`, `ysantiochia`
+
+## Yakında Mekanlar (3)
+
+`senoz`, `saudadearsuz` — also hardcoded in `index.html` Yakında grid. `antochia` entry was renamed to `ysantiochia` and activated.
