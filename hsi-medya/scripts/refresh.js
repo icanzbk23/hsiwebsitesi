@@ -99,7 +99,7 @@ const SC_MAP = {
   'DVOEFK7DbBJ':'egedoner',      'DUfzj5iDb9q':'egedoner',      'DQtebj7DXRP':'egedoner',
   'DVELpx2gotb':'kubankuruyemis','DTNNfbVgmZF':'kubankuruyemis','DOYKtV2jTE4':'kubankuruyemis',
   'DVODayZiMR1':'isteciftlik',   'DUvDpWTiLEr':'isteciftlik',   'DTC9Z2pCPwG':'isteciftlik',
-  'DVnqE1EDWo6':'sezaiusta',     'DVda4LrjXYD':'sezaiusta',     'DVOC8GrjZBK':'sezaiusta',
+  'DVnqE1EDWo6':'sezaiusta',     'DVda4LrjXYD':'sezaiusta',     'DVTH7SZjfd3':'sezaiusta',
   'DV817k8jA0t':'sinanozdemir',  'DWB993zjM7X':'sinanozdemir',  'DWBVE_WjISj':'sinanozdemir',
   'DTcneytjb_j':'mustadoner',    'DTr-MYvjLSh':'mustadoner',    'DTzmvK5jOsz':'mustadoner',
   'DWbEbIKDG1J':'egebufe',       'DWRMIALDHCa':'egebufe',       'DWOmkshjMPY':'egebufe',

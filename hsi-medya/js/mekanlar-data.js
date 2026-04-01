@@ -184,7 +184,7 @@ const MEKANLAR = [
     reels:[
       {sc:'DVnqE1EDWo6', url:'https://www.instagram.com/reel/DVnqE1EDWo6/', views:'2.2M', likes:'22K', caption:'Dışı Susamlı, İçi Kat Kat Lezzet! ✨ Susamın o efsane kokusu, nar gibi kızarmış lavaşla birleşti.', thumb:'img/reels/DVnqE1EDWo6.jpg'},
       {sc:'DVda4LrjXYD', url:'https://www.instagram.com/reel/DVda4LrjXYD/', views:'1.9M', likes:'27K', caption:'Sezai Usta\'da Lezzet Durakları: Çam Fıstıklı Köz Mantar! 🔥 Bazı lezzetler anlatılmaz, tadınca anlaş', thumb:'img/reels/DVda4LrjXYD.jpg'},
-      {sc:'DVOC8GrjZBK', url:'https://www.instagram.com/reel/DVOC8GrjZBK/', views:'272K', likes:'3K',  caption:'✨ Sırrı Közünde, Lezzeti Elinde! Bir mezeden fazlası; sabırla harlanan ateşin, isli patlıcanın ve ta', thumb:'img/reels/DVOC8GrjZBK.jpg'},
+      {sc:'DVTH7SZjfd3', url:'https://www.instagram.com/reel/DVTH7SZjfd3/', views:'535K', likes:'3.8K', caption:'Günün en güzel saati, Sezai Usta\'nın Kanat & But tabağıyla buluştuğunuz o andır!', thumb:'img/reels/DVTH7SZjfd3.jpg'},
     ],
     infos:[
       {label:'Kategori',  val:'Kebapçı',          sub:'Geleneksel Hatay'},
