@@ -46,7 +46,7 @@ git push origin main
 
 ### Data Flow
 
-1. **`js/mekanlar-data.js`** — Single source of truth for venue data. Contains `MEKANLAR` array (12 aktif + 3 yakında), exported as `AKTIF_MEKANLAR` and `YAKINDA_MEKANLAR`. Each aktif mekan has: `id`, `cat`, `name`, `reels[]` (3 reels each), `infos[]`, `followers`, `about`, `hsi`. Edited manually when adding/updating venues.
+1. **`js/mekanlar-data.js`** — Single source of truth for venue data. Contains `MEKANLAR` array (13 aktif + 2 yakında), exported as `AKTIF_MEKANLAR` and `YAKINDA_MEKANLAR`. Each aktif mekan has: `id`, `cat`, `name`, `reels[]` (3 reels each), `infos[]`, `followers`, `about`, `hsi`. Edited manually when adding/updating venues.
 
 2. **`js/app.js`** — Renders mekanlar.html UI. On load, calls `loadThumbnails()` which fetches `data/mekanlar.json` and patches **thumbnail, caption, likes, views** (per reel) and **followers** (per mekan) into the in-memory data. Then re-renders cards. Hash routing (`#mekan-id`) opens/closes popup via `history.pushState`.
 
@@ -81,10 +81,10 @@ Brand-specific card glows in `mekanlar.html` use `[data-id="mekan-id"]` attribut
 - **GA4**: Both HTML files contain a `GA_MEASUREMENT_ID` placeholder. Replace with actual ID when ready to activate analytics.
 - **Fonts**: Loaded from Google Fonts in `<head>`. Max weight for Cormorant Garamond is 700 (900 is not available).
 
-## Active Mekanlar (12)
+## Active Mekanlar (13)
 
 `mikado`, `suleymanusta`, `sultansofrasi`, `harveyburger`, `sutlukavurma`, `egedoner`, `kubankuruyemis`, `isteciftlik`, `sezaiusta`, `sinanozdemir`, `mustadoner`, `egebufe`, `ysantiochia`
 
-## Yakında Mekanlar (3)
+## Yakında Mekanlar (2)
 
-`senoz`, `saudadearsuz` — also hardcoded in `index.html` Yakında grid. `antochia` entry was renamed to `ysantiochia` and activated.
+`senoz`, `saudadearsuz` — also hardcoded in `index.html` Yakında grid.

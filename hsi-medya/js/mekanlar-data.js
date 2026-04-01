@@ -206,7 +206,7 @@ const MEKANLAR = [
     reels:[
       {sc:'DV817k8jA0t', url:'https://www.instagram.com/reel/DV817k8jA0t/', views:'378K', likes:'', caption:'TÜM HATAY DUYSUN! DOĞU FIRINI BAYRAM BOYUNCA HİZMETİNİZDE.', thumb:'img/reels/DV817k8jA0t.jpg'},
       {sc:'DWB993zjM7X', url:'https://www.instagram.com/reel/DWB993zjM7X/', views:'191K', likes:'', caption:'İyi ki varsınız', thumb:'img/reels/DWB993zjM7X.jpg'},
-      {sc:'DWBVE_WjISj', url:'https://www.instagram.com/reel/DWBVE_WjISj/', views:'112K', likes:'', caption:'Bayrama özel kahvede kampanya', thumb:'img/reels/DWBVE_WjISj.jpg'},
+      {sc:'DWT7ZUXDErw', url:'https://www.instagram.com/reel/DWT7ZUXDErw/', views:'', likes:'', caption:'', thumb:'img/reels/DWT7ZUXDErw.jpg'},
     ],
     infos:[
       {label:'Kategori',  val:'Unlu Mamüller',    sub:'Doğu Fırını'},
