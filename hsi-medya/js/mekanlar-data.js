@@ -28,7 +28,7 @@ const MEKANLAR = [
   },
   {
     id:'suleymanusta', cat:'kebap', catLabel:'Dönerci',
-    status:'aktif',
+    status:'aktif', coverPos:'center 20%',
     name:'Süleyman Usta', loc:'Hatay', hours:'10:00 – 22:00',
     ig:'https://www.instagram.com/donerci.suleymanusta/', igHandle:'@donerci.suleymanusta',
     logo:'img/profiles/donerci.suleymanusta.jpg',
