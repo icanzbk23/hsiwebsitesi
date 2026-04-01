@@ -274,6 +274,7 @@ const MEKANLAR = [
   {
     id:'ysantiochia', cat:'kebap', catLabel:'Döner',
     status:'aktif',
+    coverPos:'center 20%',
     name:'Ysantiochia', loc:'Antakya, Hatay', hours:'11:00 – 23:00',
     ig:'https://www.instagram.com/ysantiochia/', igHandle:'@ysantiochia',
     logo:'img/profiles/ysantiochia.jpg', emoji:'🥙',
