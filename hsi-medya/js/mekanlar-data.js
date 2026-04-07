@@ -8,7 +8,7 @@ const MEKANLAR = [
   {
     id:'mikado', cat:'restoran', catLabel:'Restoran',
     status:'aktif',
-    name:'Mikado Restaurant', loc:'Antakya, Hatay', hours:'11:00 – 23:00',
+    name:'Mikado Restaurant', loc:'İskenderun, Hatay', hours:'11:00 – 23:00',
     ig:'https://www.instagram.com/restaurantmikado/', igHandle:'@restaurantmikado',
     logo:'img/profiles/restaurantmikado.jpg',
     followers:'6.235 takipçi', emoji:'🍽️',
@@ -274,7 +274,7 @@ const MEKANLAR = [
   {
     id:'ysantiochia', cat:'kebap', catLabel:'Döner',
     status:'aktif',
-    name:'Ysantiochia', loc:'Antakya, Hatay', hours:'11:00 – 23:00',
+    name:'Ysantiochia', loc:'İskenderun, Hatay', hours:'11:00 – 23:00',
     ig:'https://www.instagram.com/ysantiochia/', igHandle:'@ysantiochia',
     logo:'img/profiles/ysantiochia.jpg', emoji:'🥙',
     followers:'',
