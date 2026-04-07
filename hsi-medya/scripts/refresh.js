@@ -68,7 +68,7 @@ const REEL_URLS = [
   'https://www.instagram.com/reel/DWRMIALDHCa/',
   'https://www.instagram.com/reel/DWOmkshjMPY/',
   'https://www.instagram.com/p/DWbW18hDBk1/',
-  'https://www.instagram.com/reel/DWgVyZAjHA7/',
+  'https://www.instagram.com/reel/DWvyku5DHjK/',
   'https://www.instagram.com/reel/DWlYEmTjFHG/',
 ];
 
@@ -103,7 +103,7 @@ const SC_MAP = {
   'DV817k8jA0t':'sinanozdemir',  'DWB993zjM7X':'sinanozdemir',  'DWT7ZUXDErw':'sinanozdemir',
   'DTcneytjb_j':'mustadoner',    'DTr-MYvjLSh':'mustadoner',    'DTzmvK5jOsz':'mustadoner',
   'DWbEbIKDG1J':'egebufe',       'DWRMIALDHCa':'egebufe',       'DWOmkshjMPY':'egebufe',
-  'DWbW18hDBk1':'ysantiochia',   'DWgVyZAjHA7':'ysantiochia',   'DWlYEmTjFHG':'ysantiochia',
+  'DWbW18hDBk1':'ysantiochia',   'DWvyku5DHjK':'ysantiochia',   'DWlYEmTjFHG':'ysantiochia',
 };
 
 // ── Instagram kullanıcı adı → Mekan ID ───────────────────────────────

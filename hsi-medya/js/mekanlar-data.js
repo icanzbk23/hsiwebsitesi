@@ -282,7 +282,7 @@ const MEKANLAR = [
     reels:[
       {sc:'DWlYEmTjFHG', url:'https://www.instagram.com/reel/DWlYEmTjFHG/', views:'',      likes:'', caption:'', thumb:''},
       {sc:'DWbW18hDBk1', url:'https://www.instagram.com/p/DWbW18hDBk1/',    views:'37.7K', likes:'', caption:'', thumb:''},
-      {sc:'DWgVyZAjHA7', url:'https://www.instagram.com/reel/DWgVyZAjHA7/', views:'16K',   likes:'', caption:'', thumb:''},
+      {sc:'DWvyku5DHjK', url:'https://www.instagram.com/reel/DWvyku5DHjK/', views:'',     likes:'', caption:'', thumb:'img/reels/DWvyku5DHjK.jpg'},
     ],
     infos:[
       {label:'Kategori',  val:'Döner',         sub:'Hatay Usulü'},
