@@ -1,0 +1,6 @@
+{
+  "outputDirectory": "hsi-medya",
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/maintenance.html" }
+  ]
+}
