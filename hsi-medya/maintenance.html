@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bakımda — HSİ Medya</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #C9A84C;
+      --gold-light: #E8C96A;
+      --bg: #0A0A0A;
+      --surface: #111111;
+      --text: #F5F0E8;
+      --text-muted: rgba(245,240,232,0.45);
+      --font-display: 'Cormorant Garamond', serif;
+      --font-body: 'DM Sans', sans-serif;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    /* Subtle animated background grain */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 560px;
+      width: 100%;
+    }
+
+    /* Gold line top */
+    .accent-line {
+      width: 48px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
+      margin: 0 auto 2.5rem;
+      border-radius: 2px;
+    }
+
+    /* Wrench icon */
+    .icon-wrap {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 2rem;
+      border: 1.5px solid rgba(201,168,76,0.3);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .icon-wrap svg {
+      width: 28px;
+      height: 28px;
+      stroke: var(--gold);
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      animation: spin-slow 6s linear infinite;
+    }
+
+    @keyframes spin-slow {
+      0%   { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .brand {
+      font-family: var(--font-display);
+      font-size: clamp(0.8rem, 2vw, 0.9rem);
+      font-weight: 400;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.25rem;
+    }
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 7vw, 3.6rem);
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      margin-bottom: 1.25rem;
+      color: var(--text);
+    }
+
+    h1 span {
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .desc {
+      font-size: clamp(0.9rem, 2.5vw, 1rem);
+      font-weight: 300;
+      line-height: 1.75;
+      color: var(--text-muted);
+      margin-bottom: 2.5rem;
+    }
+
+    /* Divider dots */
+    .dots {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      margin-bottom: 2.5rem;
+    }
+
+    .dots span {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--gold);
+      opacity: 0.4;
+      animation: pulse 1.6s ease-in-out infinite;
+    }
+
+    .dots span:nth-child(2) { animation-delay: 0.3s; }
+    .dots span:nth-child(3) { animation-delay: 0.6s; }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.2; transform: scale(1); }
+      50%       { opacity: 0.9; transform: scale(1.4); }
+    }
+
+    .footer-note {
+      font-size: 0.78rem;
+      font-weight: 300;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+    }
+
+    .footer-note a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="accent-line"></div>
+
+    <div class="icon-wrap">
+      <!-- Settings/gear icon -->
+      <svg viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="3"/>
+        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+      </svg>
+    </div>
+
+    <div class="brand">HSİ Medya</div>
+
+    <h1>Kısa Süreliğine<br><span>Bakımdayız</span></h1>
+
+    <p class="desc">
+      Sizi daha iyi bir deneyimle karşılamak için<br>
+      çalışmalarımızı sürdürüyoruz.<br>
+      En kısa sürede geri döneceğiz.
+    </p>
+
+    <div class="dots">
+      <span></span><span></span><span></span>
+    </div>
+
+    <p class="footer-note">
+      Sorularınız için <a href="mailto:info@hsimedya.com">info@hsimedya.com</a>
+    </p>
+  </div>
+</body>
+</html>
