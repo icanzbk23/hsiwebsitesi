@@ -1,6 +1,7 @@
 {
   "outputDirectory": "hsi-medya",
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/maintenance.html" }
+  "redirects": [
+    { "source": "/", "destination": "/maintenance.html", "permanent": false },
+    { "source": "/mekanlar.html", "destination": "/maintenance.html", "permanent": false }
   ]
 }
