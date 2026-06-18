@@ -1,6 +1,6 @@
 {
   "note": "Bu dosya hsi-medya/scripts/refresh.js tarafından otomatik güncellenir.",
-  "last_updated": "2026-06-17",
+  "last_updated": "2026-06-18",
   "reels": {
     "DT7rOvsjLNI": {
       "mekan": "mikado",
@@ -89,23 +89,23 @@
     "DVYfGqdDVZB": {
       "mekan": "harveyburger",
       "thumb": "img/reels/DVYfGqdDVZB.jpg",
-      "views": "8.9M",
-      "likes": "327K",
-      "caption": "Sadelikte iddia 🍔🔥  Cheese Burger, dinlenmiş etin güçlü lezzeti ve eriyen double cheddar peyniriyl"
+      "views": "",
+      "likes": "",
+      "caption": ""
     },
     "DVx2zyrjf1z": {
       "mekan": "harveyburger",
       "thumb": "img/reels/DVx2zyrjf1z.jpg",
-      "views": "430K",
-      "likes": "8K",
-      "caption": "Meşe ateşinde pişen burgerlerimiz 🔥🍔 ateşin verdiği o duman aromasıyla hazırlanır…  Yanında çıtır"
+      "views": "",
+      "likes": "",
+      "caption": ""
     },
     "DTr9HglDfmd": {
       "mekan": "harveyburger",
       "thumb": "img/reels/DTr9HglDfmd.jpg",
-      "views": "120K",
-      "likes": "308",
-      "caption": "Lezzetin lüks hali 🍔✨ Cheddar’lı, trüf soslu Trüf Burger masada! Yoğun aroma, akışkan cheddar ve tr"
+      "views": "",
+      "likes": "",
+      "caption": ""
     },
     "DVvca6zDKZk": {
       "mekan": "sutlukavurma",
@@ -278,56 +278,56 @@
   },
   "profiles": {
     "harveyburger": {
-      "followers": "4.667 takipçi",
-      "followersRaw": 4667
+      "followers": "",
+      "followersRaw": 0
     },
     "isteciftlik": {
-      "followers": "154.784 takipçi",
-      "followersRaw": 154784
+      "followers": "155.013 takipçi",
+      "followersRaw": 155013
     },
     "suleymanusta": {
-      "followers": "71.632 takipçi",
-      "followersRaw": 71632
+      "followers": "71.619 takipçi",
+      "followersRaw": 71619
     },
     "sultansofrasi": {
-      "followers": "142.229 takipçi",
-      "followersRaw": 142229
+      "followers": "142.254 takipçi",
+      "followersRaw": 142254
     },
     "sezaiusta": {
-      "followers": "25.440 takipçi",
-      "followersRaw": 25440
+      "followers": "25.430 takipçi",
+      "followersRaw": 25430
     },
     "egebufe": {
-      "followers": "10.129 takipçi",
-      "followersRaw": 10129
+      "followers": "10.194 takipçi",
+      "followersRaw": 10194
     },
     "mustadoner": {
-      "followers": "16.571 takipçi",
-      "followersRaw": 16571
+      "followers": "16.584 takipçi",
+      "followersRaw": 16584
     },
     "egedoner": {
-      "followers": "13.342 takipçi",
-      "followersRaw": 13342
+      "followers": "13.370 takipçi",
+      "followersRaw": 13370
     },
     "kubankuruyemis": {
-      "followers": "11.709 takipçi",
-      "followersRaw": 11709
+      "followers": "11.702 takipçi",
+      "followersRaw": 11702
     },
     "sutlukavurma": {
-      "followers": "160.624 takipçi",
-      "followersRaw": 160624
+      "followers": "161.223 takipçi",
+      "followersRaw": 161223
     },
     "mikado": {
-      "followers": "21.862 takipçi",
-      "followersRaw": 21862
+      "followers": "22.005 takipçi",
+      "followersRaw": 22005
     },
     "sinanozdemir": {
-      "followers": "26.060 takipçi",
-      "followersRaw": 26060
+      "followers": "26.050 takipçi",
+      "followersRaw": 26050
     },
     "ysantiochia": {
-      "followers": "520 takipçi",
-      "followersRaw": 520
+      "followers": "519 takipçi",
+      "followersRaw": 519
     }
   }
 }
