@@ -1,6 +1,6 @@
 {
   "note": "Bu dosya hsi-medya/scripts/refresh.js tarafından otomatik güncellenir.",
-  "last_updated": "2026-08-26",
+  "last_updated": "2026-08-27",
   "reels": {
     "DT7rOvsjLNI": {
       "mekan": "mikado",
@@ -68,9 +68,9 @@
     "DV817k8jA0t": {
       "mekan": "sinanozdemir",
       "thumb": "img/reels/DV817k8jA0t.jpg",
-      "views": "389K",
-      "likes": "2K",
-      "caption": "TÜM HATAY DUYSUN! DOĞU FIRINI BAYRAM BOYUNCA HİZMETİNİZDE."
+      "views": "",
+      "likes": "",
+      "caption": ""
     },
     "DWB993zjM7X": {
       "mekan": "sinanozdemir",
@@ -82,9 +82,9 @@
     "DWT7ZUXDErw": {
       "mekan": "sinanozdemir",
       "thumb": "img/reels/DWT7ZUXDErw.jpg",
-      "views": "175K",
-      "likes": "1K",
-      "caption": "Şambali, İskenderun’da Doğu Fırını’nda yenir"
+      "views": "",
+      "likes": "",
+      "caption": ""
     },
     "DVYfGqdDVZB": {
       "mekan": "harveyburger",
@@ -153,7 +153,7 @@
       "mekan": "kubankuruyemis",
       "thumb": "img/reels/DVELpx2gotb.jpg",
       "views": "1.1M",
-      "likes": "8K",
+      "likes": "7K",
       "caption": "Patron “Her şeyi kafanızı kullanarak yapın” dediğinde biz yanlış anladık sanırım... Ama sonuçlar ort"
     },
     "DTNNfbVgmZF": {
@@ -229,8 +229,8 @@
     "DWOmkshjMPY": {
       "mekan": "egebufe",
       "thumb": "img/reels/DWOmkshjMPY.jpg",
-      "views": "94K",
-      "likes": "999",
+      "views": "95K",
+      "likes": "1K",
       "caption": "EGE BÜFE 24 MART SALI GÜNÜ AÇILIYOR! 🎉  Birbirinden lezzetli sadece bize özgün ürünlerimizle sizler"
     },
     "DWbEbIKDG1J": {
@@ -282,52 +282,52 @@
       "followersRaw": 0
     },
     "isteciftlik": {
-      "followers": "169.098 takipçi",
-      "followersRaw": 169098
+      "followers": "169.317 takipçi",
+      "followersRaw": 169317
     },
     "suleymanusta": {
-      "followers": "72.272 takipçi",
-      "followersRaw": 72272
+      "followers": "72.347 takipçi",
+      "followersRaw": 72347
     },
     "sultansofrasi": {
-      "followers": "160.472 takipçi",
-      "followersRaw": 160472
+      "followers": "160.965 takipçi",
+      "followersRaw": 160965
     },
     "sezaiusta": {
-      "followers": "32.078 takipçi",
-      "followersRaw": 32078
+      "followers": "32.207 takipçi",
+      "followersRaw": 32207
     },
     "egebufe": {
-      "followers": "15.949 takipçi",
-      "followersRaw": 15949
+      "followers": "16.001 takipçi",
+      "followersRaw": 16001
     },
     "mustadoner": {
-      "followers": "18.587 takipçi",
-      "followersRaw": 18587
+      "followers": "18.598 takipçi",
+      "followersRaw": 18598
     },
     "egedoner": {
-      "followers": "14.414 takipçi",
-      "followersRaw": 14414
+      "followers": "14.439 takipçi",
+      "followersRaw": 14439
     },
     "kubankuruyemis": {
-      "followers": "11.693 takipçi",
-      "followersRaw": 11693
+      "followers": "11.687 takipçi",
+      "followersRaw": 11687
     },
     "sutlukavurma": {
-      "followers": "178.836 takipçi",
-      "followersRaw": 178836
+      "followers": "179.026 takipçi",
+      "followersRaw": 179026
     },
     "mikado": {
-      "followers": "35.457 takipçi",
-      "followersRaw": 35457
+      "followers": "35.503 takipçi",
+      "followersRaw": 35503
     },
     "sinanozdemir": {
-      "followers": "26.018 takipçi",
-      "followersRaw": 26018
+      "followers": "26.153 takipçi",
+      "followersRaw": 26153
     },
     "ysantiochia": {
-      "followers": "510 takipçi",
-      "followersRaw": 510
+      "followers": "511 takipçi",
+      "followersRaw": 511
     }
   }
 }
